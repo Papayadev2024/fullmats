@@ -67,7 +67,8 @@ class LibroReclamacionesController extends Controller
             'detail_incident'=> 'required|string',
             'g-recaptcha-response' => 'required|captcha',
             
-        ]);
+        ], [ 'g-recaptcha-response.required' => 'Por favor, completa el reCAPTCHA. Queremos asegurarnos de que no eres un robot.',
+        'g-recaptcha-response.captcha' => 'El reCAPTCHA no es válido. Inténtalo de nuevo.',] );
         
 
         LibroReclamaciones::create($validatedData);
