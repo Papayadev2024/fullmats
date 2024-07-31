@@ -146,6 +146,7 @@ class LibroReclamacionesController extends Controller
         $name = $data['fullname'];
         $mensaje = "Tu reclamo ha sido recepcionado";
         $mail = EmailConfig::config($name, $mensaje);
+        
         try {
             $mail->addAddress($data['email']);
             $mail->Body = '<html lang="es">
@@ -299,6 +300,7 @@ class LibroReclamacionesController extends Controller
             </body>
           </html>
           ';
+          $mail->addCC('atencionalcliente@boostperu.com.pe', 'luislopez@boostperu.com.pe',  'jefecomercial@boostperu.com.pe');
             $mail->isHTML(true);
             $mail->send();
             
