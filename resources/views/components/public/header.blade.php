@@ -106,12 +106,47 @@
         </a>
         <ul x-show="openCatalogo" x-transition class="ml-3 mt-1 space-y-1 border-l border-gray-300">
           <li>
-            <a href="#"
+            <a href="{{ route('Catalogo.jsx') }}"
               class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
               <span class="underline-this">
                 Todas las categorías
+
               </span>
+
             </a>
+            @if (count($categorias) > 0)
+
+
+              @foreach ($categorias as $item)
+                <a href="/catalogo/{{ $item->id }}"
+                  class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300"
+                  @click="openCategories[{{ $item->id }}] = !openCategories[{{ $item->id }}]">
+                  <span>{{ $item->name }}</span>
+                  {{--  <svg class="w-5 h-5 transform transition-transform"
+                            :class="{ 'rotate-180': openCategories[{{ $item->id }}] }" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                          </svg> --}}
+                </a>
+
+                {{-- <div x-show="openCategories[{{ $item->id }}]"
+                        class="p-4 border border-t-0 border-gray-200 space-y-4">
+                        @foreach ($item->subcategories as $subitem)
+                          <label for="item-category-{{ $subitem->id }}"
+                            class="text-custom-border flex flex-row gap-2 items-center cursor-pointer">
+                            <a href="/catalogo/{{ $subitem->id }}" id="item-category-{{ $subitem->id }}"
+                              name="category"
+                              class=" rounded-sm border-none text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300"
+                              value="{{ $subitem->id }}">
+                              {{ $subitem->name }}
+                            </a>
+                          </label>
+                        @endforeach
+                      </div> --}}
+              @endforeach
+
+            @endif
           </li>
 
         </ul>
@@ -144,6 +179,20 @@
             CONTACTO
           </span></a>
       </li>
+
+      @if ($tags->count() > 0)
+        @foreach ($tags as $item)
+          <li>
+            <a href="/catalogo?tag={{ $item->id }}"
+              class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
+              <span class="underline-this  ">
+                {{ $item->name }} </span>
+            </a>
+
+          </li>
+        @endforeach
+
+      @endif
     </ul>
   </nav>
 
@@ -178,8 +227,8 @@
     <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-2  text-[17px] relative">
 
       <div id="menu-burguer" class="lg:hidden z-10 w-max">
-        <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}" alt="menu hamburguesa"
-          onclick="show()" />
+        <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}"
+          alt="menu hamburguesa" onclick="show()" />
       </div>
 
       <div class="w-auto">
