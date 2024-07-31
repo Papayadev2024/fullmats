@@ -316,7 +316,7 @@
           <a href="{{ $url }}" class="flex items-center text-base font-Inter_SemiBold text-[#006BF6] ">Ver
             todos los productos <img src="{{ asset('images/img/arrowBlue.png') }}" alt="Icono" class="ml-5 "></a>
         </div>
-        <div class="grid grid-cols-4 gap-4 mt-14 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-14 w-full">
           @foreach ($ProdComplementarios->take(4) as $item)
             {{-- <x-product.container-combinalo width="" height="h-[400px]" bgcolor="bg-[#FFFFFF]"
               textpx="text-[20px]" :item="$item" /> --}}
