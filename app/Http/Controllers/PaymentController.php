@@ -152,7 +152,7 @@ class PaymentController extends Controller
         "amount" => round($totalCost * 100),
         "capture" => true,
         "currency_code" => "PEN",
-        "description" => "Compra en Decotab",
+        "description" => "Compra en ".env('APP_NAME'),
         "email" => $body['culqi']['email'] ?? $body['contact']['email'],
         "installments" => 0,
         "antifraud_details" => [

@@ -100,6 +100,17 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
       })
       filterBody.push(categoryFilter)
     }
+    if (filter['subcategory_id'] && filter['subcategory_id'].length > 0) {
+      const subcategoryFilter = []
+      filter['subcategory_id'].forEach((x, i) => {
+        if (i == 0) {
+          subcategoryFilter.push(['subcategory_id', '=', x])
+        } else {
+          subcategoryFilter.push('or', ['subcategory_id', '=', x])
+        }
+      })
+      filterBody.push(subcategoryFilter)
+    }
 
     const { status, result } = await Fetch('/api/ofertas/paginate', {
       method: 'POST',

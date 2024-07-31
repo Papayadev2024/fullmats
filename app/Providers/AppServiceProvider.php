@@ -54,6 +54,12 @@ class AppServiceProvider extends ServiceProvider
             $datosgenerales = General::all();
             $blog = Blog::where('status', '=', 1)->where('visible', '=', 1)->count(); // Suponiendo que tienes un modelo Footer y un método footerData() en él
             $categoriasMenu = Category::where('visible', '=', 1)->where('is_menu', 1)->get();
+
+            $categorias = Category::with(['subcategories' => function ($query) {
+                $query->whereHas('products');
+            }])->get();
+
+
             $tags = Tag::where('is_menu', 1)
                 ->whereHas('productos')
                 ->get();
@@ -63,7 +69,8 @@ class AppServiceProvider extends ServiceProvider
                 ->exists();
 
             // Pasar los datos a la vista
-            $view->with(['datosgenerales' => $datosgenerales, 'blog' => $blog,  'categoriasMenu' => $categoriasMenu, 'tags' => $tags, 'offerExists' => $offerExists]);
+            $view->with(['datosgenerales' => $datosgenerales, 'blog' => $blog,  
+            'categoriasMenu' => $categoriasMenu, 'tags' => $tags, 'offerExists' => $offerExists , 'categorias'=> $categorias]);
         });
 
         View::composer('components.app.sidebar', function ($view) {

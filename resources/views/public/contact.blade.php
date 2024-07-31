@@ -92,7 +92,7 @@
             <input type="text" placeholder="Correo Electronico" name="email" id="email"
               class="w-full h-14 bg-[#F8F8F8] rounded-xl border-none">
           </div>
-          <div class="col-span-2 w-full mt-8">
+          <div class="col-span-3 md:col-span-2 w-full mt-8">
             <input type="text" placeholder="Asunto " name="asunto"
               class="w-full h-14 bg-[#F8F8F8] rounded-xl border-none">
           </div>

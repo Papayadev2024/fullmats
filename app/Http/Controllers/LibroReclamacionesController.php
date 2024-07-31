@@ -67,7 +67,8 @@ class LibroReclamacionesController extends Controller
             'detail_incident'=> 'required|string',
             'g-recaptcha-response' => 'required|captcha',
             
-        ]);
+        ], [ 'g-recaptcha-response.required' => 'Por favor, completa el reCAPTCHA. Queremos asegurarnos de que no eres un robot.',
+        'g-recaptcha-response.captcha' => 'El reCAPTCHA no es válido. Inténtalo de nuevo.',] );
         
 
         LibroReclamaciones::create($validatedData);
@@ -140,7 +141,8 @@ class LibroReclamacionesController extends Controller
 
 
     private function envioCorreoLibrodeReclamacion($data){
-        
+        $appUrl = config('app.url');
+        $appName = config('app.name');
         $name = $data['fullname'];
         $mensaje = "Tu reclamo ha sido recepcionado";
         $mail = EmailConfig::config($name, $mensaje);
@@ -150,7 +152,7 @@ class LibroReclamacionesController extends Controller
             <head>
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-              <title>Decotab</title>
+              <title>.'.$appName.'.</title>
               <link rel="preconnect" href="https://fonts.googleapis.com" />
               <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
               <link
@@ -170,13 +172,14 @@ class LibroReclamacionesController extends Controller
                 <table
                   style="
                     width: 600px;
-                    height: 700px;
+                    height: 850px;
                     margin: 0 auto;
                     text-align: center;
-                    background-image: url(https://decotab.pe/mail/ImagenFondo.png);
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: cover;
+                    background-image:url(' . $appUrl . '/images/Ellipse_18.png),  url(' . $appUrl . '/images/Tabpanel.png);
+                    background-repeat: no-repeat, no-repeat;
+                    background-position: center bottom , center bottom;;
+                    background-size: fit , fit;
+                    background-color: #f9f9f9;
                   "
                 >
                   <thead>
@@ -190,7 +193,9 @@ class LibroReclamacionesController extends Controller
                           margin: 40px;
                         "
                       >
-                        <img src="https://decotab.pe/mail/logodecotab.png" alt="mundo web" />
+                          <img src="' . $appUrl . '/images/Group1.png" alt="img_logo"  style="
+                    margin: auto;
+                  "/>
                       </th>
                     </tr>
                   </thead>
@@ -199,7 +204,7 @@ class LibroReclamacionesController extends Controller
                       <td style="height: 10px">
                         <p
                           style="
-                            color: #ffffff;
+                            
                             font-weight: 500;
                             font-size: 18px;
                             text-align: center;
@@ -217,7 +222,7 @@ class LibroReclamacionesController extends Controller
                       <td style="height: 10px">
                         <p
                           style="
-                            color: #ffffff;
+                            
                             font-size: 40px;
                             font-family: Montserrat, sans-serif;
                             line-height: 60px;
@@ -239,7 +244,7 @@ class LibroReclamacionesController extends Controller
                           "
                         >
                           !Gracias
-                          <span style="color: #ffffff">por escribirnos!</span>
+                          <span style="color: #006BF6">por escribirnos!</span>
                         </p>
                       </td>
                     </tr>
@@ -247,7 +252,7 @@ class LibroReclamacionesController extends Controller
                       <td style="height: 10px">
                         <p
                           style="
-                            color: #ffffff;
+                            color: #006bf6;
                             font-weight: 500;
                             font-size: 18px;
                             text-align: center;
@@ -267,25 +272,25 @@ class LibroReclamacionesController extends Controller
                       text-align: center;
                     "
                     >
-                        <a
-                          href="https://decotab.pe/"
-                          style="
-                            text-decoration: none;
-                            background-color: #006BF6;
-                            color: white;
-                            padding: 10px 16px;
-                            display: inline-flex;
-                            justify-content: center;
-                            align-items: center;
-                            gap: 10px;
-                            font-weight: 600;
-                            font-family: Montserrat, sans-serif;
-                            font-size: 16px;
-                            border-radius: 30px;
-                          "
-                        >
-                          <span>Visita nuestra web</span>
-                        </a>
+                         <a
+                      href="' . $appUrl . '"
+                      style="
+                        text-decoration: none;
+                        background-color: #006bf6;
+                        color: white;
+                        padding: 10px 16px;
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        font-weight: 600;
+                        font-family: Montserrat, sans-serif;
+                        font-size: 16px;
+                        border-radius: 30px;
+                      "
+                    >
+                      <span>Visita nuestra web</span>
+                    </a>
                       </td>
                     </tr>
                   </tbody>

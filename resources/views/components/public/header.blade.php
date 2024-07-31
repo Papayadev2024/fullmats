@@ -175,7 +175,7 @@
   @endforeach
 
   <div>
-    <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-2  text-[17px] ">
+    <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-2  text-[17px] relative">
 
       <div id="menu-burguer" class="lg:hidden z-10 w-max">
         <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}" alt="menu hamburguesa"
@@ -189,22 +189,25 @@
         </a>
       </div>
 
-      <div class="hidden lg:flex items-center justify-center">
+      <div class="hidden lg:flex items-center justify-center ">
         <div>
           <nav id="menu-items"
-            class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center"
+            class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
             x-data="{ openCatalogo: false, openSubMenu: null }">
             <a href="/" class="font-medium hover:opacity-75 ">
               <span class="underline-this">INICIO</span>
             </a>
 
-            <a href="{{ route('Catalogo.jsx') }}" class="font-medium hover:opacity-75">
+            <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium ">
               <span class="underline-this">PRODUCTOS</span>
+              <div id="productos-link-h" class="w-0"></div>
+
             </a>
-            @if($offerExists) 
-            <a href="{{ route('Ofertas.jsx') }}" class="font-medium hover:opacity-75">
-              <span class="underline-this">OFERTAS</span>
-            </a>
+
+            @if ($offerExists)
+              <a href="{{ route('Ofertas.jsx') }}" class="font-medium hover:opacity-75">
+                <span class="underline-this">OFERTAS</span>
+              </a>
             @endif
 
             @if ($blog > 0)
@@ -214,13 +217,15 @@
             @endif
 
 
-            <a href="/contacto" class="font-medium hover:opacity-75 ">
+            <a href="/contacto" class="font-medium hover:opacity-75  ">
               <span class="underline-this">CONTACTO</span>
             </a>
             @if ($tags->count() > 0)
               @foreach ($tags as $item)
-                <a href="/catalogo?tag={{ $item->id }}" class="font-medium hover:opacity-75 ">
-                  <span class="underline-this"> {{ $item->name }} </span>
+                <a href="/catalogo?tag={{ $item->id }}" class="font-medium hover:opacity-75    "
+                  style="color: {{ $item->color }}">
+                  <span class="underline-this  ">
+                    {{ $item->name }} </span>
                 </a>
               @endforeach
 
@@ -332,6 +337,16 @@
 
     </div>
   </div>
+
+  <div class="flex justify-end relative">
+    <div class="fixed bottom-[36px] z-[10] right-[15px] md:right-[25px]">
+      <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales[0]->whatsapp }}&text={{ $datosgenerales[0]->mensaje_whatsapp }}"
+        class="">
+        <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-20" />
+      </a>
+    </div>
+  </div>
+
   <div id="myOverlay" class="overlay" style="z-index: 200;">
     <span class="closebtn" onclick="closeSearch()">×</span>
     <div class="overlay-content w-3/4 md:w-1/2 z-30">
@@ -345,6 +360,8 @@
 </header>
 
 <script>
+  let clockSearch;
+
   function openSearch() {
     document.getElementById("myOverlay").style.display = "block";
 
@@ -361,23 +378,26 @@
 
   $('#buscarproducto').keyup(function() {
 
+    clearTimeout(clockSearch);
     var query = $(this).val().trim();
 
     if (query !== '') {
-      $.ajax({
-        url: '{{ route('buscar') }}',
-        method: 'GET',
-        data: {
-          query: query
-        },
-        success: function(data) {
-          var resultsHtml = '';
-          var url = '{{ asset('') }}';
-          console.log(data)
-          data.forEach(function(result) {
-            const price = Number(result.precio) || 0
-            const discount = Number(result.descuento) || 0
-            resultsHtml += `<a href="/producto/${result.id}">
+      clockSearch = setTimeout(() => {
+        $.ajax({
+          url: '{{ route('buscar') }}',
+          method: 'GET',
+          data: {
+            query: query
+          },
+          success: function(data) {
+            var resultsHtml = '';
+            var url = '{{ asset('') }}';
+            console.log(data)
+            data.forEach(function(result) {
+              console.log(result.id)
+              const price = Number(result.precio) || 0
+              const discount = Number(result.descuento) || 0
+              resultsHtml += `<a href="/producto/${result.id}">
               <div class="w-full flex flex-row py-3 px-5 hover:bg-slate-200">
                 <div class="w-[10%]">
                   <img class="w-14 rounded-md" src="${url}${result.imagen}" onerror="imagenError(this)" />
@@ -392,11 +412,14 @@
                 </div>
               </div>
             </a>`;
-          });
+            });
 
-          $('#resultados').html(resultsHtml);
-        }
-      });
+            $('#resultados').html(resultsHtml);
+          }
+        });
+
+      }, 300);
+
     } else {
       $('#resultados').empty();
     }
@@ -461,7 +484,7 @@
           // burguer
           //   .removeClass('fixed')
           //   .addClass('absolute')
-          logo.attr('src', 'images/svg/logo_decotab_header_light.svg')
+          logo.attr('src', '')
           $('#header-menu svg').attr('stroke', 'white');
         }
       });
@@ -527,4 +550,64 @@
       }
     }
   });
+</script>
+<script>
+  const categorias = @json($categorias);
+  var activeHover = false
+  document.getElementById('productos-link').addEventListener('mouseenter', function(event) {
+    if (event.target === this) {
+      // mostrar submenú de productos 
+      console.log(categorias);
+      let padre = document.getElementById('productos-link-h');
+      let divcontainer = document.createElement('div');
+      divcontainer.id = 'productos-link-container';
+      divcontainer.className =
+        'absolute top-[90px] left-1/2 transform -translate-x-1/2 m-0 flex flex-row bg-white z-[60] rounded-lg shadow-lg gap-4 p-4 w-[80vw] overflow-x-auto';
+
+      divcontainer.addEventListener('mouseenter', function() {
+        this.addEventListener('mouseleave', cerrar);
+      });
+
+      categorias.forEach(element => {
+        let ul = document.createElement('ul');
+        ul.className =
+          'text-[#006BF6] font-bold font-poppins text-md py-2 px-3 block   duration-300 w-full whitespace-nowrap gap-4';
+
+        ul.innerHTML = element.name;
+        element.subcategories.forEach(subcategoria => {
+          let li = document.createElement('li');
+          li.style.setProperty('padding-left', '4px', 'important');
+          li.style.setProperty('padding-right', '2px', 'important');
+
+          li.className =
+            'text-[#272727] px-2 rounded-sm cursor-pointer font-normal font-poppins text-[13px] py-2 px-3 hover:bg-blue-200 hover:opacity-75 transition-opacity duration-300 w-full whitespace-nowrap';
+          // Crear el elemento 'a'
+          let a = document.createElement('a');
+          a.href = `/catalogo?subcategoria=${subcategoria.id}`;
+          a.innerHTML = subcategoria.name;
+          a.className = 'block w-full h-full'; // Para que el enlace ocupe todo el 'li'
+
+          // Añadir el elemento 'a' al 'li'
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+        divcontainer.appendChild(ul);
+      });
+
+
+
+      // limpia sus hijos antes de agregar los nuevos
+      if (!activeHover) {
+        padre.appendChild(divcontainer);
+        activeHover = true;
+      }
+    }
+  });
+
+  function cerrar() {
+    console.log('Mouse out');
+    let padre = document.getElementById('productos-link-h');
+    activeHover = false
+    padre.innerHTML = '';
+  }
 </script>

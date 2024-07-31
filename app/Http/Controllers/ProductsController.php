@@ -225,7 +225,7 @@ class ProductsController extends Controller
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $especificacion = Specifications::where("product_id", "=", $id)->get();
     if ($especificacion->count() == 0) $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
-    $tags = Tag::all();
+    $tags = Tag::where('status', 1)->get();
     $categoria = Category::all();
     $subcategories = SubCategory::all();
     $galery = Galerie::where("product_id", "=", $id)->get();

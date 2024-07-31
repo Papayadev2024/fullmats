@@ -109,7 +109,7 @@
     <!-- Modal body -->
     <div class="p-4 ">
       <h1 class="font-Inter_SemiBold">Terminos y condiciones</h1>
-      <p class="font-Inter_Regular p-2">{!! $terminos->content ?? '' !!}</p>
+      <p class="font-Inter_Regular p-2 prose">{!! $terminos->content ?? '' !!}</p>
     </div>
   </div>
   <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
