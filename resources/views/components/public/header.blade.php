@@ -234,7 +234,7 @@
       <div class="w-auto">
         <a href="#">
           <img id="logo-boostperu" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
-            src="{{ asset($isIndex ? 'images/svg/LOGO2.PNG' : 'images/svg/LOGO2.PNG') }}" alt="boostperu" />
+            src="{{ asset($isIndex ? 'images/svg/LOGO2.png' : 'images/svg/LOGO2.png') }}" alt="boostperu" />
         </a>
       </div>
 
