@@ -172,14 +172,14 @@ class LibroReclamacionesController extends Controller
                 <table
                   style="
                     width: 600px;
-                    height: 700px;
+                    height: 850px;
                     margin: 0 auto;
                     text-align: center;
-                   background-image:url(' . $appUrl . 'images/Ellipse_18.png),  url(' . $appUrl . 'images/Tabpanel.png);
-                  background-repeat: no-repeat, no-repeat;
-                  background-position: center bottom , center bottom;;
-                  background-size: fit , fit;
-                  background-color: #f9f9f9;
+                    background-image:url(' . $appUrl . '/images/Ellipse_18.png),  url(' . $appUrl . '/images/Tabpanel.png);
+                    background-repeat: no-repeat, no-repeat;
+                    background-position: center bottom , center bottom;;
+                    background-size: fit , fit;
+                    background-color: #f9f9f9;
                   "
                 >
                   <thead>
@@ -193,7 +193,7 @@ class LibroReclamacionesController extends Controller
                           margin: 40px;
                         "
                       >
-                          <img src="' . $appUrl . 'images/Group1.png" alt="mundo web"  style="
+                          <img src="' . $appUrl . '/images/Group1.png" alt="img_logo"  style="
                     margin: auto;
                   "/>
                       </th>
@@ -204,7 +204,7 @@ class LibroReclamacionesController extends Controller
                       <td style="height: 10px">
                         <p
                           style="
-                            color: #ffffff;
+                            
                             font-weight: 500;
                             font-size: 18px;
                             text-align: center;
@@ -222,7 +222,7 @@ class LibroReclamacionesController extends Controller
                       <td style="height: 10px">
                         <p
                           style="
-                            color: #ffffff;
+                            
                             font-size: 40px;
                             font-family: Montserrat, sans-serif;
                             line-height: 60px;
@@ -244,7 +244,7 @@ class LibroReclamacionesController extends Controller
                           "
                         >
                           !Gracias
-                          <span style="color: #ffffff">por escribirnos!</span>
+                          <span style="color: #006BF6">por escribirnos!</span>
                         </p>
                       </td>
                     </tr>
@@ -252,7 +252,7 @@ class LibroReclamacionesController extends Controller
                       <td style="height: 10px">
                         <p
                           style="
-                            color: #ffffff;
+                            color: #006bf6;
                             font-weight: 500;
                             font-size: 18px;
                             text-align: center;
