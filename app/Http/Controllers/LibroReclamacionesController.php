@@ -206,7 +206,7 @@ class LibroReclamacionesController extends Controller
 
                 <br><br>
 
-              <span> Acepta tratamiento de datos : Al enviar este formulario acepto el flujo de mis datps personales, segun la Ley de Proteccion de Datos Personales. </span>
+              <span> Acepta tratamiento de datos : Al enviar este formulario acepto el flujo de mis datos personales, segun la Ley de Proteccion de Datos Personales. </span>
 
 
               </main>
