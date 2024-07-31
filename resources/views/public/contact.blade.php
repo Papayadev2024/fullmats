@@ -89,7 +89,7 @@
               class="w-full h-14 bg-[#F8F8F8] rounded-xl border-none">
           </div>
           <div class="col-span-2 sm:col-span-1 w-full">
-            <input type="text" placeholder="Correo Electronico" name="email" id="email"
+            <input type="text" placeholder="Correo Electronico" name="email"
               class="w-full h-14 bg-[#F8F8F8] rounded-xl border-none">
           </div>
           <div class="col-span-3 md:col-span-2 w-full mt-8">
