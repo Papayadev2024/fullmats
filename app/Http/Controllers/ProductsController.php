@@ -19,6 +19,7 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 use SoDe\Extend\JSON;
 
 use function PHPUnit\Framework\isNull;
@@ -33,6 +34,15 @@ class ProductsController extends Controller
     $products =  Products::where("status", "=", true)->get();
 
     return view('pages.products.index', compact('products'));
+  }
+
+  public function reactView()
+  {
+    $products = Products::all();
+
+    return Inertia::render('Admin/Products', [
+      'products' => $products,
+    ])->rootView('admin');
   }
 
   public function paginate(Request $request)

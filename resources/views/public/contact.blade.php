@@ -17,14 +17,14 @@
 
 
   <main>
-    <section class="font-Inter_Regular my-12 ">
-      <div class="flex flex-col gap-4   w-11/12 m-auto px-16 pt-10 ">
+    <section class="font-Inter_Regular my-12">
+      <div class="flex flex-col gap-4   w-11/12 m-auto px-8 sm:px-16 pt-10 ">
         <h3 class="text-[39px] font-Inter_Medium text-[#333333]">¡Siempre estamos ansiosos por saber de usted! </h3>
         <span class="text-[20px]">Puede llamarnos en horario laboral o visitar nuestra oficina. Todos los correos
           electrónicos recibirán
           respuesta en un plazo de 24 horas. ¡Nos encantaría saber de usted!</span>
       </div>
-      <div class="grid grid-cols-3 w-11/12 m-auto px-16 mt-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-11/12 m-auto px-8 sm:px-16 pt-10 gap-8">
         <div class="w-full relative">
           <img class="absolute" src="{{ asset('images\location_on.png') }}" alt="">
 
@@ -37,7 +37,7 @@
           <p class="text-[20px] pl-14"> {{ $general->city }} - {{ $general->country }}</p>
 
         </div>
-        <div class="w-full relative pl-12">
+        <div class="w-full relative">
           <img class="absolute" src="{{ asset('images\call.png') }}" alt="">
           <div class="pl-14 gap-3 flex flex-col">
             <p class="text-[25px] font-Inter_SemiBold">Contacto</p>
@@ -61,7 +61,7 @@
 
         </div>
 
-        <div class="w-full relative pl-20">
+        <div class="w-full relative">
           <img class="absolute" src="{{ asset('images\avg_pace.png') }}" alt="">
           <div class="pl-14 gap-3 flex flex-col">
             <p class="text-[25px] font-Inter_SemiBold">Horario de Funcionamiento</p>
@@ -84,11 +84,11 @@
       <div class=" grid grid-cols-1 w-11/12 m-auto px-16 pt-11">
         <h2 class="font-Inter_Medium text-[30px] text-center">Pregúntanos cualquier cosa aquí </h2>
         <div class="grid grid-cols-2 gap-4 mt-12 w-full">
-          <div class="col-span-1 w-full">
+          <div class="col-span-2 sm:col-span-1 w-full">
             <input type="text" placeholder="Nombre Completo " name="name"
               class="w-full h-14 bg-[#F8F8F8] rounded-xl border-none">
           </div>
-          <div class="col-span-1 w-full">
+          <div class="col-span-2 sm:col-span-1 w-full">
             <input type="text" placeholder="Correo Electronico" name="email" id="email"
               class="w-full h-14 bg-[#F8F8F8] rounded-xl border-none">
           </div>
