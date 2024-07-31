@@ -146,7 +146,7 @@ class LibroReclamacionesController extends Controller
         $mensaje = "Tu reclamo ha sido recepcionado";
         $mail = EmailConfig::config($name, $mensaje);
 
-        dump($data);
+        
         
         
         try {
