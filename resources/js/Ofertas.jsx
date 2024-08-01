@@ -9,6 +9,16 @@ import arrayJoin from './Utils/ArrayJoin'
 import ProductCard from './components/Product/ProductCard'
 
 const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_cat: selected_category }) => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://cdn.sode.me/extends/notify.extend.min.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [null]);
   const take = 10
 
   const [items, setItems] = useState([])

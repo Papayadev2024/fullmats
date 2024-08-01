@@ -81,7 +81,7 @@
     "src": "resources/js/Admin/Products.jsx"
   },
   "resources/js/Catalogo.jsx": {
-    "file": "assets/Catalogo-Coi4Q78T.js",
+    "file": "assets/Catalogo-MhLGfVow.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
       "_CreateReactScript-qyXjqq-l.js",
@@ -98,7 +98,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/Ofertas.jsx": {
-    "file": "assets/Ofertas-GsUtLKpP.js",
+    "file": "assets/Ofertas-9gfchRV9.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
       "_CreateReactScript-qyXjqq-l.js",

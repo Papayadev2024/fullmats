@@ -9,9 +9,21 @@ import arrayJoin from './Utils/ArrayJoin'
 import ProductCard from './components/Product/ProductCard'
 import { set } from 'sode-extend-react/sources/cookies'
 
+
+
+
 const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_cat: selected_category, tag_id, subCatId }) => {
   const take = 12
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://cdn.sode.me/extends/notify.extend.min.js";
+    script.async = true;
+    document.body.appendChild(script);
 
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [null]);
 
   const [items, setItems] = useState([])
   const [filter, setFilter] = useState(selected_category ? { category_id: [selected_category] } : { 'txp.tag_id': [tag_id] })
