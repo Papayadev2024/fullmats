@@ -348,7 +348,7 @@
           <div id="cart-modal"
             class="bag !fixed top-0 right-0 md:w-[450px] cartContainer border shadow-2xl  !rounded-none !p-0 !z-30"
             style="display: none">
-            <div class="p-4 flex flex-col h-screen justify-between gap-2">
+            <div class="p-4 flex flex-col h-[90vh] justify-between gap-2">
               <div class="flex flex-col">
                 <div class="flex justify-between ">
                   <h2 class="font-semibold font-Inter_Medium text-[28px] text-[#151515] pb-5">Carrito</h2>
@@ -360,7 +360,7 @@
                     </svg>
                   </div>
                 </div>
-                <div class="overflow-y-scroll h-[calc(100vh-200px)] scroll__carrito">
+                <div class="overflow-y-scroll h-[calc(90vh-200px)] scroll__carrito">
                   <table class="w-full">
                     <tbody id="itemsCarrito">
                       {{-- <div class="flex flex-col gap-10 align-top" id="itemsCarrito"></div> --}}

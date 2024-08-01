@@ -73,6 +73,15 @@
                             required>
 
                         </div>
+
+
+                      </div>
+                      <div class="basis-2/3 flex flex-row gap-2 ">
+                        <input id="termsandconditions" type="checkbox" required class="border-2 rounded-sm w-5 h-5" />
+                        <label for="termsandconditions" class="font-medium text-sm text-[#6C7275]">Estoy de acuerdo con
+                          los <a class="font-bold" href="{{ route('terms_condition') }}" target="_blanck">terminos y
+                            condiciones</a></label>
+
                       </div>
                     </div>
                   </div>
@@ -149,21 +158,28 @@
                           <div class="basis-1/3 flex flex-col gap-2 z-[45]">
                             <label class="font-medium text-[12px] text-[#6C7275]">Departamento <span
                                 class="text-red-500">*</span></label>
-
-                            <div>
-                              <!-- combo -->
-                              <div class="dropdown w-full">
-                                <select name="departamento_id" id="departamento_id"
-                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
-                                  data-address>
-                                  <option value="" data-select2-id="select2-data-2-4o85">Seleccione un
-                                    departamento</option>
-                                  @foreach ($departments as $department)
-                                    <option value="{{ $department->id }}">{{ $department->description }}</option>
-                                  @endforeach
-                                </select>
+                            @if ($departments->count() > 0)
+                              <div>
+                                <!-- combo -->
+                                <div class="dropdown w-full">
+                                  <select name="departamento_id" id="departamento_id"
+                                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    data-address>
+                                    <option value="" data-select2-id="select2-data-2-4o85">Seleccione un
+                                      departamento</option>
+                                    @foreach ($departments as $department)
+                                      <option value="{{ $department->id }}">{{ $department->description }}</option>
+                                    @endforeach
+                                  </select>
+                                </div>
                               </div>
-                            </div>
+                            @else
+                              <div><span> ** Configure los "Costos de Envio" para que pueda visualizar esta lista
+                                  **</span>
+                              </div>
+                            @endif
+                            http://[::1]:5176/resources/css/app.css
+
                           </div>
 
                           <div class="basis-1/3 flex flex-col gap-2 z-[40]">
@@ -311,7 +327,7 @@
             cart: carrito.map((x) => ({
               id: x.id,
               quantity: x.cantidad,
-              isCombo : x.isCombo || false
+              isCombo: x.isCombo || false
             })),
             contact: {
               name: $('#nombre').val(),
@@ -377,6 +393,8 @@
 
       const precioProductos = getTotalPrice()
       const precioEnvio = getCostoEnvio()
+
+
 
       Culqi.settings({
         title: 'Boost .its more',
@@ -632,7 +650,7 @@
     })
   </script>
   <script>
-    let articulosCarrito = [];
+    // let articulosCarrito = [];
     let checkedRadio = false
 
 
