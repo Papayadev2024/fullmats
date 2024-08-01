@@ -34,7 +34,8 @@
             class="w-full h-[300px] object-{{ $category->fit }} absolute inset-0"
             onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
         @else
-          <img x-show="!showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
+          <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+            x-transition:enter="transition ease-out duration-300 transform"
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-300 transform"
             x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
@@ -67,7 +68,7 @@
       <div class="addProduct text-center flex justify-center h-0">
         <a href="{{ route('producto', $item->id) }}"
           class="font-semibold text-[16px]  bg-[#006BF6] py-2 px-4 text-center text-white rounded-3xl h-10">
-          Ver producto
+          Ver producto {{ $item->id }}
         </a>
       </div>
     </div>
