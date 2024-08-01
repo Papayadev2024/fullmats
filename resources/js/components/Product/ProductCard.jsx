@@ -38,19 +38,29 @@ const ProductCard = ({ item, width, bgcolor }) => {
         <div>
           <div className="relative flex justify-center items-center h-[300px]">
             <img
-              style={{ opacity: !showAmbiente ? '1' : '0', scale: !showAmbiente ? '1.05' : '1', backgroundColor: '#eeeeee' }}
+              style={{
+                opacity: !item.imagen_ambiente || !showAmbiente ? '1' : '0',
+                scale: !showAmbiente ? '1.05' : '1',
+                backgroundColor: '#eeeeee'
+              }}
               src={item.imagen ? `/${item.imagen}` : '/images/img/noimagen.jpg'}
               alt={item.name}
               onError={(e) => e.target.src = '/images/img/noimagen.jpg'}
               className={`transition ease-out duration-300 transform w-full h-[300px] object-${category.fit} absolute inset-0`}
             />
-            <img
-              style={{ opacity: showAmbiente ? '1' : '0', scale: showAmbiente ? '1.05' : '1' }}
-              src={item.imagen_ambiente ? `/${item.imagen_ambiente}` : '/images/img/noimagen.jpg'}
-              alt={item.name}
-              onError={(e) => e.target.src = '/images/img/noimagen.jpg'}
-              className="transition ease-out duration-300 transform w-full h-[300px] object-cover absolute inset-0 "
-            />
+
+            {item.imagen_ambiente && (
+              <img
+                style={{
+                  opacity: showAmbiente ? '1' : '0',
+                  scale: showAmbiente ? '1.05' : '1'
+                }}
+                src={`/${item.imagen_ambiente}`}
+                alt={item.name}
+                onError={(e) => e.target.src = '/images/img/noimagen.jpg'}
+                className="transition ease-out duration-300 transform w-full h-[300px] object-cover absolute inset-0"
+              />
+            )}
           </div>
           <div className="addProduct text-center flex justify-center h-0">
             <a

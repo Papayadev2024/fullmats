@@ -25,7 +25,8 @@
           $category = $item->categoria();
         @endphp
         @if ($item->imagen)
-          <img x-show="!showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
+          <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
+            x-transition:enter="transition ease-out duration-300 transform"
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-300 transform"
             x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
@@ -40,22 +41,27 @@
             src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
             class="w-full h-[300px] object-{{ $category->fit }} absolute inset-0" />
         @endif
-        @if ($item->imagen_ambiente)
-          <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
-            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-300 transform"
-            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-            src="{{ asset($item->imagen_ambiente) }}" alt="{{ $item->name }}"
-            class="w-full h-[300px] object-cover absolute inset-0"
-            onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
-        @else
-          <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
-            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave="transition ease-in duration-300 transform"
-            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-            src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
-            class="w-full h-[300px] object-cover absolute inset-0" />
-        @endif
+        @isset($item->imagen_ambiente)
+
+
+          @if ($item->imagen_ambiente)
+            <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
+              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-300 transform"
+              x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+              src="{{ asset($item->imagen_ambiente) }}" alt="{{ $item->name }}"
+              class="w-full h-[300px] object-cover absolute inset-0"
+              onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+          @else
+            <img x-show="showAmbiente" x-transition:enter="transition ease-out duration-300 transform"
+              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-300 transform"
+              x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+              src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+              class="w-full h-[300px] object-cover absolute inset-0" />
+          @endif
+        @endisset
+
       </div>
       <!-- ------ -->
       <div class="addProduct text-center flex justify-center h-0">
@@ -69,6 +75,7 @@
   <a href="{{ route('producto', $item->id) }}">
     <h2 id="h2Container" class="text-base mt-4 text-center font-Inter_Medium tracking-tight  cortartexto tippy"
       title="{{ $item->producto }}">
+
       {{ mb_strimwidth($item->producto, 0, 50, '...') }}
     </h2>
     <div class="flex content-between flex-row gap-4 items-center justify-center font-Inter_Medium pb-4">
