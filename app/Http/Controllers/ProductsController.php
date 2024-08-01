@@ -269,7 +269,7 @@ class ProductsController extends Controller
       return null;
     } catch (\Throwable $th) {
       //throw $th;
-      // dump($th);
+      
     }
   }
 
@@ -278,10 +278,11 @@ class ProductsController extends Controller
    */
   public function store(Request $request)
   {
+    
     try {
       $especificaciones = [];
       $data = $request->all();
-      // dump($data);
+      
       $atributos = null;
       $tagsSeleccionados = $request->input('tags_id');
       // $valorprecio = $request->input('precio') - 0.1;
@@ -330,6 +331,10 @@ class ProductsController extends Controller
       $cleanedData = Arr::where($data, function ($value, $key) {
         return !is_null($value);
       });
+
+      if (!isset($cleanedData['stock'])) {
+         $cleanedData['stock'] = 0 ;
+      }
 
       $slug = strtolower(str_replace(' ', '-', $request->producto . '-' . $request->color));
 
@@ -389,6 +394,7 @@ class ProductsController extends Controller
       return redirect()->route('products.index')->with('success', 'Publicación creado exitosamente.');
     } catch (\Throwable $th) {
       //  dump($th->getMessage());
+      
     }
   }
 

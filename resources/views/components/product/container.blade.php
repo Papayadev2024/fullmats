@@ -4,6 +4,7 @@
     {{-- @php
       echo json_encode($item->tags);
     @endphp --}}
+
     <div class="absolute top-2 left-2">
       @if ($item->tags)
         @foreach ($item->tags as $tag)
@@ -25,8 +26,7 @@
           $category = $item->categoria();
         @endphp
         @if ($item->imagen)
-          <img
-            x-show="{{ isset($item->imagen_ambiente) == 'images/img/noimagen.jpg' ? false : true }} || !showAmbiente"
+          <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
             x-transition:enter="transition ease-out duration-300 transform"
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-300 transform"
@@ -35,8 +35,7 @@
             class="w-full h-[300px] object-{{ $category->fit }} absolute inset-0"
             onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
         @else
-          <img
-            x-show="{{ isset($item->imagen_ambiente) == 'images/img/noimagen.jpg' ? false : true }} || !showAmbiente"
+          <img x-show="{{ isset($item->imagen_ambiente) }} || !showAmbiente"
             x-transition:enter="transition ease-out duration-300 transform"
             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
             x-transition:leave="transition ease-in duration-300 transform"
