@@ -375,8 +375,8 @@
                 </div>
                 <div>
                   <a href="/carrito"
-                    class="font-normal font-Inter_Medium text-lg bg-[#006BF6] py-3 px-5 rounded-2xl text-white cursor-pointer w-full inline-block text-center">Ir
-                    a pagar</a>
+                    class="font-normal font-Inter_Medium text-lg bg-[#006BF6] py-3 px-5 rounded-2xl text-white cursor-pointer w-full inline-block text-center">Ver
+                    Carrito</a>
                 </div>
               </div>
             </div>
@@ -679,6 +679,7 @@
       });
 
       categorias.forEach(element => {
+        if (element.subcategories.length == 0) return;
         let ul = document.createElement('ul');
         ul.className =
           'text-[#006BF6] font-bold font-poppins text-md py-2 px-3 block   duration-300 w-full whitespace-nowrap gap-4';

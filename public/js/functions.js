@@ -428,7 +428,7 @@ function PintarCarrito() {
     console.log(element)
     let plantilla = `<tr class=" font-poppins border-b">
           <td class="p-2">
-            <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 w-1/2" alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
+            <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 w-[240px]" alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';" />
           </td>
           <td class="p-2">
             <p class="font-semibold text-[14px] text-[#151515] mb-1">
