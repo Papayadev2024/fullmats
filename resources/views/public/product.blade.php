@@ -57,7 +57,10 @@
         $maxStock = $product->max_stock;
     }
     # calculamos en % cuanto queda en base a 100
-    $stock = ($StockActual * 100) / $maxStock;
+    $stock = 0;
+    if ($maxStock !== 0) {
+        $stock = ($StockActual * 100) / $maxStock;
+    }
 
   @endphp
   @component('components.breadcrumbs', ['breadcrumbs' => $breadcrumbs])

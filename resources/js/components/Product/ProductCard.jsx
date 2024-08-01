@@ -40,7 +40,7 @@ const ProductCard = ({ item, width, bgcolor }) => {
             <img
               style={{
                 opacity: !item.imagen_ambiente || !showAmbiente ? '1' : '0',
-                scale: !showAmbiente ? '1.05' : '1',
+                scale: !item.imagen_ambiente || !showAmbiente ? '1.05' : '1',
                 backgroundColor: '#eeeeee'
               }}
               src={item.imagen ? `/${item.imagen}` : '/images/img/noimagen.jpg'}
