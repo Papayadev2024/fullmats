@@ -425,7 +425,6 @@ function PintarCarrito() {
   let itemsCarritoCheck = $('#itemsCarritoCheck')
 
   articulosCarrito.forEach(element => {
-    console.log(element)
     let plantilla = `<tr class=" font-poppins border-b">
           <td class="p-2">
             <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />

@@ -3,6 +3,7 @@
   $isIndex = $pagina == 'index';
 @endphp
 
+
 <style>
   nav a .underline-this {
     position: relative;
@@ -720,4 +721,120 @@
     activeHover = false
     padre.innerHTML = '';
   }
+
+  function agregarAlCarrito(item, cantidad) {
+    $.ajax({
+
+      url: `{{ route('carrito.buscarProducto') }}`,
+      method: 'POST',
+      data: {
+        _token: $('input[name="_token"]').val(),
+        id: item,
+        cantidad
+
+      },
+      success: function(success) {
+        let {
+          producto,
+          id,
+          descuento,
+          precio,
+          imagen,
+          color
+        } = success.data
+        let cantidad = Number(success.cantidad)
+        let detalleProducto = {
+          id,
+          producto,
+          descuento,
+          precio,
+          imagen,
+          cantidad,
+          color
+
+        }
+        let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id)
+        if (existeArticulo) {
+          //sumar al articulo actual 
+          const prodRepetido = articulosCarrito.map(item => {
+            if (item.id === detalleProducto.id) {
+              item.cantidad += Number(detalleProducto.cantidad);
+              return item; // retorna el objeto actualizado 
+            } else {
+              return item; // retorna los objetos que no son duplicados 
+            }
+
+          });
+        } else {
+          articulosCarrito = [...articulosCarrito, detalleProducto]
+
+        }
+
+        Local.set('carrito', articulosCarrito)
+        let itemsCarrito = $('#itemsCarrito')
+        let ItemssubTotal = $('#ItemssubTotal')
+        let itemsTotal = $('#itemsTotal')
+        limpiarHTML()
+        PintarCarrito()
+        mostrarTotalItems()
+
+        Notify.add({
+          icon: '/images/svg/Boost.svg',
+          title: 'Producto agregado',
+          body: 'El producto se agregó correctamente al carrito',
+          type: 'success',
+        })
+
+        /* Swal.fire({
+
+          icon: "success",
+          title: `Producto agregado correctamente`,
+          showConfirmButton: true
+
+
+        }); */
+      },
+      error: function(error) {
+        console.log(error)
+      }
+
+    })
+  }
+  $(document).on('click', '#btnAgregarCarritoPr', function() {
+    let url = window.location.href;
+    let partesURL = url.split('/');
+    let productoEncontrado = partesURL.find(parte => parte === 'producto');
+
+    let item
+    let cantidad
+
+
+    item = partesURL[partesURL.length - 1]
+    cantidad = Number($('#cantidadSpan span').text())
+    item = $(this).data('id')
+
+    try {
+      agregarAlCarrito(item, cantidad)
+
+    } catch (error) {
+      console.log(error)
+
+    }
+  })
+
+  $(document).on('click', '#btnAgregarCarrito', function() {
+
+    let item = $(this).data('id')
+    console.log(item)
+    let cantidad = 1
+    try {
+      agregarAlCarrito(item, cantidad)
+
+    } catch (error) {
+      console.log(error)
+
+    }
+
+
+  })
 </script>

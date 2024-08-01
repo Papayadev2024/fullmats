@@ -202,7 +202,7 @@
                 </div>
               </div>
               <div class="xl:ml-8 flex flex-row gap-5 justify-start items-center">
-                <button id="btnAgregarCarrito"
+                <button id="btnAgregarCarritoPr" data-id="{{ $product->id }}"
                   class="bg-[#0D2E5E] w-[286px] h-16  text-white text-center rounded-full font-Inter_SemiBold tracking-wide text-lg hover:bg-[#1E8E9E]">
                   Agregar
                   al Carrito
@@ -219,12 +219,7 @@
               </div>
             </div>
           </div>
-          {{-- <div class="w-full flex -mt-2 justify-center items-center content-center ">
-                  <a id="btnAgregarCarrito" href="{{ route('carrito') }}"
-                    class="bg-[#006BF6] w-full h-14 justify-center items-center content-center text-white text-center rounded-full font-Inter_SemiBold text-[18px] mr-[172px]">
-                    Comprar ahora
-                  </a>
-                </div> --}}
+
 
           <div class="flex flex-col gap-2 pb-8 lg:pb-16" data-aos="fade-up">
             <span class="text-base font-Inter_Medium">
@@ -563,92 +558,7 @@
       });
     })
 
-    $('#btnAgregarCarrito').on('click', function() {
-      let url = window.location.href;
-      let partesURl = url.split('/')
-      let item = partesURl[partesURl.length - 1]
-      let cantidad = Number($('#cantidadSpan span').text())
-      item = item.replace('#', '')
 
-
-
-      // id='nodescuento'
-
-
-      $.ajax({
-
-        url: `{{ route('carrito.buscarProducto') }}`,
-        method: 'POST',
-        data: {
-          _token: $('input[name="_token"]').val(),
-          id: item,
-          cantidad
-
-        },
-        success: function(success) {
-          let {
-            producto,
-            id,
-            descuento,
-            precio,
-            imagen,
-            color
-          } = success.data
-          let cantidad = Number(success.cantidad)
-          let detalleProducto = {
-            id,
-            producto,
-            descuento,
-            precio,
-            imagen,
-            cantidad,
-            color
-
-          }
-          let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id)
-          if (existeArticulo) {
-            //sumar al articulo actual 
-            const prodRepetido = articulosCarrito.map(item => {
-              if (item.id === detalleProducto.id) {
-                item.cantidad += Number(detalleProducto.cantidad);
-                return item; // retorna el objeto actualizado 
-              } else {
-                return item; // retorna los objetos que no son duplicados 
-              }
-
-            });
-          } else {
-            articulosCarrito = [...articulosCarrito, detalleProducto]
-
-          }
-
-          Local.set('carrito', articulosCarrito)
-          let itemsCarrito = $('#itemsCarrito')
-          let ItemssubTotal = $('#ItemssubTotal')
-          let itemsTotal = $('#itemsTotal')
-          limpiarHTML()
-          PintarCarrito()
-          mostrarTotalItems()
-
-          Swal.fire({
-
-            icon: "success",
-            title: `Producto agregado correctamente`,
-            showConfirmButton: true
-
-
-          });
-        },
-        error: function(error) {
-          console.log(error)
-        }
-
-      })
-
-
-
-      // articulosCarrito = {...articulosCarrito , detalleProducto }
-    })
 
     $('#addWishlist').on('click', function() {
       $.ajax({
