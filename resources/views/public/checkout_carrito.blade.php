@@ -60,26 +60,30 @@
           </div>
         </div>
       </div>
-      <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232] mb-6">Aprovecha estas ofertas
-        especiales
-        antes de completar tu compra</h1>
-      <div class="relative">
+      @if ($destacados->count() > 0)
+        <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232] mb-6">Aprovecha estas ofertas
+          especiales
+          antes de completar tu compra</h1>
+        <div class="relative">
 
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            @foreach ($destacados as $item)
-              <div class="swiper-slide">
-                <x-product.container width="w-1/5" bgcolor="bg-[#FFFFFF]" :item="$item" />
-              </div>
-            @endforeach
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              @foreach ($destacados as $item)
+                <div class="swiper-slide">
+                  <x-product.container width="w-1/5" bgcolor="bg-[#FFFFFF]" :item="$item" />
+                </div>
+              @endforeach
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
           </div>
-          <!-- Add Pagination -->
-          <div class="swiper-pagination"></div>
-          <!-- Add Navigation -->
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
         </div>
-      </div>
+
+      @endif
+
     </section>
   </main>
   <style>
