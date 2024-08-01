@@ -48,6 +48,7 @@
   <script src="/js/cookies.extend.js"></script>
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="{{ asset('js/functions.js') }}?v={{ uniqid() }}"></script>
 
 </head>
 
@@ -69,7 +70,6 @@
 
   @yield('scripts_importados')
   {{-- @vite(['resources/js/functions.js']) --}}
-  <script src="{{ asset('js/functions.js') }}?v={{ uniqid() }}"></script>
 
 
   {{--   <script>

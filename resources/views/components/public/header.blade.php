@@ -441,9 +441,7 @@
           success: function(data) {
             var resultsHtml = '';
             var url = '{{ asset('') }}';
-            console.log(data)
             data.forEach(function(result) {
-              console.log(result.id)
               const price = Number(result.precio) || 0
               const discount = Number(result.descuento) || 0
               resultsHtml += `<a href="/producto/${result.id}">
@@ -545,7 +543,71 @@
 
 
 <script>
+  var articulosCarrito = []
+  articulosCarrito = Local.get('carrito') || [];
+
+  function addOnCarBtn(id, operacion) {
+
+    const prodRepetido = articulosCarrito.map(item => {
+      if (item.id === id) {
+        item.cantidad += Number(1);
+        return item; // retorna el objeto actualizado 
+      } else {
+        return item; // retorna los objetos que no son duplicados 
+      }
+
+    });
+    Local.set('carrito', articulosCarrito)
+    // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+    limpiarHTML()
+    PintarCarrito()
+
+
+  }
+
+  function deleteOnCarBtn(id, operacion) {
+    const prodRepetido = articulosCarrito.map(item => {
+      if (item.id === id && item.cantidad > 0) {
+        item.cantidad -= Number(1);
+        return item; // retorna el objeto actualizado 
+      } else {
+        return item; // retorna los objetos que no son duplicados 
+      }
+
+    });
+    Local.set('carrito', articulosCarrito)
+    limpiarHTML()
+    PintarCarrito()
+
+
+  }
+
+  function deleteItem(id) {
+    articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id);
+
+    Local.set('carrito', articulosCarrito)
+    limpiarHTML()
+    PintarCarrito()
+  }
+
+  function limpiarHTML() {
+    //forma lenta 
+    /* contenedorCarrito.innerHTML=''; */
+    $('#itemsCarrito').html('')
+    $('#itemsCarritoCheck').html('')
+
+
+  }
+  var appUrl = "{{ env('APP_URL') }}";
+  console.log(appUrl)
   $(document).ready(function() {
+
+
+    PintarCarrito()
+    console.log('pintar carrito ')
+
+
+
     $('#buscarblog').keyup(function() {
 
       var query = $(this).val().trim();
@@ -606,7 +668,6 @@
   document.getElementById('productos-link').addEventListener('mouseenter', function(event) {
     if (event.target === this) {
       // mostrar submenú de productos 
-      console.log(categorias);
       let padre = document.getElementById('productos-link-h');
       let divcontainer = document.createElement('div');
       divcontainer.id = 'productos-link-container';
@@ -654,7 +715,6 @@
   });
 
   function cerrar() {
-    console.log('Mouse out');
     let padre = document.getElementById('productos-link-h');
     activeHover = false
     padre.innerHTML = '';

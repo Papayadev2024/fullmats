@@ -68,10 +68,15 @@
 
 @section('scripts_importados')
   <script>
-    let articulosCarrito = [];
+    $(document).ready(function() {
+      calcularTotal()
+    });
+
+    // let articulosCarrito = [];
     let checkedRadio = false
 
     function calcularTotal() {
+      console.log('Calculo el total');
       const precioProductos = getTotalPrice()
       $('#itemSubtotal').text(`S/. ${precioProductos.toFixed(2)}`)
       const precioEnvio = getCostoEnvio()
@@ -149,7 +154,7 @@
     $(document).ready(function() {
       articulosCarrito = Local.get('carrito') || [];
 
-      PintarCarrito();
+      // PintarCarrito();
     });
 
     function limpiarHTML() {

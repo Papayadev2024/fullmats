@@ -432,7 +432,7 @@
     })
   </script>
   <script>
-    let articulosCarrito = [];
+    // let articulosCarrito = [];
 
 
     function deleteOnCarBtn(id, operacion) {
@@ -502,7 +502,7 @@
     $(document).ready(function() {
       articulosCarrito = Local.get('carrito') || [];
 
-      PintarCarrito();
+      // PintarCarrito();
     });
 
     function limpiarHTML() {
