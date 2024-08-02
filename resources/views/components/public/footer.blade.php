@@ -64,6 +64,7 @@
       <a href="/contacto">Contacto</a>
       <a id="linkTerminos">Terminos y condiciones </a>
       <a id="linkPoliticas">Politicas de devolucion </a>
+      <a id="linkPoliticasDatos">Politica de Datos</a>
 
       <a href="{{ route('librodereclamaciones') }}"><img class="w-24"
           src="{{ asset('images/img/reclamaciones.png') }}" /></a>
@@ -122,6 +123,16 @@
 
     </div>
   </div>
+  <div id="modallinkPoliticasDatos" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
+    <!-- Modal body -->
+    <div class="p-4 ">
+      <h1 class="font-Inter_SemiBold">Politicas de Datos</h1>
+
+      <p class="font-Inter_Regular  ">{!! $politicaDatos->content ?? '' !!}</p>
+
+
+    </div>
+  </div>
 
 </footer>
 
@@ -139,6 +150,14 @@
     })
     $(document).on('click', '#linkPoliticas', function() {
       $('#modalPoliticasDev').modal({
+        show: true,
+        fadeDuration: 400,
+
+
+      })
+    })
+    $(document).on('click', '#linkPoliticasDatos', function() {
+      $('#modallinkPoliticasDatos').modal({
         show: true,
         fadeDuration: 400,
 

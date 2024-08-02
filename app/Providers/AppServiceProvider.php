@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\General;
 use App\Models\LibroReclamaciones;
 use App\Models\Message;
+use App\Models\PoliticaDatos;
 use App\Models\PolyticsCondition;
 use App\Models\Products;
 use App\Models\Sale;
@@ -37,7 +38,6 @@ class AppServiceProvider extends ServiceProvider
         View::composer('components.public.footer', function ($view) {
 
 
-
             // Obtener los datos del footer
             $datosgenerales = General::first(); // Suponiendo que tienes un modelo Footer y un método footerData() en él
             // Pasar los datos a la vista
@@ -45,12 +45,13 @@ class AppServiceProvider extends ServiceProvider
             //jalar datos de un controlador 
             $politicDev = PolyticsCondition::first();
             $termsAndCondicitions = TermsAndCondition::first();
+            $politicaDatos = PoliticaDatos::first();
 
-            $view->with(['datosgenerales' => $datosgenerales, 'politicas' => $politicDev, 'terminos' => $termsAndCondicitions]);
+            $view->with(['datosgenerales' => $datosgenerales, 'politicas' => $politicDev, 'terminos' => $termsAndCondicitions , 'politicaDatos' => $politicaDatos]);
         });
 
         View::composer('components.public.header', function ($view) {
-            // Obtener los datos del footer
+            
             $datosgenerales = General::all();
             $blog = Blog::where('status', '=', 1)->where('visible', '=', 1)->count(); // Suponiendo que tienes un modelo Footer y un método footerData() en él
             $categoriasMenu = Category::where('visible', '=', 1)->where('is_menu', 1)->get();

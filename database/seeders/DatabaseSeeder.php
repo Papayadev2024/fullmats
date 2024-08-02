@@ -43,7 +43,9 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             StatusSeeder::class,
             PricesTableSeeder::class,
+            PoliticasDatos::class
             //ServiceSeeder::class,
         ]);
+        
     }
 }

@@ -32,6 +32,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LibroReclamacionesController;
 use App\Http\Controllers\NewsletterSubscriberController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PoliticaDatosController;
 use App\Http\Controllers\PolyticsConditionController;
 use App\Http\Controllers\PopupController;
 use App\Http\Controllers\PriceController;
@@ -115,6 +116,10 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
 
         Route::resource('/pedidos', SaleController::class);
+
+        Route::get('/politica-datos/{id}', [PoliticaDatosController::class, 'edit'])->name('politicadatos.detalle');
+        Route::post('/politica-datos/update/{id}', [PoliticaDatosController::class, 'update'])->name('politicadatos.act');
+
         //messages
         Route::resource('/mensajes', MessageController::class);
         Route::post('/mensajes/borrar', [MessageController::class, 'borrar'])->name('mensajes.borrar');
