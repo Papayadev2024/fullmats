@@ -68,6 +68,7 @@ class PaymentController extends Controller
       $sale->address_price = 0;
       $sale->total = $totalCost;
       $sale->tipo_comprobante = $body['tipo_comprobante'];
+      $sale->doc_number = $body['contact']['doc_number'] ?? null;
       $sale->code = '000000000000';
 
       if ($request->address) {
@@ -148,6 +149,7 @@ class PaymentController extends Controller
         ]);
       }
 
+      
       $config = [
         "amount" => round($totalCost * 100),
         "capture" => true,

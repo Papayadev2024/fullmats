@@ -155,6 +155,10 @@
 
 
                       </div>
+                      <div class="grid grid-cols-4" id="ElementosFacturacion">
+
+
+                      </div>
                       <div class="basis-2/3 flex flex-row gap-2 ">
                         <input id="termsandconditions" type="checkbox" required class="border-2 rounded-sm w-5 h-5" />
                         <label for="termsandconditions" class="font-medium text-sm text-[#6C7275]">Estoy de acuerdo con
@@ -358,9 +362,9 @@
               comprobante</label>
             <select id="tipo-comprobante" name="comprobante"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option>Nota de venta</option>
-              <option>Boleta</option>
-              <option>Factura</option>
+              <option value="nota_venta">Nota de venta</option>
+              <option value="boleta">Boleta</option>
+              <option value="factura">Factura</option>
             </select>
           </div>
           <div class="p-4 py-0">
@@ -415,7 +419,11 @@
               name: $('#nombre').val(),
               lastname: $('#apellidos').val(),
               email: $('#email').val(),
-              phone: $('#celular').val()
+              phone: $('#celular').val(),
+              doc_number: $('#DNI').val() || $('#RUC').val(),
+              doc_type: $('#tipo-comprobante').val() ?? 'nota_venta',
+
+
             },
             address: null,
             saveAddress: !Boolean($('#addresses').val()),
@@ -470,11 +478,88 @@
       }
     }
 
+
+    $(document).on('change', '#tipo-comprobante', function() {
+      console.log('cambio', $(this).val())
+
+      let tipoComrobante = $(this).val()
+
+      // ElementosFacturacion
+      if (tipoComrobante == 'boleta') {
+        $("#ElementosFacturacion").html('')
+        $('#ElementosFacturacion').html(`
+          <div class="col-span-2">
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">DNI<span class="text-red-500">*</span></label>
+            <input maxlength="8" id="DNI" type="number"  placeholder="DNI" name="DNI" value="" class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+
+            
+          </div>
+        `)
+      } else if (tipoComrobante == 'factura') {
+        $("#ElementosFacturacion").html('')
+        $('#ElementosFacturacion').html(`
+          <div class="col-span-2">
+            <label for="ruc" class="font-medium text-[12px] text-[#6C7275]">RUC <span class="text-red-500">*</span></label>
+            <input maxlength="11" id="RUC" type="number" placeholder="RUC" name="RUC" value="" class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+          </div>
+        `)
+      } else {
+        $("#ElementosFacturacion").html('')
+      }
+
+
+    })
+
+    $(document).on('keydown', '#DNI, #RUC', function(e) {
+      const controlKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End'];
+      if (controlKeys.includes(e.key)) {
+        return;
+      }
+
+      if (e.key === '.' || e.key === ',') {
+        e.preventDefault();
+      }
+      console.log($(this.id))
+      if (this.id == 'DNI' && $(this).val().length > 7) {
+        e.preventDefault();
+      } else if (this.id == 'RUC' && $(this).val().length > 10) {
+        e.preventDefault();
+      }
+
+    });
+
     $('#paymentForm').on('submit', function(e) {
       e.preventDefault();
 
       const precioProductos = getTotalPrice()
       const precioEnvio = getCostoEnvio()
+
+
+      let existeRuc = $('#RUC').length == '' ? false : true
+      let ExisteDni = $('#DNI').length == '' ? false : true
+
+      if (ExisteDni) {
+        if ($('#tipo-comprobante').val() == 'boleta' && ($('#DNI').val() == '' || $('#DNI').val().length !== 8)) {
+          Swal.fire({
+            title: `Error!!`,
+            text: 'Ingrese su DNI Completo',
+            icon: "error",
+          });
+          return
+        }
+
+      }
+      if (existeRuc) {
+        if ($('#tipo-comprobante').val() == 'factura' && ($('#RUC').val() == '' || $('#RUC').val().length !== 11)) {
+          Swal.fire({
+            title: `Error!!`,
+            text: 'Ingrese su Ruc Completo',
+            icon: "error",
+          });
+          return
+        }
+
+      }
 
 
 

@@ -8,6 +8,7 @@
   <input type="hidden" id="invoice-id" value="">
   <div class="relative md:absolute border rounded-lg right-8 top-6 py-2 px-3 mb-2 text-center">
     <b class="block" id="address-tipo-comprobante"></b>
+    <b class="block" id="n_document"></b>
     <h4 class="h4 mb-1">S/. <span id="invoice-price"></span></h4>
     <span id="invoice-address-price"
       class="w-max block mx-auto text-xs font-medium px-2.5 py-0.5 mb-1 rounded-full"></span>
@@ -92,7 +93,8 @@
     const isFree = !Boolean(Number(data.address_price))
 
     $('#invoice-id').val(data.id)
-    $('#address-tipo-comprobante').text(data.tipo_comprobante)
+    $('#address-tipo-comprobante').text(data.tipo_comprobante.toUpperCase())
+    $('#n_document').text(data.doc_number)
     $('#invoice-price').text(data.total)
     $('#invoice-address-price').text(isFree ? 'Envio gratis' :
       `S/. ${Number(data.address_price).toFixed(2)}`)

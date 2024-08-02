@@ -25,6 +25,7 @@ class Sale extends Model
         'total',
         'status_code',
         'status_message',
+        'doc_number'
     ];
 
     public function status()
