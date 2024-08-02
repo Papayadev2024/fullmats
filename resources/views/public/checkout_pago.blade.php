@@ -234,10 +234,11 @@
                           </div>
                         @endif
                         <div data-show="new" class="flex flex-col gap-5 md:flex-row">
-                          <div class="basis-1/3 flex flex-col gap-2 z-[45]">
-                            <label class="font-medium text-[12px] text-[#6C7275]">Departamento <span
-                                class="text-red-500">*</span></label>
-                            @if ($departments->count() > 0)
+                          @if ($departments->count() > 0)
+                            <div class="basis-1/3 flex flex-col gap-2 z-[45]">
+                              <label class="font-medium text-[12px] text-[#6C7275]">Departamento <span
+                                  class="text-red-500">*</span></label>
+
                               <div>
                                 <!-- combo -->
                                 <div class="dropdown w-full">
@@ -252,52 +253,54 @@
                                   </select>
                                 </div>
                               </div>
-                            @else
-                              <div><span> ** Configure los "Costos de Envio" para que pueda visualizar esta lista
-                                  **</span>
-                              </div>
-                            @endif
 
 
-                          </div>
 
-                          <div class="basis-1/3 flex flex-col gap-2 z-[40]">
-                            <label class="font-medium text-[12px] text-[#6C7275]">
-                              Provincia <span class="text-red-500">*</span>
-                            </label>
+                            </div>
 
-                            <div>
-                              <!-- combo -->
-                              <div class="dropdown-provincia w-full">
-                                <select name="provincia_id" id="provincia_id"
-                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
-                                  data-address>
-                                  <option value="" data-select2-id="select2-data-4-gokf">Seleccione una
-                                    provincia
-                                  </option>
+                            <div class="basis-1/3 flex flex-col gap-2 z-[40]">
+                              <label class="font-medium text-[12px] text-[#6C7275]">
+                                Provincia <span class="text-red-500">*</span>
+                              </label>
 
-                                </select>
+                              <div>
+                                <!-- combo -->
+                                <div class="dropdown-provincia w-full">
+                                  <select name="provincia_id" id="provincia_id"
+                                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    data-address>
+                                    <option value="" data-select2-id="select2-data-4-gokf">Seleccione una
+                                      provincia
+                                    </option>
+
+                                  </select>
+                                </div>
                               </div>
                             </div>
-                          </div>
 
-                          <div class="basis-1/3 flex flex-col gap-2 z-[30]">
-                            <label class="font-medium text-[12px] text-[#6C7275]">
-                              Distrito <span class="text-red-500">*</span>
-                            </label>
+                            <div class="basis-1/3 flex flex-col gap-2 z-[30]">
+                              <label class="font-medium text-[12px] text-[#6C7275]">
+                                Distrito <span class="text-red-500">*</span>
+                              </label>
 
-                            <div>
-                              <!-- combo -->
-                              <div class="dropdown-distrito w-full">
-                                <select name="distrito_id" id="distrito_id"
-                                  class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
-                                  data-address>
-                                  <option value="" data-select2-id="select2-data-6-ihrp">Seleccione un distrito
-                                  </option>
-                                </select>
+                              <div>
+                                <!-- combo -->
+                                <div class="dropdown-distrito w-full">
+                                  <select name="distrito_id" id="distrito_id"
+                                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    data-address>
+                                    <option value="" data-select2-id="select2-data-6-ihrp">Seleccione un distrito
+                                    </option>
+                                  </select>
+                                </div>
                               </div>
                             </div>
-                          </div>
+                          @else
+                            <div><span> ** Configure los "Costos de Envio" para que pueda visualizar esta lista
+                                **</span>
+                            </div>
+                          @endif
+
                         </div>
 
                         <div data-show="new" class="flex flex-col gap-2">
