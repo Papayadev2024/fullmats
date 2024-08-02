@@ -591,6 +591,8 @@
         $('#direccionContainer').fadeOut(125)
         $('#precioEnvio').text('Gratis')
         $('[data-address]').prop('required', false)
+        console.log("costo Envio", getCostoEnvio())
+        console.log(value)
       }
       calcularTotal()
     })
@@ -731,7 +733,9 @@
     }
 
     const getCostoEnvio = () => {
-      if ($('[name="envio"]:checked').val() == 'recojo') return 0
+      console.log('getcostoEnvio', $('[name="envio"]:checked').val());
+
+      if ($('[name="envio"]:checked').val() == 'recoger') return 0
       const priceStr = $('#distrito_id option:selected').attr('data-price')
       const price = Number(priceStr) || 0
       return price
