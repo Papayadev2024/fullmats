@@ -41,7 +41,8 @@ class DatabaseSeeder extends Seeder
             SliderSeeder::class,
             SubCategorySeeder::class,
             ProductSeeder::class,
-            StatusSeeder::class
+            StatusSeeder::class,
+            PricesTableSeeder::class,
             //ServiceSeeder::class,
         ]);
     }
