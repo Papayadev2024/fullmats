@@ -74,7 +74,7 @@
     slidesPerView: 1,
     spaceBetween: 10,
     loop: true,
-    autoplay: false,
+    autoplay: true,
     grab: true,
     centeredSlides: false,
     initialSlide: 0, // Empieza en el cuarto slide (índice 3)
