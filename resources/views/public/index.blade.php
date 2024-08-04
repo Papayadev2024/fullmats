@@ -14,32 +14,48 @@
 @endphp
 <style>
   .fixedWhastapp {
-    right: 128px !important;
+    right: 50px !important;
+  }
+
+
+
+
+  #cart-modal {
+    width: 302px !important;
+    left: 71px !important;
+
+
   }
 </style>
+
+
 
 @section('content')
 
   <main class="z-[15] ">
 
-    <section class="bg-[#f1f1f1] ">
+    <section class="bg-[#f1f1f1]  sectionOverflow">
       <x-swipper-card :items="$slider" />
     </section>
 
-    {{-- Seccion Categoria  --}}
+
     @if ($categorias->count() > 0)
-      <x-sections.simple title="Categorias">
-        <x-swipper-card-categoria :items="$categorias" />
+      <x-sections.simple title="Categorias" class="sectionOverflow">
+        <div style="overflow-x: hidden">
+          <x-swipper-card-categoria :items="$categorias" />
+
+        </div>
       </x-sections.simple>
     @endif
 
 
     {{-- seccion Ultimos Productos  --}}
     @if ($ultimosProductos->count() > 0)
-      <section class="w-full px-[5%] py-10 lg:py-20">
+      <section class="w-full px-[5%] py-10 lg:py-20 overflow-visible" style="overflow-x: visible">
         <div class="flex flex-col md:flex-row justify-between w-full gap-3" data-aos="zoom-out-left">
           <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232]">Últimos productos agregados</h1>
-          <a href="/catalogo" class="flex items-center text-base font-Inter_Medium font-semibold text-[#006BF6] ">Ver todos
+          <a href="/catalogo" class="flex items-center text-base font-Inter_Medium font-semibold text-[#006BF6] ">Ver
+            todos
             los productos <img src="{{ asset('images/img/arrowBlue.png') }}" alt="Icono" class="ml-2 "></a>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 md:flex-row gap-4 mt-14 w-full">
@@ -54,15 +70,16 @@
 
     {{-- seccion Gran Descuento  --}}
     @if (count($bannerMid) > 0)
-      <section class="flex flex-col md:flex-row justify-between bg-[#EEEEEE] mt-14" data-aos="fade-down-right">
+      <section class="flex flex-col md:flex-row justify-between bg-[#EEEEEE] mt-14 overflow-visible" data-aos="fade-down"
+        style="overflow-x: visible">
         <x-banner-section :banner="$bannerMid" />
       </section>
     @endif
 
     {{-- seccion Productos populares  --}}
     @if ($productosPupulares->count() > 0)
-      <section class=" bg-[#F8F8F8]">
-        <div class="w-full px-[5%] py-14 lg:py-20" data-aos="fade-down-left">
+      <section class=" bg-[#F8F8F8] overflow-visible" style="overflow-x: visible">
+        <div class="w-full px-[5%] py-14 lg:py-20" data-aos="fade-down">
           <div class="flex flex-col md:flex-row justify-between w-full gap-3">
             <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232]">Productos Destacados</h1>
             {{-- <div class="flex  flex-col md:flex-row gap-2 md:gap-8">
@@ -88,7 +105,7 @@
 
     {{-- Seccion Blog --}}
     @if ($blogs->count() > 0)
-      <section class="w-full px-[5%] py-7 lg:py-14" data-aos="fade-up">
+      <section class="w-full px-[5%] py-7 lg:py-14 overflow-visible" data-aos="fade-up" style="overflow-x: visible">
         <div class="flex flex-col md:flex-row justify-between w-full gap-3">
           <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232]">Blog & Eventos</h1>
           <a href="/blog/0" class="flex items-center text-base font-Inter_Medium font-semibold text-[#006BF6]">Ver todos
@@ -140,7 +157,7 @@
 
   <!-- Main modal -->
 
-  <div id="modalofertas" class="modal">
+  <div id="modalofertas" class="modal modalbanner">
 
     <!-- Modal body -->
     <div class="p-1 ">

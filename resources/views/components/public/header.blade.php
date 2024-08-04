@@ -66,7 +66,7 @@
 
 {{-- <img src="{{ asset('images/contacto.png') }}" class="absolute top-0 left-0 w-full z-[99999] opacity-30"></img> --}}
 
-<div class="navigation shadow-xl px-5" style="z-index: 9999; background-color: #fff !important">
+<div class="navigation shadow-xl px-5 overflow-y-auto" style="z-index: 9999; background-color: #fff !important ">
   <button aria-label="hamburguer" type="button" class="hamburger" id="position" onclick="show()">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M18 2L2 18M18 18L2 2" stroke="#272727" stroke-width="2.66667" stroke-linecap="round" />
@@ -88,6 +88,20 @@
           </span>
         </a>
       </li>
+      {{-- <li>
+        <a href="/nosotros"
+          class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $isIndex ? 'text-[#FF5E14]' : '' }}">
+          <span class="underline-this">
+            <svg
+              class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+              aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+            </svg>
+            NOSOTROS
+          </span>
+        </a>
+      </li> --}}
       <li>
         <a @click="openCatalogo = !openCatalogo" href="javascript:void(0)"
           class="text-[#272727] flex justify-between items-center font-medium font-poppins text-sm py-2 px-3 hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'catalogo' ? 'text-[#FF5E14]' : '' }}">
@@ -247,6 +261,9 @@
             <a href="/" class="font-medium hover:opacity-75 ">
               <span class="underline-this">INICIO</span>
             </a>
+            <a href="/nosotros" class="font-medium hover:opacity-75 ">
+              <span class="underline-this">NOSOTROS</span>
+            </a>
 
             <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium ">
               <span class="underline-this">PRODUCTOS</span>
@@ -347,7 +364,7 @@
           </div>
           {{-- <input type="checkbox" class="bag__modal" id="check" /> --}}
           <div id="cart-modal"
-            class="bag !fixed top-0 right-0 md:w-[450px] cartContainer border shadow-2xl  !rounded-none !p-0 !z-30"
+            class="bag !fixed top-0 right-0 md:w-[450px] cartContainer border shadow-2xl  !rounded-sm !p-0 !z-30"
             style="display: none">
             <div class="p-4 flex flex-col h-[90vh] justify-between gap-2">
               <div class="flex flex-col">
@@ -364,7 +381,6 @@
                 <div class="overflow-y-scroll h-[calc(90vh-200px)] scroll__carrito">
                   <table class="w-full">
                     <tbody id="itemsCarrito">
-                      {{-- <div class="flex flex-col gap-10 align-top" id="itemsCarrito"></div> --}}
                     </tbody>
                   </table>
                 </div>
@@ -388,14 +404,14 @@
     </div>
   </div>
 
-  <div class="flex justify-end relative">
-    <div class="fixed bottom-[36px] z-[10] right-[15px] md:right-[25px]">
+  {{--  <div class="flex justify-end relative">
+    <div class="fixed bottom-[36px] z-[10] right-[128px] md:right-[25px] fixedWhastapp">
       <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales[0]->whatsapp }}&text={{ $datosgenerales[0]->mensaje_whatsapp }}"
         target="_blank" class="">
         <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-20" />
       </a>
     </div>
-  </div>
+  </div> --}}
 
   <div id="myOverlay" class="overlay" style="z-index: 200;">
     <span class="closebtn" onclick="closeSearch()">×</span>
