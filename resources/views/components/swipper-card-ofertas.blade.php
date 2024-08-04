@@ -35,7 +35,7 @@
 
       /* Ajusta el padding para dispositivos pequeños */
 
-      max-width: 85vw;
+      max-width: 80vw;
       top: -5%;
       left: -12%
     }
