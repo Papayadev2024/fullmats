@@ -195,7 +195,7 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
 
         </div>
 
-        <div className='flex flex-col gap-4 md:basis-3/12 bg-white p-6 rounded-lg top-2 overflow-y-auto mt-6' style={{ maxHeight: '90vh', maxWidth: "85vh" }}>
+        <div className='flex flex-col gap-4 md:basis-3/12 bg-white p-6 rounded-lg top-2 overflow-y-auto mt-10' style={{ maxHeight: '90vh', maxWidth: "85vh" }}>
           <FilterContainer setFilter={setFilter} filter={filter} minPrice={minPrice ?? 0} maxPrice={maxPrice ?? 0} categories={categories} tags={tags} attribute_values={Object.values(attributes)} selected_category={selected_category} tag_id={tag_id} />
         </div>
 
