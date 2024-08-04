@@ -18,13 +18,12 @@
   }
 
 
-
-
-  #cart-modal {
-    width: 302px !important;
-    left: 71px !important;
-
-
+  @media (max-width: 400px) {
+    #cart-modal {
+      width: 302px !important;
+      left: 71px !important;
+      top: 5px
+    }
   }
 </style>
 
