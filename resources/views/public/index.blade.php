@@ -12,6 +12,11 @@
       return $banner['potition'] === 'mid';
   });
 @endphp
+<style>
+  .fixedWhastapp {
+    right: 128px !important;
+  }
+</style>
 
 @section('content')
 

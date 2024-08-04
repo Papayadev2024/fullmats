@@ -41,7 +41,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-aZ_2XOj1.css",
+    "file": "assets/app-SlV72_tg.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -81,7 +81,7 @@
     "src": "resources/js/Admin/Products.jsx"
   },
   "resources/js/Catalogo.jsx": {
-    "file": "assets/Catalogo-MhLGfVow.js",
+    "file": "assets/Catalogo-OKtENbOO.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
       "_CreateReactScript-qyXjqq-l.js",

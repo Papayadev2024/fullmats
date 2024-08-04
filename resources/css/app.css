@@ -21,6 +21,11 @@
   
 }
 
+.fixedWhastapp {
+  right: 2vw ;
+  /* position: fixed; Asegúrate de que el elemento tenga una posición fija */
+}
+
 .overlay {
     height: 100%;
     width: 100%;

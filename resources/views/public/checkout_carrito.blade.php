@@ -6,7 +6,11 @@
 
 
 @stop
-
+<style>
+  .fixedWhastapp {
+    right: 128px !important;
+  }
+</style>
 
 @section('content')
 
@@ -126,6 +130,10 @@
           clickable: true,
         },
         breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
           640: {
             slidesPerView: 2,
             spaceBetween: 20,

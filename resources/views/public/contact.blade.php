@@ -17,6 +17,7 @@
 
 
   <main>
+
     <section class="font-Inter_Regular my-12">
       <div class="flex flex-col gap-4   w-11/12 m-auto px-8 sm:px-16 pt-10 ">
         <h3 class="text-[39px] font-Inter_Medium text-[#333333]">¡Siempre estamos ansiosos por saber de usted! </h3>
