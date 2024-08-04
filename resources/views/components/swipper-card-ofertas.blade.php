@@ -5,6 +5,30 @@
   .modal {
     padding: 4px 4px 4px 4px;
   }
+
+  @media (max-width: 400px) {
+    .modal {
+
+      /* Ajusta el padding para dispositivos pequeños */
+
+      max-width: 85vw;
+      top: 2%;
+      left: -60px
+    }
+
+
+    #{{ $sliderId }} .swiper-slide {
+      font-size: 14px;
+      /* Ajusta el tamaño de fuente para dispositivos pequeños */
+    }
+
+    #{{ $sliderId }} .swiper-wrapper {
+      /* padding: 10px; */
+      /* Ajusta el padding del contenedor del slider */
+    }
+
+
+  }
 </style>
 {{-- <style>
   #{{ $sliderId }} a {
@@ -46,10 +70,11 @@
 <script>
   new Swiper("#{{ $sliderId }}", {
     autoHeight: true,
+    // autoWidth: true,
     slidesPerView: 1,
     spaceBetween: 10,
     loop: true,
-    autoplay: true,
+    autoplay: false,
     grab: true,
     centeredSlides: false,
     initialSlide: 0, // Empieza en el cuarto slide (índice 3)
