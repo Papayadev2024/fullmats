@@ -102,7 +102,7 @@
         <x-breadcrumb.item>Pago</x-breadcrumb.item>
       </x-breadcrumb>
 
-      <div class="flex md:gap-20">
+      <div class="flex md:gap-20 flex-col md:flex-row">
         <div class="flex justify-between items-center md:basis-8/12 w-full md:w-auto">
           <x-ecommerce.gateway.container completed="{{ 2 }}">
             <div class="flex flex-col gap-5">

@@ -28,7 +28,7 @@
         <input id="email" type="email" placeholder="Correo electrónico" required name="email" value=""
           class=" py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
       </div> --}}
-      <div class="flex md:gap-20">
+      <div class="flex md:gap-20 flex-col  md:flex-row">
         <div class="flex justify-between items-center md:basis-8/12 w-full md:w-auto">
           <x-ecommerce.gateway.container>
             <div class="flex flex-col 2lg:flex-row pb-5  border-[#E8ECEF] gap-5">
