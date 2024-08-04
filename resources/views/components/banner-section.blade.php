@@ -4,7 +4,7 @@
       {{ $item['title'] }}
     @endforeach
   </span>
-  <h2 class="text-xl lg:text-2xl font-normal font-Inter_Medium text-[#323232] text-center">
+  <h2 class="text-xl lg:text-2xl font-normal font-Inter_Medium text-[#323232] text-center px-2">
     @foreach ($banner as $item)
       {{ $item['description'] }}
     @endforeach
