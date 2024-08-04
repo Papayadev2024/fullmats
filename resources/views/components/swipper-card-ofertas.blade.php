@@ -29,6 +29,30 @@
 
 
   }
+
+  @media (max-width: 700px) {
+    .modal {
+
+      /* Ajusta el padding para dispositivos pequeños */
+
+      max-width: 85vw;
+      top: -5%;
+      left: -12%
+    }
+
+
+    #{{ $sliderId }} .swiper-slide {
+      font-size: 14px;
+      /* Ajusta el tamaño de fuente para dispositivos pequeños */
+    }
+
+    #{{ $sliderId }} .swiper-wrapper {
+      /* padding: 10px; */
+      /* Ajusta el padding del contenedor del slider */
+    }
+
+
+  }
 </style>
 {{-- <style>
   #{{ $sliderId }} a {
