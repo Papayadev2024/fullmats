@@ -21,8 +21,18 @@
   @media (max-width: 400px) {
     #cart-modal {
       width: 302px !important;
-      left: 71px !important;
-      top: 5px
+      right: 25% !important;
+      top: 5px !important;
+      /* left: 0% !important; */
+    }
+  }
+
+  @media (min-width: 400px) and (max-width: 700px) {
+    #cart-modal {
+      width: 302px !important;
+      right: 16% !important;
+      top: 5px;
+      /* left: 0% !important; */
     }
   }
 </style>
@@ -37,7 +47,7 @@
       <x-swipper-card :items="$slider" />
     </section>
 
-
+    {{-- 
     @if ($categorias->count() > 0)
       <x-sections.simple title="Categorias" class="sectionOverflow">
         <div style="overflow-x: hidden">
@@ -46,7 +56,7 @@
         </div>
       </x-sections.simple>
     @endif
-
+ --}}
 
     {{-- seccion Ultimos Productos  --}}
     @if ($ultimosProductos->count() > 0)

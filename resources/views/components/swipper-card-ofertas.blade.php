@@ -7,7 +7,7 @@
   }
 
   @media (max-width: 400px) {
-    .modal {
+    .modal.modalbanner {
 
       /* Ajusta el padding para dispositivos pequeños */
 
@@ -31,7 +31,7 @@
   }
 
   @media (max-width: 700px) {
-    .modal {
+    .modal.modalbanner {
 
       /* Ajusta el padding para dispositivos pequeños */
 
