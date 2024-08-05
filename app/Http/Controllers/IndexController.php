@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\EmailConfig;
 use App\Http\Requests\StoreIndexRequest;
 use App\Http\Requests\UpdateIndexRequest;
+use App\Models\AboutUs;
 use App\Models\Address;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
@@ -168,6 +169,11 @@ class IndexController extends Controller
       'attribute_values' => $attribute_values,
       'id_cat' => $id_cat
     ])->rootView('app');
+  }
+  public function nosotros(){
+    $nosotros = AboutUs::all();
+    $benefit = Strength::where('status', '=', 1)->take(3)->get();
+    return view('public.nosotros' , compact('nosotros','benefit'));
   }
 
 

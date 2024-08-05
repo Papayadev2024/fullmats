@@ -15,7 +15,19 @@
   </div>
   <h4 class="h4 mb-2 mt-2">Orden #<span id="invoice-code"></span></h4>
   <p id="invoice-client" class="font-bold mb-2"></p>
+  <span>Direccion Envio:</span>
   <p id="invoice-address" class="text-gray-700 mb-2"></p>
+
+  <p class="font-bold"> Datos Facturacion: </p>
+  <p class=" ">
+    <span>Nombre / Razon Social: </span>
+    <span id="razonS"></span>
+  </p>
+  <p class=" mb-2">
+    <span> Direccion Fiscal:</span>
+    <span id="dirFact"></span>
+  </p>
+
   @if ($isAdmin)
     <div class="mb-2 flex gap-2 items-center">
       <span>Estado:</span>
@@ -95,6 +107,8 @@
     $('#invoice-id').val(data.id)
     $('#address-tipo-comprobante').text(data.tipo_comprobante.toUpperCase())
     $('#n_document').text(data.doc_number)
+    $('#razonS').text(data.razon_fact)
+    $('#dirFact').text(data.direccion_fact)
     $('#invoice-price').text(data.total)
     $('#invoice-address-price').text(isFree ? 'Envio gratis' :
       `S/. ${Number(data.address_price).toFixed(2)}`)

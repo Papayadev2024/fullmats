@@ -21,6 +21,10 @@
       border-spacing: 10;
     }
 
+    .fixedWhastapp {
+      right: 128px !important;
+    }
+
     .clase_table td {
       /* border: 1px solid black; */
       border-radius: 10px;

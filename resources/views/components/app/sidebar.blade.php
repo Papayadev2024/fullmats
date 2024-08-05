@@ -94,6 +94,9 @@
         <x-menu.item id="datosgenerales" href="{{ route('datosgenerales.edit', 1) }}" icon="fas fa-address-card">
           Datos Generales
         </x-menu.item>
+        <x-menu.item id="sobrenosotros" href="{{ route('aboutus.index') }}" icon="fas fa-address-card">
+          Sobre Nosotros
+        </x-menu.item>
         <x-menu.item id="politicas-de-devolucion" href="{{ route('politicas-de-devolucion.edit', 1) }}"
           icon="fas fa-undo-alt">
           Politicas de Devolucion
@@ -105,7 +108,8 @@
         <x-menu.item id="politica-datos" href="{{ route('politicadatos.detalle', 1) }}" icon="fas fa-file-contract">
           Terminos Datos
         </x-menu.item>
-        <x-menu.item id="servicios" href="{{ route('servicios.index') }}" icon="fas fa-wrench">Servicios</x-menu.item>
+        <x-menu.item id="servicios" href="{{ route('servicios.index') }}"
+          icon="fas fa-wrench">Servicios</x-menu.item>
         <x-menu.item id="blog" href="{{ route('blog.index') }}" icon="fas fa-pencil-alt">Blog</x-menu.item>
         <x-menu.item id="logos" href="{{ route('logos.index') }}" icon="fas fa-shapes">Logos
           cliente</x-menu.item>

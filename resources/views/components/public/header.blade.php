@@ -88,7 +88,7 @@
           </span>
         </a>
       </li>
-      {{-- <li>
+      <li>
         <a href="/nosotros"
           class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $isIndex ? 'text-[#FF5E14]' : '' }}">
           <span class="underline-this">
@@ -101,7 +101,7 @@
             NOSOTROS
           </span>
         </a>
-      </li> --}}
+      </li>
       <li>
         <a @click="openCatalogo = !openCatalogo" href="javascript:void(0)"
           class="text-[#272727] flex justify-between items-center font-medium font-poppins text-sm py-2 px-3 hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'catalogo' ? 'text-[#FF5E14]' : '' }}">

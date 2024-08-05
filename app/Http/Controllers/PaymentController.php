@@ -60,7 +60,6 @@ class PaymentController extends Controller
         }
       }
 
-
       $sale->name = $body['contact']['name'];
       $sale->lastname = $body['contact']['lastname'];
       $sale->email = Auth::check() ? Auth::user()->email : $body['contact']['email'];
@@ -69,6 +68,8 @@ class PaymentController extends Controller
       $sale->total = $totalCost;
       $sale->tipo_comprobante = $body['tipo_comprobante'];
       $sale->doc_number = $body['contact']['doc_number'] ?? null;
+      $sale->razon_fact = $body['contact']['razon_fact'] ?? null;
+      $sale->direccion_fact = $body['contact']['direccion_fact'] ?? null;
       $sale->code = '000000000000';
 
       if ($request->address) {
