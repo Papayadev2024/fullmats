@@ -542,7 +542,14 @@
           return
         }
       }
-
+      const paymentMethods = { // las opciones se ordenan según se configuren
+        tarjeta: true,
+        yape: true,
+        billetera: true,
+        bancaMovil: true,
+        agente: true,
+        cuotealo: true,
+      }
 
 
       Culqi.settings({
@@ -551,9 +558,12 @@
         amount: Math.round((precioProductos + precioEnvio) * 100),
       });
       Culqi.options({
+        paymentMethods: paymentMethods,
+        paymentMethodsSort: Object.keys(paymentMethods),
         style: {
           logo: `${location.origin}/images/svg/logo_boost_header.svg`,
           bannerColor: '#272727'
+
         }
       })
       Culqi.open();
