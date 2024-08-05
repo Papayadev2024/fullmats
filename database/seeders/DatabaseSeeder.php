@@ -43,7 +43,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             StatusSeeder::class,
             PricesTableSeeder::class,
-            PoliticasDatos::class
+            PoliticasDatos::class,
+            AboutUsSeeder::class
             //ServiceSeeder::class,
         ]);
         
