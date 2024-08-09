@@ -190,7 +190,7 @@ class AuthController extends Controller
             $mailer->addAddress($preUserJpa->email);
             $mailer->isHTML(true);
             $mailer->send();
-            dump($preUserJpa->token);
+            
             
             $response->status = 200;
             $response->message = 'Operacion correcta';
