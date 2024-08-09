@@ -6,6 +6,7 @@
 <html lang="es">
 
 <head>
+  @viteReactRefresh
   <meta charset="UTF-8">
   <meta name="language" content="spanish">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

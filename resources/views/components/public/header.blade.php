@@ -756,8 +756,16 @@
           descuento,
           precio,
           imagen,
-          color
+          color,
+          precio_reseller
         } = success.data
+        let is_reseller = success.is_reseller
+        console.log('is_reseller', is_reseller)
+
+        if (is_reseller) {
+          descuento = precio_reseller
+        }
+
         let cantidad = Number(success.cantidad)
         let detalleProducto = {
           id,

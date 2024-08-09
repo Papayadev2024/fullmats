@@ -21,6 +21,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use SoDe\Extend\JSON;
+use Illuminate\Support\Facades\Auth;
 
 use function PHPUnit\Framework\isNull;
 
@@ -47,6 +48,15 @@ class ProductsController extends Controller
 
   public function paginate(Request $request)
   {
+    //validar el rol del usuario logueado 
+    // $user = Auth::user();
+    // dump($user->hasRole('Reseller'));
+
+    $user = false;
+   
+
+    
+    
     $response =  new dxResponse();
     try {
       $instance = Products::select([
@@ -57,7 +67,16 @@ class ProductsController extends Controller
         ->leftJoin('attributes AS a', 'apv.attribute_id', 'a.id')
         ->leftJoin('tags_xproducts AS txp', 'txp.producto_id', 'products.id')
         ->leftJoin('categories', 'categories.id', 'products.categoria_id') 
-        ->where('categories.visible', 1);       
+        ->where('categories.visible', 1);    
+        
+        if(Auth::check()){
+          $user = Auth::user();
+          $user = $user->hasRole('Reseller');
+          if ($user) { // Cambia 'admin' por el rol que deseas validar
+            $instance->where('products.precio_reseller', '>', 0);
+         }
+        }
+        
 
       if ($request->group != null) {
         [$grouping] = $request->group;
@@ -113,6 +132,7 @@ class ProductsController extends Controller
       $response->message = 'Operación correcta';
       $response->data = $jpas;
       $response->totalCount = $totalCount;
+      $response->is_proveedor = $user ; 
     } catch (\Throwable $th) {
       $response->status = 400;
       $response->message = $th->getMessage() . " " . $th->getFile() . ' Ln.' . $th->getLine();

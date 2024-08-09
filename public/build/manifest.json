@@ -1,18 +1,26 @@
 {
-  "_CreateReactScript-qyXjqq-l.js": {
-    "file": "assets/CreateReactScript-qyXjqq-l.js",
+  "_AuthRest-0S0aL5zQ.js": {
+    "file": "assets/AuthRest-0S0aL5zQ.js",
     "imports": [
-      "_index-GBzf7Cls.js",
-      "resources/js/Utils/CreateReactScript.jsx",
-      "_main-jzs2GwAM.js"
+      "resources/js/components/form/SelectAPIFormGroup.jsx"
     ]
   },
-  "_ProductCard-vdXNsSr6.js": {
-    "file": "assets/ProductCard-vdXNsSr6.js",
+  "_CreateReactScript-Il069F1S.js": {
+    "file": "assets/CreateReactScript-Il069F1S.js",
+    "imports": [
+      "resources/js/Utils/CreateReactScript.jsx",
+      "resources/js/components/form/SelectAPIFormGroup.jsx"
+    ]
+  },
+  "_JSEncrypt-jwo8Dr6z.js": {
+    "file": "assets/JSEncrypt-jwo8Dr6z.js"
+  },
+  "_ProductCard-TmCsN0VF.js": {
+    "file": "assets/ProductCard-TmCsN0VF.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
       "_arrayJoin-Fk5sgFcM.js",
-      "resources/js/components/Product/ProductCard.jsx"
+      "resources/js/components/form/TippyButton.jsx"
     ]
   },
   "__commonjsHelpers-4gQjN7DL.js": {
@@ -34,96 +42,194 @@
       "resources/js/components/Filter/FilterContainer.jsx"
     ]
   },
-  "_main-jzs2GwAM.js": {
-    "file": "assets/main-jzs2GwAM.js",
+  "_index-VFMbf6KQ.js": {
+    "file": "assets/index-VFMbf6KQ.js",
     "imports": [
       "__commonjsHelpers-4gQjN7DL.js"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-OfNo-5JW.css",
+    "file": "assets/app-_goMnIng.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Offers.jsx": {
-    "file": "assets/Offers-pz_uT6Au.js",
+    "file": "assets/Offers-wqLXJRb8.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
-      "_CreateReactScript-qyXjqq-l.js",
-      "_main-jzs2GwAM.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-Il069F1S.js",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
       "resources/js/components/Offer/OfferCard.jsx",
       "_arrayJoin-Fk5sgFcM.js",
-      "resources/js/components/Product/ProductCard.jsx",
+      "resources/js/components/form/TippyButton.jsx",
       "resources/js/components/Offer/OfferForm.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-GBzf7Cls.js",
       "resources/js/Utils/CreateReactScript.jsx",
-      "_axios-_sX4vCAy.js"
+      "_axios-_sX4vCAy.js",
+      "_index-VFMbf6KQ.js"
     ],
     "isEntry": true,
     "src": "resources/js/Admin/Offers.jsx"
   },
   "resources/js/Admin/Products.jsx": {
-    "file": "assets/Products-Jkhv-Emm.js",
+    "file": "assets/Products-VTqiQ6Ku.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
-      "_CreateReactScript-qyXjqq-l.js",
-      "_main-jzs2GwAM.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-Il069F1S.js",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
       "resources/js/components/Offer/OfferCard.jsx",
-      "resources/js/components/Product/ProductCard.jsx",
+      "resources/js/components/form/TippyButton.jsx",
       "resources/js/components/Offer/OfferForm.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-GBzf7Cls.js",
       "resources/js/Utils/CreateReactScript.jsx",
-      "_axios-_sX4vCAy.js"
+      "_axios-_sX4vCAy.js",
+      "_index-VFMbf6KQ.js"
     ],
     "isEntry": true,
     "src": "resources/js/Admin/Products.jsx"
   },
   "resources/js/Catalogo.jsx": {
-    "file": "assets/Catalogo-pvggG6HD.js",
+    "file": "assets/Catalogo-jfDW_EtL.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
-      "_CreateReactScript-qyXjqq-l.js",
-      "_ProductCard-vdXNsSr6.js",
-      "_main-jzs2GwAM.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-Il069F1S.js",
+      "_ProductCard-TmCsN0VF.js",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
       "_arrayJoin-Fk5sgFcM.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-GBzf7Cls.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
-      "resources/js/components/Product/ProductCard.jsx"
+      "resources/js/components/form/TippyButton.jsx"
     ],
     "isEntry": true,
     "src": "resources/js/Catalogo.jsx"
   },
+  "resources/js/ConfirmEmail.jsx": {
+    "file": "assets/ConfirmEmail-KhZp3FF-.js",
+    "imports": [
+      "resources/js/Utils/ReactAppend.jsx",
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "_JSEncrypt-jwo8Dr6z.js",
+      "_CreateReactScript-Il069F1S.js",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
+      "resources/js/Utils/CreateReactScript.jsx",
+      "_index-GBzf7Cls.js",
+      "__commonjsHelpers-4gQjN7DL.js",
+      "_axios-_sX4vCAy.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/ConfirmEmail.jsx"
+  },
+  "resources/js/Login.jsx": {
+    "file": "assets/Login-uFbVgXCR.js",
+    "imports": [
+      "resources/js/Utils/ReactAppend.jsx",
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "_JSEncrypt-jwo8Dr6z.js",
+      "_CreateReactScript-Il069F1S.js",
+      "_AuthRest-0S0aL5zQ.js",
+      "resources/js/Utils/CreateReactScript.jsx",
+      "resources/js/components/Offer/OfferCard.jsx",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
+      "_index-GBzf7Cls.js",
+      "__commonjsHelpers-4gQjN7DL.js",
+      "_axios-_sX4vCAy.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/Login.jsx"
+  },
   "resources/js/Ofertas.jsx": {
-    "file": "assets/Ofertas-9gfchRV9.js",
+    "file": "assets/Ofertas-08NTlSxK.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
-      "_CreateReactScript-qyXjqq-l.js",
-      "_ProductCard-vdXNsSr6.js",
-      "_main-jzs2GwAM.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-Il069F1S.js",
+      "_ProductCard-TmCsN0VF.js",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
       "_arrayJoin-Fk5sgFcM.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-GBzf7Cls.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
-      "resources/js/components/Product/ProductCard.jsx"
+      "resources/js/components/form/TippyButton.jsx"
     ],
     "isEntry": true,
     "src": "resources/js/Ofertas.jsx"
   },
+  "resources/js/Register.jsx": {
+    "file": "assets/Register-aMhS1Mw7.js",
+    "imports": [
+      "resources/js/Utils/ReactAppend.jsx",
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "_JSEncrypt-jwo8Dr6z.js",
+      "_CreateReactScript-Il069F1S.js",
+      "_AuthRest-0S0aL5zQ.js",
+      "_index-VFMbf6KQ.js",
+      "__commonjsHelpers-4gQjN7DL.js",
+      "resources/js/Utils/CreateReactScript.jsx",
+      "resources/js/components/Offer/OfferCard.jsx",
+      "_index-GBzf7Cls.js",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
+      "_axios-_sX4vCAy.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/Register.jsx"
+  },
   "resources/js/Utils/CreateReactScript.jsx": {
-    "file": "assets/CreateReactScript-JKK_oT5p.js",
+    "file": "assets/CreateReactScript-Hm6EbMAE.js",
     "imports": [
       "_axios-_sX4vCAy.js",
       "__commonjsHelpers-4gQjN7DL.js",
-      "_main-jzs2GwAM.js",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
       "resources/js/components/Filter/FilterContainer.jsx"
     ],
     "isEntry": true,
     "src": "resources/js/Utils/CreateReactScript.jsx"
+  },
+  "resources/js/Utils/HtmlContent.jsx": {
+    "file": "assets/HtmlContent-z-iOF4ss.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/Utils/HtmlContent.jsx"
+  },
+  "resources/js/Utils/Number2Currency.jsx": {
+    "file": "assets/Number2Currency-w40geAFS.js",
+    "isEntry": true,
+    "src": "resources/js/Utils/Number2Currency.jsx"
+  },
+  "resources/js/Utils/PseudoTippy.jsx": {
+    "file": "assets/PseudoTippy-w40geAFS.js",
+    "isEntry": true,
+    "src": "resources/js/Utils/PseudoTippy.jsx"
+  },
+  "resources/js/Utils/ReactAppend.jsx": {
+    "file": "assets/ReactAppend-GBOQKLDe.js",
+    "imports": [
+      "_index-GBzf7Cls.js",
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/Utils/ReactAppend.jsx"
+  },
+  "resources/js/Utils/SetQuillValue.jsx": {
+    "file": "assets/SetQuillValue-w40geAFS.js",
+    "isEntry": true,
+    "src": "resources/js/Utils/SetQuillValue.jsx"
+  },
+  "resources/js/Utils/SetSelectValue.jsx": {
+    "file": "assets/SetSelectValue-w40geAFS.js",
+    "isEntry": true,
+    "src": "resources/js/Utils/SetSelectValue.jsx"
   },
   "resources/js/app.js": {
     "css": [
@@ -172,24 +278,34 @@
     "isEntry": true,
     "src": "resources/js/components/Filter/FilterPagination.jsx"
   },
-  "resources/js/components/Offer/OfferCard.jsx": {
-    "file": "assets/OfferCard-gi8lWMWA.js",
+  "resources/js/components/Modal.jsx": {
+    "file": "assets/Modal-z-iOF4ss.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
-      "_main-jzs2GwAM.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Modal.jsx"
+  },
+  "resources/js/components/Offer/OfferCard.jsx": {
+    "file": "assets/OfferCard-Wbn3Y7Zw.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
       "__commonjsHelpers-4gQjN7DL.js"
     ],
     "isEntry": true,
     "src": "resources/js/components/Offer/OfferCard.jsx"
   },
   "resources/js/components/Offer/OfferForm.jsx": {
-    "file": "assets/OfferForm-gquhBaou.js",
+    "file": "assets/OfferForm-ukR-vBLm.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
-      "resources/js/components/Product/ProductCard.jsx",
-      "_main-jzs2GwAM.js",
+      "resources/js/components/form/TippyButton.jsx",
+      "resources/js/components/form/SelectAPIFormGroup.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
-      "_index-GBzf7Cls.js"
+      "_index-GBzf7Cls.js",
+      "_index-VFMbf6KQ.js"
     ],
     "isEntry": true,
     "src": "resources/js/components/Offer/OfferForm.jsx"
@@ -204,12 +320,10 @@
     "src": "resources/js/components/Product/H1.jsx"
   },
   "resources/js/components/Product/ProductCard.jsx": {
-    "css": [
-      "assets/ProductCard-C64i7G0l.css"
-    ],
-    "file": "assets/ProductCard-ssICDoe4.js",
+    "file": "assets/ProductCard-ZOWSwpjY.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
+      "resources/js/components/form/TippyButton.jsx",
       "__commonjsHelpers-4gQjN7DL.js"
     ],
     "isEntry": true,
@@ -241,5 +355,80 @@
     ],
     "isEntry": true,
     "src": "resources/js/components/Product/ProductRow.jsx"
+  },
+  "resources/js/components/form/CheckboxFormGroup.jsx": {
+    "file": "assets/CheckboxFormGroup-z-iOF4ss.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/form/CheckboxFormGroup.jsx"
+  },
+  "resources/js/components/form/InputFormGroup.jsx": {
+    "file": "assets/InputFormGroup-z-iOF4ss.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/form/InputFormGroup.jsx"
+  },
+  "resources/js/components/form/PasswordFormGroup.jsx": {
+    "file": "assets/PasswordFormGroup-z-iOF4ss.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/form/PasswordFormGroup.jsx"
+  },
+  "resources/js/components/form/QuillFormGroup.jsx": {
+    "file": "assets/QuillFormGroup-z-iOF4ss.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/form/QuillFormGroup.jsx"
+  },
+  "resources/js/components/form/SelectAPIFormGroup.jsx": {
+    "file": "assets/SelectAPIFormGroup-A251JnnE.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/form/SelectAPIFormGroup.jsx"
+  },
+  "resources/js/components/form/SelectFormGroup.jsx": {
+    "file": "assets/SelectFormGroup-z-iOF4ss.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/form/SelectFormGroup.jsx"
+  },
+  "resources/js/components/form/TextareaFormGroup.jsx": {
+    "file": "assets/TextareaFormGroup-z-iOF4ss.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/form/TextareaFormGroup.jsx"
+  },
+  "resources/js/components/form/TippyButton.jsx": {
+    "css": [
+      "assets/TippyButton-C64i7G0l.css"
+    ],
+    "file": "assets/TippyButton-w0wM3ydO.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/form/TippyButton.jsx"
   }
 }

@@ -27,19 +27,33 @@ class PaymentController extends Controller
     $sale = new Sale();
     try {
 
-      $products = array_filter($body['cart'], fn ($x) => !(isset($x['isCombo']) && $x['isCombo'] == true));
-      $offers = array_filter($body['cart'], fn ($x) => isset($x['isCombo']) && $x['isCombo'] == true);
+      $products = array_filter($body['cart'], fn($x) => !(isset($x['isCombo']) && $x['isCombo'] == true));
+      $offers = array_filter($body['cart'], fn($x) => isset($x['isCombo']) && $x['isCombo'] == true);
 
-      $productsJpa = Products::select(['id', 'imagen', 'producto', 'color', 'precio', 'descuento'])
-        ->whereIn('id', array_map(fn ($x) => $x['id'], $products))
+      $productsJpa = null; 
+
+      if (Auth::check()) {
+        $user = Auth::user();
+        $user = $user->hasRole('Reseller');
+        if ($user) { // Cambia 'admin' por el rol que deseas validar
+          $productsJpa = Products::select(['id', 'imagen', 'producto', 'color', 'precio', 'precio_reseller as descuento'])
+            ->whereIn('id', array_map(fn($x) => $x['id'], $products))
+            ->get();
+        }
+      }else{
+        $productsJpa = Products::select(['id', 'imagen', 'producto', 'color', 'precio', 'descuento'])
+        ->whereIn('id', array_map(fn($x) => $x['id'], $products))
         ->get();
+      }
+
 
       $offersJpa = [];
       if (count($offers) > 0) {
         $offersJpa = Offer::select(['id', 'imagen', 'producto', DB::raw('null AS color'), 'precio', 'descuento'])
-          ->whereIn('id', array_map(fn ($x) => $x['id'], $offers))
+          ->whereIn('id', array_map(fn($x) => $x['id'], $offers))
           ->get();
       }
+
 
       $totalCost = 0;
       foreach ($productsJpa as $productJpa) {
@@ -150,12 +164,12 @@ class PaymentController extends Controller
         ]);
       }
 
-      
+
       $config = [
         "amount" => round($totalCost * 100),
         "capture" => true,
         "currency_code" => "PEN",
-        "description" => "Compra en ".env('APP_NAME'),
+        "description" => "Compra en " . env('APP_NAME'),
         "email" => $body['culqi']['email'] ?? $body['contact']['email'],
         "installments" => 0,
         "antifraud_details" => [

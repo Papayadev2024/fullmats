@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AttributesController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
@@ -62,7 +63,8 @@ use App\Models\LibroReclamaciones;
 */
 
 /* Las rutas publicas */
-
+// Route::get('/login-rev', [AuthController::class, 'loginView'])->name('Login.jsx');
+Route::get('/register-rev', [AuthController::class, 'registerView'])->name('Register.jsx');
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('nosotros');
 Route::get('/servicios', [IndexController::class, 'servicios'])->name('servicios');
@@ -102,6 +104,9 @@ Route::get('/terminos-y-condiciones', [IndexController::class, 'TerminosyCondici
 Route::get('/buscarblog', [IndexController::class, 'searchBlog'])->name('buscarblog');
 
 Route::post('guardarUserNewsLetter', [NewsletterSubscriberController::class, 'guardarUserNewsLetter'])->name('guardarUserNewsLetter');
+
+Route::get('/confirm-email/{token}', [AuthController::class, 'confirmEmailView'])->name('ConfirmEmail.jsx');
+Route::get('/confirmation/{token}', [AuthController::class, 'loginView']);
 
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {

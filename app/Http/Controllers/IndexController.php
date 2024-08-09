@@ -622,6 +622,14 @@ class IndexController extends Controller
   public function producto(string $id)
   {
 
+    
+    $is_reseller = false; 
+    if(Auth::check()){
+     $user = Auth::user();
+     $is_reseller = $user->hasRole('Reseller');
+     
+   }
+
     // $productos = Products::where('id', '=', $id)->first();
     // $especificaciones = Specifications::where('product_id', '=', $id)->get();
     $product = Products::findOrFail($id);
@@ -694,7 +702,7 @@ class IndexController extends Controller
 
     if (!$combo) $combo = new Offer();
 
-    return view('public.product', compact('atributos', 'isWhishList', 'testimonios', 'general', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env', 'product', 'capitalizeFirstLetter', 'categorias', 'destacados', 'otherProducts', 'galery', 'combo'));
+    return view('public.product', compact('is_reseller', 'atributos', 'isWhishList', 'testimonios', 'general', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env', 'product', 'capitalizeFirstLetter', 'categorias', 'destacados', 'otherProducts', 'galery', 'combo'));
   }
 
   public function wishListAdd(Request $request)

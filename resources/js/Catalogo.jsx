@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import FilterContainer from './components/Filter/FilterContainer'
@@ -31,6 +31,7 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
   const [currentPage, setCurrentPage] = useState(1)
 
   const [showModal, setShowModal] = useState(false)
+  const is_proveedor = useRef(false);
 
 
 
@@ -148,6 +149,9 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
         skip: take * (currentPage - 1)
       })
     })
+    console.log('result', result)
+    is_proveedor.current = result?.is_proveedor ?? false
+    console.log('is_proveedor', is_proveedor.current)
     setItems(result?.data ?? [])
     setTotalCount(result?.totalCount ?? 0)
   }
@@ -180,7 +184,7 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:pr-4">
-          {items.map((item, i) => <ProductCard key={`product-${item.id}`} item={item} bgcolor={'bg-white'} />)}
+          {items.map((item, i) => <ProductCard key={`product-${item.id}`} item={item} bgcolor={'bg-white'} is_reseller={is_proveedor.current} />)}
         </div>
         <div className="w-full font-medium flex flex-row justify-center items-center">
           <FilterPagination current={currentPage} setCurrent={setCurrentPage} pages={Math.ceil(totalCount / take)} />

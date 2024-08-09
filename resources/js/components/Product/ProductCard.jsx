@@ -2,10 +2,11 @@ import Tippy from '@tippyjs/react';
 import React, { useState } from 'react';
 import 'tippy.js/dist/tippy.css';
 
-const ProductCard = ({ item, width, bgcolor }) => {
+const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
   const [showAmbiente, setShowAmbiente] = useState(false);
   const category = item.category;
 
+  console.log('item', item)
   return (
     <div
       onMouseEnter={() => setShowAmbiente(true)}
@@ -91,12 +92,29 @@ const ProductCard = ({ item, width, bgcolor }) => {
             {item.producto}
           </h2>
         </Tippy>
-        <div className="flex content-between flex-row gap-4 items-center justify-center">
-          <span className="text-[#006BF6] text-[16.45px] font-bold">S/. {item.descuento > 0 ? item.descuento : item.precio}</span>
-          {item.descuento > 0 && (
-            <span className="text-sm text-[#15294C] opacity-60 line-through">S/. {item.precio}</span>
-          )}
-        </div>
+
+        {
+          is_reseller ?
+            (<>
+              <div className="flex content-between flex-row gap-4 items-center justify-center">
+                <span className="text-[#15294C] opacity-60 text-[16.45px]  line-through">S/. {item.descuento > 0 ? item.descuento : item.precio}</span>
+                {item.descuento > 0 && (
+                  <span className="text-sm text-[#15294C] opacity-60 line-through">S/. {item.precio}</span>
+                )}
+              </div>
+              <div className="flex content-between flex-row gap-4 items-center justify-center">
+                Reseller <span className="text-[#006BF6] text-[16.45px] font-bold">S/. {item.precio_reseller}</span>
+
+              </div></>
+
+            ) :
+            (<div className="flex content-between flex-row gap-4 items-center justify-center">
+              <span className="text-[#006BF6] text-[16.45px] font-bold">S/. {item.descuento > 0 ? item.descuento : item.precio}</span>
+              {item.descuento > 0 && (
+                <span className="text-sm text-[#15294C] opacity-60 line-through">S/. {item.precio}</span>
+              )}
+            </div>)
+        }
 
       </a>
 
