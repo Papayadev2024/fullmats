@@ -24,8 +24,8 @@ class RoleSeeder extends Seeder
         $role4 = Role::updateOrCreate(['name' => 'Reseller'], ['name' => 'Reseller']);//Customer
 
         Permission::updateOrCreate(['name'=>'Admin'], ['name'=>'Admin'])->syncRoles([$role1, $role2]);
-        Permission::updateOrCreate(['name'=>'Customer'], ['name'=>'Customer'])->syncRoles([$role3]); 
-        Permission::updateOrCreate(['name'=>'Reseller'], ['name'=>'Reseller'])->syncRoles([$role4]); 
+        Permission::updateOrCreate(['name'=>'Customer'], ['name'=>'Customer'])->syncRoles([$role3, $role4]); 
+        
          
     }
 }
