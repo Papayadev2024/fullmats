@@ -258,6 +258,7 @@ class IndexController extends Controller
       ->join('provinces', 'provinces.id', 'districts.province_id')
       ->join('departments', 'departments.id', 'provinces.department_id')
       ->where('departments.active', 1)
+      ->where('status', 1)
       ->groupBy('id', 'description')
       ->get();
 
