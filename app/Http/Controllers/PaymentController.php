@@ -203,7 +203,7 @@ class PaymentController extends Controller
       $sale->code = $charge?->reference_code ?? null;
     } catch (\Throwable $th) {
       $response->status = 400;
-      $response->message = $th->getMessage();
+      $response->message = $th;
 
       if(!$sale->code){
         $sale->code = '000000000000';
