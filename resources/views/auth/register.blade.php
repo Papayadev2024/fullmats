@@ -45,7 +45,7 @@
                   class="font-Inter_Regular text-[#666666] w-full py-5 px-4 focus:outline-none placeholder-gray-400 font-normal text-base bg-[#F8F8F8] rounded-lg border-0 focus:border-transparent focus:ring-0" />
                 <!-- Imagen -->
                 <img src="./images/svg/pass_eyes.svg" alt="password"
-                  class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer" />
+                  class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer ojopassWord" />
               </div>
 
               <div class="relative w-full">
@@ -55,7 +55,7 @@
                   class="font-Inter_Regular text-[#666666] w-full py-5 px-4 focus:outline-none placeholder-gray-400 font-normal text-base bg-[#F8F8F8] rounded-lg border-0 focus:border-transparent focus:ring-0" />
                 <!-- Imagen -->
                 <img src="./images/svg/pass_eyes.svg" alt="password"
-                  class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer" />
+                  class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer ojopassWord_confirmation" />
               </div>
 
               <div class="flex gap-3">
@@ -118,6 +118,32 @@
         fadeDuration: 100
       });
     });
+
+    $(document).on("click", '.ojopassWord', function() {
+
+
+      var input = $(this).siblings('input');
+
+      // Alterna el tipo de entrada entre 'password' y 'text'
+      if (input.attr('type') === 'password') {
+        input.attr('type', 'text');
+      } else {
+        input.attr('type', 'password');
+      }
+
+    })
+    $(document).on("click", '.ojopassWord_confirmation', function() {
+      var input = $(this).siblings('input');
+
+      // Alterna el tipo de entrada entre 'password' y 'text'
+      if (input.attr('type') === 'password') {
+        input.attr('type', 'text');
+      } else {
+        input.attr('type', 'password');
+      }
+
+
+    })
   </script>
 
 </x-authentication-layout>
