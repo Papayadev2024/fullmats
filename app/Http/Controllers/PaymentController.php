@@ -123,7 +123,8 @@ class PaymentController extends Controller
 
       $sale->status_id = 1;
       $sale->status_message = 'La venta se ha creado. Aun no se ha pagado';
-
+      dump($sale);
+      return response($sale);
       $sale->save();
 
       foreach ($productsJpa as $productJpa) {
