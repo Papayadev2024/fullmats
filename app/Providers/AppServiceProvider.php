@@ -34,6 +34,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        View::composer('auth.register', function ($view) {
+            $termsAndCondicitions = TermsAndCondition::first();
+            $politicas = PoliticaDatos::first();
+            $view->with(['politicas'=> $politicas , 'terminos' => $termsAndCondicitions]);
+        });
 
         View::composer('components.public.footer', function ($view) {
 
