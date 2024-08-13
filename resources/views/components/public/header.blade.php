@@ -563,44 +563,64 @@
   var articulosCarrito = []
   articulosCarrito = Local.get('carrito') || [];
 
-  function addOnCarBtn(id, operacion) {
+  function addOnCarBtn(id, isCombo) {
+    let prodRepetido = articulosCarrito.map(item => {
+      if (item.id === id && item.isCombo == isCombo) {
 
-    const prodRepetido = articulosCarrito.map(item => {
-      if (item.id === id) {
-        item.cantidad += Number(1);
-        return item; // retorna el objeto actualizado 
-      } else {
-        return item; // retorna los objetos que no son duplicados 
+        item.cantidad += 1;
       }
-
+      return item;
     });
-    Local.set('carrito', articulosCarrito)
-    // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
-    limpiarHTML()
-    PintarCarrito()
 
-
+    Local.set('carrito', articulosCarrito);
+    limpiarHTML();
+    PintarCarrito();
   }
 
-  function deleteOnCarBtn(id, operacion) {
-    const prodRepetido = articulosCarrito.map(item => {
-      if (item.id === id && item.cantidad > 0) {
-        item.cantidad -= Number(1);
-        return item; // retorna el objeto actualizado 
-      } else {
-        return item; // retorna los objetos que no son duplicados 
+  function deleteOnCarBtn(id, isCombo) {
+    let prodRepetido = articulosCarrito.map(item => {
+      if (item.id === id && item.isCombo == isCombo && item.cantidad > 0) {
+
+        item.cantidad -= 1;
       }
-
+      return item;
     });
-    Local.set('carrito', articulosCarrito)
-    limpiarHTML()
-    PintarCarrito()
 
-
+    Local.set('carrito', articulosCarrito);
+    limpiarHTML();
+    PintarCarrito();
   }
 
-  function deleteItem(id) {
-    articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id);
+  function deleteItem(id, isCombo) {
+
+    let idCount = {};
+    let duplicates = [];
+    articulosCarrito.forEach(item => {
+      if (idCount[item.id]) {
+        idCount[item.id]++;
+      } else {
+        idCount[item.id] = 1;
+      }
+    });
+
+    for (let id in idCount) {
+      if (idCount[id] > 1) {
+        duplicates.push(id);
+      }
+    }
+
+    if (duplicates.length > 0) {
+      console.log('Duplicate IDs found:', duplicates);
+      let index = articulosCarrito.findIndex(item => item.id === id && item.isCombo == isCombo);
+      if (index > -1) {
+        articulosCarrito.splice(index, 1);
+      }
+    } else {
+      articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id && objeto.isCombo == isCombo);
+
+    }
+
+
 
     Local.set('carrito', articulosCarrito)
     limpiarHTML()
@@ -616,12 +636,12 @@
 
   }
   var appUrl = "{{ env('APP_URL') }}";
-  console.log(appUrl)
+
   $(document).ready(function() {
 
 
     PintarCarrito()
-    console.log('pintar carrito ')
+
 
 
 
@@ -760,7 +780,7 @@
           precio_reseller
         } = success.data
         let is_reseller = success.is_reseller
-        console.log('is_reseller', is_reseller)
+
 
         if (is_reseller) {
           descuento = precio_reseller
@@ -770,6 +790,7 @@
         let detalleProducto = {
           id,
           producto,
+          isCombo: false,
           descuento,
           precio,
           imagen,
@@ -777,16 +798,17 @@
           color
 
         }
-        let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id)
+        let existeArticulo = articulosCarrito.some(item => item.id === detalleProducto.id && item.isCombo ==
+          false, )
         if (existeArticulo) {
           //sumar al articulo actual 
           const prodRepetido = articulosCarrito.map(item => {
-            if (item.id === detalleProducto.id) {
+            if (item.id === detalleProducto.id && item.isCombo == false) {
               item.cantidad += Number(detalleProducto.cantidad);
-              return item; // retorna el objeto actualizado 
-            } else {
-              return item; // retorna los objetos que no son duplicados 
+              // retorna el objeto actualizado 
             }
+            return item; // retorna los objetos que no son duplicados 
+
 
           });
         } else {
@@ -849,7 +871,7 @@
   $(document).on('click', '#btnAgregarCarrito', function() {
 
     let item = $(this).data('id')
-    console.log(item)
+
     let cantidad = 1
     try {
       agregarAlCarrito(item, cantidad)
