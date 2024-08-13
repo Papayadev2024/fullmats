@@ -209,8 +209,8 @@ class PaymentController extends Controller
       $sale->status_id = 2;
       $sale->status_message = $th->getMessage();
     } finally {
-      $sale->save();
-      return response($response->toArray(), $response->status);
+      // $sale->save();
+      // return response($response->toArray(), $response->status);
     }
   }
 }
