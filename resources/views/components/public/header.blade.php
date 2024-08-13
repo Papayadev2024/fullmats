@@ -616,11 +616,11 @@
         articulosCarrito.splice(index, 1);
       }
     } else {
-      articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id && objeto.isCombo == isCombo);
+      articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id);
 
     }
 
-
+    // return
 
     Local.set('carrito', articulosCarrito)
     limpiarHTML()
