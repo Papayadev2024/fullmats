@@ -32,14 +32,13 @@ class PaymentController extends Controller
 
       $productsJpa = []; 
 
-      if (Auth::check()) {
-        $user = Auth::user();
-        $user = $user->hasRole('Reseller');
-        if ($user) { // Cambia 'admin' por el rol que deseas validar
+      if (Auth::check() && Auth::user()->hasRole('Reseller')) {
+         
           $productsJpa = Products::select(['id', 'imagen', 'producto', 'color', 'precio', 'precio_reseller as descuento'])
             ->whereIn('id', array_map(fn($x) => $x['id'], $products))
             ->get();
-        }
+        
+        
       }else{
         $productsJpa = Products::select(['id', 'imagen', 'producto', 'color', 'precio', 'descuento'])
         ->whereIn('id', array_map(fn($x) => $x['id'], $products))
