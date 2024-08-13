@@ -59,7 +59,7 @@
               </div>
 
               <div class="flex gap-3">
-                <input type="checkbox" id="acepto_terminos" class="w-4" />
+                <input type="checkbox" id="acepto_terminos" class="w-4" required />
                 <label name="newsletter" id="newsletter" class="font-normal text-sm font-Inter_Medium">
 
                   Acepto la

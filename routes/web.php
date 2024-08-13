@@ -166,6 +166,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::post('/getProvincia', [PriceController::class, 'getProvincias'])->name('prices.getProvincias');
         Route::post('/getDistrito', [PriceController::class, 'getDistrito'])->name('prices.getDistrito');
         Route::post('/calculeEnvio', [PriceController::class, 'calculeEnvio'])->name('prices.calculeEnvio');
+        Route::post('/deletePrice', [PriceController::class, 'deletePrice'])->name('prices.deletePrice');
 
         //Servicios
         Route::resource('/servicios', ServiceController::class);
