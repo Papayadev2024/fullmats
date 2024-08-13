@@ -30,7 +30,7 @@ class PaymentController extends Controller
       $products = array_filter($body['cart'], fn($x) => !(isset($x['isCombo']) && $x['isCombo'] == true));
       $offers = array_filter($body['cart'], fn($x) => isset($x['isCombo']) && $x['isCombo'] == true);
 
-      $productsJpa = null; 
+      $productsJpa = []; 
 
       if (Auth::check()) {
         $user = Auth::user();
@@ -205,6 +205,9 @@ class PaymentController extends Controller
       $response->status = 400;
       $response->message = $th->getMessage();
 
+      if(!$sale->code){
+        $sale->code = '000000000000';
+      }
       $sale->status_id = 2;
       $sale->status_message = $th->getMessage();
     } finally {
