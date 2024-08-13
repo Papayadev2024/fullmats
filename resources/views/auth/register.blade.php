@@ -27,15 +27,27 @@
           <div class="">
             <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-5">
               @csrf
+              @php
+                if ($errors->any()) {
+                    // dd($errors);
+                }
+              @endphp
+
               <div>
                 <input type="text" placeholder="Nombre completo" id="name" name="name" :value="old('name')"
-                  required autofocus autocomplete="name"
+                  required autofocus
                   class="font-Inter_Regular text-[#666666] w-full py-5 px-4 focus:outline-none placeholder-gray-400 font-normal text-base bg-[#F8F8F8] rounded-lg border-0 focus:border-transparent focus:ring-0" />
+                @error('name')
+                  <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
               </div>
               <div>
                 <input type="text" placeholder="Correo electrónico" id="email" name="email"
                   :value="old('email')" required
                   class="font-Inter_Regular text-[#666666] w-full py-5 px-4 focus:outline-none placeholder-gray-400 font-normal text-base bg-[#F8F8F8] rounded-lg border-0 focus:border-transparent focus:ring-0" />
+                @error('email')
+                  <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
               </div>
 
               <div class="relative w-full">
@@ -43,9 +55,13 @@
                 <input type="password" placeholder="Contraseña" id="password" name="password" required
                   autocomplete="new-password"
                   class="font-Inter_Regular text-[#666666] w-full py-5 px-4 focus:outline-none placeholder-gray-400 font-normal text-base bg-[#F8F8F8] rounded-lg border-0 focus:border-transparent focus:ring-0" />
+
                 <!-- Imagen -->
                 <img src="./images/svg/pass_eyes.svg" alt="password"
                   class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer ojopassWord" />
+                @error('password')
+                  <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
               </div>
 
               <div class="relative w-full">
@@ -56,6 +72,9 @@
                 <!-- Imagen -->
                 <img src="./images/svg/pass_eyes.svg" alt="password"
                   class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer ojopassWord_confirmation" />
+                @error('password_confirmation')
+                  <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
               </div>
 
               <div class="flex gap-3">
@@ -77,7 +96,7 @@
                   class="text-white bg-[#006BF6] w-full py-3 rounded-3xl cursor-pointer font-light font-Inter_Medium tracking-wide" />
               </div>
             </form>
-            <x-validation-errors class="mt-4" />
+            {{-- <x-validation-errors class="mt-4" /> --}}
           </div>
         </div>
       </div>
