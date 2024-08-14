@@ -86,7 +86,7 @@ class RegisterResponse implements RegisterResponseContract
                           margin: 40px;
                         "
                       >
-                        <img src="' . $appUrl . 'images/Group1.png" alt="mundo web"  style="
+                        <img src="' . $appUrl . '/images/Group1.png" alt="Boost_Peru"  style="
                     margin: auto;
                   "/>
                       </th>
