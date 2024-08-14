@@ -579,12 +579,13 @@
           $('#precioEnvio').text(`Evaluando`)
         }
         $('[data-address]').prop('required', true)
+        // $('#addresses').prop('required', false)
+        $('#addresses').removeAttr('required');
       } else {
         $('#direccionContainer').fadeOut(125)
         $('#precioEnvio').text('Gratis')
         $('[data-address]').prop('required', false)
-        console.log("costo Envio", getCostoEnvio())
-        console.log(value)
+
       }
       calcularTotal()
     })
@@ -670,6 +671,9 @@
       })
       $('#provincia_id').select2()
       calcularTotal()
+    })
+    $(document).on('change', '#addresses', function() {
+      console.log('change', $(this).val())
     })
 
     $('#provincia_id').on('change', function() {
