@@ -211,7 +211,7 @@
       });
 
 
-      if (!validarEmail($('#emailemailFooter').val())) {
+      if (!validarEmail($('#emailFooter').val())) {
         return;
       };
       $.ajax({
