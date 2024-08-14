@@ -76,7 +76,7 @@
       <div class="relative bg-[#F8F8F8] rounded-full p-2 px-4">
         <form id="subsEmail" class="flex">
           @csrf
-          <input type="email" name="email" id="email" placeholder="Déjanos tu e-mail"
+          <input type="email" name="email" id="emailFooter" placeholder="Déjanos tu e-mail"
             class="w-full border-none focus:border-transparent ring-0 focus:ring-0 p-2 bg-[#F8F8F8]" />
           <input type="text" name="tipo" value="Inscripción" hidden />
           <button type="submit" class=" text-[#444444] p-2 font-semibold">Enviar</button>
@@ -211,7 +211,7 @@
       });
 
 
-      if (!validarEmail($('#email').val())) {
+      if (!validarEmail($('#emailemailFooter').val())) {
         return;
       };
       $.ajax({
