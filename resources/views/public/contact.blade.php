@@ -112,10 +112,14 @@
     </form>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-11/12 m-auto px-8 sm:px-16  gap-8">
-      <p>Deseas ser Revendedor de nuestros productos ? <a href="{{ route('Register.jsx') }}" class="text-[#006BF6]">Sigue
-          el
-          siguiente
-          enlace </a></p>
+      @if (!Auth::check())
+        <p>Deseas ser Revendedor de nuestros productos ? <a href="{{ route('Register.jsx') }}"
+            class="text-[#006BF6]">Sigue
+            el
+            siguiente
+            enlace </a></p>
+      @endif
+
 
     </div>
 

@@ -719,7 +719,7 @@
         if (element.subcategories.length == 0) return;
         let ul = document.createElement('ul');
         ul.className =
-          'text-[#006BF6] font-bold font-poppins text-md py-2 px-3 block   duration-300 w-full whitespace-nowrap gap-4';
+          'text-[#006BF6] font-bold font-poppins text-md py-2 px-3    duration-300 w-full whitespace-nowrap gap-4';
 
         ul.innerHTML = element.name;
         element.subcategories.forEach(subcategoria => {
@@ -733,7 +733,7 @@
           let a = document.createElement('a');
           a.href = `/catalogo?subcategoria=${subcategoria.id}`;
           a.innerHTML = subcategoria.name;
-          a.className = 'block w-full h-full'; // Para que el enlace ocupe todo el 'li'
+          a.className = ' w-full h-full'; // Para que el enlace ocupe todo el 'li'
 
           // Añadir el elemento 'a' al 'li'
           li.appendChild(a);
