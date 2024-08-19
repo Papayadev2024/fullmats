@@ -165,7 +165,7 @@
           <label for="detail_incident" class="font-medium text-[12px] text-[#6C7275]">Detalle de reclamo o
             queja</label>
           <textarea name="detail_incident" id="detail_incident" cols="30" rows="3"
-            class="border-gray-200 border-[1.5px] rounded-xl focus:outline-none" placeholder="Detalle de reclamo"></textarea>
+            class="border-gray-200 border-[1.5px] rounded-xl focus:outline-none" placeholder="Detalle de reclamo" required></textarea>
         </div>
 
 
