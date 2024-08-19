@@ -218,14 +218,16 @@
   @foreach ($datosgenerales as $item)
     <div
       class="bg-[#006BF6] h-[50px] flex lg:justify-between justify-center w-full px-[5%] xl:px-[8%] py-3 text-base items-center">
-      <div class="text-white font-Inter_Regular text-[17px] text-start flex gap-3">
+      <a class="text-white font-Inter_Regular text-[17px] text-start flex gap-3"
+        href="https://api.whatsapp.com/send?phone={{ $item->cellphone }}&text={{ $item->mensaje_whatsapp }}">
         <h3>
           {{ $item->cellphone }}</h3>
+
 
         {{-- <div>|</div>
         <a href="#">Direccion</a> --}}
 
-      </div>
+      </a>
       <h3 class="text-white font-Inter_Regular  text-center hidden lg:flex">
         Cuéntale a un amigo sobre Boost y consigue un 20% de descuento *
       </h3>
@@ -370,14 +372,14 @@
     </div>
   </div>
 
-  {{--  <div class="flex justify-end relative">
+  <div class="flex justify-end relative">
     <div class="fixed bottom-[36px] z-[10] right-[128px] md:right-[25px] fixedWhastapp">
       <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales[0]->whatsapp }}&text={{ $datosgenerales[0]->mensaje_whatsapp }}"
         target="_blank" class="">
         <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-20" />
       </a>
     </div>
-  </div> --}}
+  </div>
 
   <div id="myOverlay" class="overlay" style="z-index: 200;">
     <span class="closebtn" onclick="closeSearch()">×</span>
