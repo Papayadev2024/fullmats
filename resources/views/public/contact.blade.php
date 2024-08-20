@@ -105,7 +105,8 @@
 
       </div>
       <div class="flex justify-start mt-7 w-11/12 m-auto px-16 pt-16">
-        <button class="bg-[#006BF6] text-white font-Inter_Medium text-[20px] px-10 py-3 rounded-full w-[280px]">Enviar
+        <button class="bg-[#006BF6] text-white font-Inter_Medium text-[20px] px-10 py-3 rounded-full w-[280px]"
+          type="button">Enviar
           Mensaje</button>
       </div>
 

@@ -206,10 +206,10 @@
               <span class=""> Envio a Domicilio</span>
             </div>
             <div class="flex flex-row gap-2 items-center">
-              <i class="h-5 w-5 inline-block"
-                style="background-image: url('{{ asset('images/img/mail.png') }}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></i>
-              <a href="https://api.whatsapp.com/send?phone={{ $general->whatsapp }}&text=Hola! Quería solicitar informacion para el producto  {{ $product->producto }}."
-                class="">Preguntar sobre este producto</a>
+              <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-8" />
+              <a href="https://api.whatsapp.com/send?phone={{ $general->whatsapp }}&text=Hola! Quería solicitar informacion para el producto  {{ $product->producto }}. 
+                "
+                target="_blank" class="">Preguntar sobre este producto</a>
             </div>
           </div>
 

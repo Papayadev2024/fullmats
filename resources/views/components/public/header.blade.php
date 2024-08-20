@@ -219,7 +219,10 @@
     <div
       class="bg-[#006BF6] h-[50px] flex lg:justify-between justify-center w-full px-[5%] xl:px-[8%] py-3 text-base items-center">
       <a class="text-white font-Inter_Regular text-[17px] text-start flex gap-3"
-        href="https://api.whatsapp.com/send?phone={{ $item->cellphone }}&text={{ $item->mensaje_whatsapp }}">
+        href="https://api.whatsapp.com/send?phone={{ $item->cellphone }}&text={{ $item->mensaje_whatsapp }}"
+        target="_blank">
+        >
+
 
         <div class="flex flex-row gap-4 items-center">
           <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-8" />

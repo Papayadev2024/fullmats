@@ -108,10 +108,16 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
               </div></>
 
             ) :
-            (<div className="flex content-between flex-row gap-4 items-center justify-center">
-              <span className="text-[#006BF6] text-[16.45px] font-bold">S/. {item.descuento > 0 ? item.descuento : item.precio}</span>
+            (<div className="flex content-between flex-col gap-4 items-center justify-center">
+              <span className="text-[#006BF6] text-[16.45px] font-bold">{item.descuento > 0 ? `Precio Promo: S/.  ${item.descuento}` : `Precio Regular: S/. ${item.precio}`}</span>
               {item.descuento > 0 && (
-                <span className="text-sm text-[#15294C] opacity-60 line-through">S/. {item.precio}</span>
+                <>
+                  <div className='flex flex-row gap-2 items-center'>
+                    <span >Precio Regular:</span>  <span className="text-sm text-[#15294C] opacity-80 line-through"> S/. {item.precio}</span>
+                  </div>
+
+
+                </>
               )}
             </div>)
         }
