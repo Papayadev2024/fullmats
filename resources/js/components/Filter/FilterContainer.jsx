@@ -53,8 +53,10 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
 
         <div className="w-full ">
           <h2 className="font-semibold mb-4">Categorias</h2>
-          {categories.map((item) => (
-            item.subcategories.length > 0 && (<div key={item.id} className="w-full">
+
+          {categories.map((item) => {
+
+            return item.subcategories.length > 0 && (<div key={item.id} className="w-full">
               <div className="border-b border-gray-200">
                 <button
                   type="button"
@@ -75,18 +77,29 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
               </div>
               {openCategories[item.id] && (
                 <div className="p-4 border border-t-0 border-gray-200 space-y-4">
-                  {item.subcategories.map((subitem) => (
-                    <label key={subitem.id} htmlFor={`item-category-${subitem.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
-                      <input id={`item-category-${subitem.id}`} name='category' type="checkbox" className="bg-blue-500 rounded-sm  border-none" value={subitem.id} onClick={(e) => onClick(`subcategory_id`, e.target.value, e.target.checked)} />
-                      {subitem.name}
-                    </label>
-                  ))}
+                  {
+                    item.subcategories.map((subitem) => {
+                      { console.log(subitem.id, filter.subcategory_id.includes(String(subitem.id))) }
+                      const isCheckedfilter = filter.subcategory_id.includes(String(subitem.id))
+                      return <>
+                        <label key={subitem.id} htmlFor={`item-category-${subitem.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
+                          <input id={`item-category-${subitem.id}`} name='category' type="checkbox" className="bg-blue-500 rounded-sm  border-none" value={subitem.id} onClick={(e) => onClick(`subcategory_id`, e.target.value, e.target.checked)}
+                            defaultChecked={isCheckedfilter}
+                          />
+                          {subitem.name}
+                        </label>
+                      </>
+
+                    })
+                  }
 
                 </div>
               )}
-            </div>)
+            </div>
+            )
 
-          ))}
+          }
+          )}
         </div>
 
       )
@@ -99,7 +112,8 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
             const isChecked = item.id === Number(tag_id);
 
             return (<label key={`item-tag-${item.id}`} htmlFor={`item-tag-${item.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
-              <input id={`item-tag-${item.id}`} name='tag' type="checkbox" className="bg-[#DEE2E6] rounded-sm  border-none" value={item.id} onClick={(e) => onClick(`txp.tag_id`, e.target.value, e.target.checked)} defaultChecked={isChecked} />
+              <input id={`item-tag-${item.id}`} name='tag' type="checkbox" className="bg-[#DEE2E6] rounded-sm  border-none" value={item.id} onClick={(e) => onClick(`txp.tag_id`, e.target.value, e.target.checked)}
+                defaultChecked={isChecked} />
               {item.name}
             </label>)
           })}
