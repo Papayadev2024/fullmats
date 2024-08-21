@@ -58,7 +58,8 @@
 
                   @if ($item->local == 0)
                     <td class="text-center">
-                      <img src="https://lizze.pe/wp-content/uploads/2023/10/OLVA-COURIER-768x326.png" alt="">
+                      {{-- <img src="https://lizze.pe/wp-content/uploads/2023/10/OLVA-COURIER-768x326.png" alt=""> --}}
+                      Provincia
                     </td>
                   @else
                     <td class="text-center font-bold">Local</td>
