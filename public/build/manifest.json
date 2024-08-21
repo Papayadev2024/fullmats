@@ -49,12 +49,12 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-Y9gm-Slz.css",
+    "file": "assets/app-i_2a0Arh.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Offers.jsx": {
-    "file": "assets/Offers-wqLXJRb8.js",
+    "file": "assets/Offers-yo6MFlHa.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -93,7 +93,7 @@
     "src": "resources/js/Admin/Products.jsx"
   },
   "resources/js/Catalogo.jsx": {
-    "file": "assets/Catalogo-m9Uaz0WJ.js",
+    "file": "assets/Catalogo-asDRuguN.js",
     "imports": [
       "resources/js/components/Filter/FilterContainer.jsx",
       "resources/js/Utils/ReactAppend.jsx",
