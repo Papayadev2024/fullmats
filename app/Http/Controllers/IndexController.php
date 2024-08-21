@@ -991,7 +991,7 @@ class IndexController extends Controller
     }
   }
 
-  private function envioCorreoCompra($data)
+  public function envioCorreoCompra($data)
   {
 
     $appUrl = env('APP_URL');
@@ -1096,7 +1096,7 @@ class IndexController extends Controller
                       "
                     >
                       !Gracias
-                      <span style="color: #ffffff">por escribirnos!</span>
+                      <span style="color: #ffffff">por tu Compra!</span>
                     </p>
                   </td>
                 </tr>
@@ -1114,7 +1114,7 @@ class IndexController extends Controller
                         line-height: 30px;
                       "
                     >
-                      En breve estaremos comunicandonos contigo.
+                      En breve momentos estaremos procesando tu pedido.
                     </p>
                   </td>
                 </tr>

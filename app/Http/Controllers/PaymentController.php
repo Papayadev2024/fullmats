@@ -164,6 +164,8 @@ class PaymentController extends Controller
       }
 
 
+
+
       $config = [
         "amount" => round($totalCost * 100),
         "capture" => true,
@@ -200,6 +202,15 @@ class PaymentController extends Controller
       $sale->status_id = 3;
       $sale->status_message = 'La venta se ha generado y ha sido pagada';
       $sale->code = $charge?->reference_code ?? null;
+
+      $indexController = new IndexController();
+      $datacorreo = [
+        'nombre' => $sale->name . ' ' . $sale->lastname,
+        
+        'email' => $sale->email,
+       
+      ];
+      $indexController->envioCorreoCompra($datacorreo);
     } catch (\Throwable $th) {
       $response->status = 400;
       $response->message = $th->getMessage();
