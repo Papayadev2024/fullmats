@@ -64,7 +64,7 @@
       box-shadow: 0 0 5px rgba(0, 0, 0, .125);
     }
 
-    #offers .swiper-slide:last-child::before  {
+    #offers .swiper-slide:last-child::before {
       content: none;
     }
   </style>
@@ -413,7 +413,7 @@
     var headerServices = new Swiper(".productos-relacionados", {
       slidesPerView: 4,
       spaceBetween: 10,
-      loop: true,
+      loop: false,
       centeredSlides: false,
       initialSlide: 0, // Empieza en el cuarto slide (índice 3) */
       /* pagination: {

@@ -76,7 +76,10 @@
       </div>
 
       <div class="grid grid-cols-1 w-11/12 m-auto px-16 mt-10">
-        <img class="w-full" src="{{ asset('images\Figmap.png') }}" alt="">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3900.937710661743!2d-77.0299873!3d-12.1164145!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x29d29e03062cc93%3A0xb0fb1dfd433e34f!2sBOOST%20PERU!5e0!3m2!1ses!2spe!4v1724283038116!5m2!1ses!2spe"
+          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
 
