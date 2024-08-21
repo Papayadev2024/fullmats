@@ -43,6 +43,30 @@
     .blocker {
       z-index: 20;
     }
+
+    #offers .swiper-slide {
+      margin-right: 100px !important;
+    }
+
+    #offers .swiper-slide::before {
+      content: '+';
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -70px;
+      transform: translateY(-50%);
+      font-size: 32px;
+      font-weight: bolder;
+      color: #ffffff;
+      padding: 0px 12px;
+      background-color: #0d2e5e;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(0, 0, 0, .125);
+    }
+
+    #offers .swiper-slide:last-child::before  {
+      content: none;
+    }
   </style>
 
   @php
@@ -299,7 +323,7 @@
                 <div class="grid grid-cols-3 gap-3  mb-6">
                   <div class="col-span-3">
                     <div class="swiper productos-relacionados ">
-                      <div class="swiper-wrapper h-full">
+                      <div class="swiper-wrapper h-full" id="offers">
                         @foreach ($combo->products as $item)
                           <div class="swiper-slide w-full h-full col-span-1">
                             <div class="flex flex-col items-center justify-center col-span-1  shadow-lg py-2  pb-5">
