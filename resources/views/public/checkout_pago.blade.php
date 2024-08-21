@@ -135,7 +135,7 @@
                               </path>
                             </svg>
 
-                            <div class="w-full text-lg font-semibold">Envio express</div>
+                            <div class="w-full text-lg font-semibold">Delivery</div>
                             <div class="w-full text-sm">Sujeto a evaluacion</div>
                           </div>
                         </label>

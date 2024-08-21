@@ -98,7 +98,7 @@
         <span class="text-[#006BF6] text-base font-bold">S/. {{ $item->precio }}</span>
       @else
         <span class="text-[#006BF6] text-base font-bold">S/. {{ $item->descuento }}</span>
-        <span class="text-sm text-[#15294C] opacity-60 line-through">S/. {{ $item->precio }}</span>
+        <span class="text-sm text-[#15294C] opacity-80 line-through">S/. {{ $item->precio }}</span>
       @endif
     </div>
   </a>

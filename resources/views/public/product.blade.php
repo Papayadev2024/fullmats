@@ -134,7 +134,7 @@
                   <div class="content-center flex flex-row gap-2 items-center">
                     <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">S/
                       {{ $product->descuento }}</span>
-                    <span class="text-[#666666] font-Inter_Regular line-through text-sm">S/
+                    <span class="text-[#15294C] opacity-80 font-Inter_Regular line-through text-sm">S/
                       {{ $product->precio }}</span>
                   </div>
                   @php
