@@ -383,11 +383,11 @@
           const data = await res.json()
           if (!res.ok) throw new Error(data?.message ?? 'Ocurrio un error inesperado al generar el cargo')
 
-          Swal.fire({
+          /* Swal.fire({
             title: `Bien!!`,
             text: `Se ha generado el cargo por S/. ${data.data.amount.toFixed(2)}`,
             icon: "success",
-          });
+          }); */
 
           Local.delete('carrito')
 
