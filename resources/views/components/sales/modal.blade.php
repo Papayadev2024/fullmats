@@ -10,8 +10,8 @@
     <b class="block" id="address-tipo-comprobante"></b>
     <b class="block" id="n_document"></b>
     <h4 class="h4 mb-1">S/. <span id="invoice-price"></span></h4>
-    <span id="invoice-address-price"
-      class="w-max block mx-auto text-xs font-medium px-2.5 py-0.5 mb-1 rounded-full"></span>
+    {{--  <span id="invoice-address-price"
+      class="w-max block mx-auto text-xs font-medium px-2.5 py-0.5 mb-1 rounded-full"></span> --}}
   </div>
   <h4 class="h4 mb-2 mt-2">Orden #<span id="invoice-code"></span></h4>
   <p id="invoice-client" class="font-bold mb-2"></p>
@@ -103,15 +103,17 @@
   const isAdmin = {{ $isAdmin }};
   const openSaleModal = (data) => {
     const isFree = !Boolean(Number(data.address_price))
+    const envio = data.address_price
 
     $('#invoice-id').val(data.id)
     $('#address-tipo-comprobante').text(data.tipo_comprobante.toUpperCase())
     $('#n_document').text(data.doc_number)
     $('#razonS').text(data.razon_fact)
     $('#dirFact').text(data.direccion_fact)
-    $('#invoice-price').text(data.total)
-    $('#invoice-address-price').text(isFree ? 'Envio gratis' :
-      `S/. ${Number(data.address_price).toFixed(2)}`)
+    let totalInvoice = Number(data.total) + Number(envio)
+    $('#invoice-price').text(totalInvoice)
+    /* $('#invoice-address-price').text(isFree ? 'Envio gratis' :
+      `S/. ${Number(data.address_price).toFixed(2)}`) */
     if (isFree) $('#invoice-address-price')
       .addClass('bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300')
       .removeClass('bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300')
@@ -171,6 +173,20 @@
             </td>
           </tr>`)
         })
+        $('#invoice-products').append(`<tr class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              Envio 
+            </th>
+            <td class="px-6 py-4">
+              S/. ${envio}
+            </td>
+            <td class="px-6 py-4">
+              1
+            </td>
+            <td class="px-6 py-4">
+              S/. ${envio}
+            </td>
+          </tr>`)
       })
 
     $('#invoice-modal').modal('show')
