@@ -654,6 +654,9 @@
 
     PintarCarrito()
 
+    $(document).on('mouseenter', '.other-class', function() {
+      cerrar()
+    });
 
 
 
@@ -764,9 +767,7 @@
     }
   });
 
-  $(document).on('mouseenter', '.other-class', function() {
-    cerrar()
-  });
+
 
   function cerrar() {
     let padre = document.getElementById('productos-link-h');

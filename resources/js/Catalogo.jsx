@@ -8,6 +8,8 @@ import FilterPagination from './components/Filter/FilterPagination'
 import arrayJoin from './Utils/ArrayJoin'
 import ProductCard from './components/Product/ProductCard'
 import { set } from 'sode-extend-react/sources/cookies'
+import axios from 'axios'
+
 
 
 
@@ -49,8 +51,12 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
   useEffect(() => {
     getItems()
   }, [currentPage])
+  let abortController = new AbortController();
 
   const getItems = async () => {
+    abortController.abort('some');
+    abortController = new AbortController();
+    let signal = abortController.signal;
     const filterBody = []
 
     if (filter.maxPrice || filter.minPrice) {
@@ -140,18 +146,30 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
       filterBody.push(subcategoryFilter)
     }
 
-    const { status, result } = await Fetch('/api/products/paginate', {
-      method: 'POST',
-      body: JSON.stringify({
-        requireTotalCount: true,
-        filter: arrayJoin([...filterBody, ['products.visible', '=', true]], 'and'),
-        take,
-        skip: take * (currentPage - 1)
-      })
-    })
-    console.log('result', result)
+    // const { status, result } = await Fetch('/api/products/paginate', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     requireTotalCount: true,
+    //     filter: arrayJoin([...filterBody, ['products.visible', '=', true]], 'and'),
+    //     take,
+    //     skip: take * (currentPage - 1)
+    //   }),
+
+    // })
+    const { status, data: result } = await axios.post('/api/products/paginate', {
+      requireTotalCount: true,
+      filter: arrayJoin([...filterBody, ['products.visible', '=', true]], 'and'),
+      take,
+      skip: take * (currentPage - 1)
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      signal: signal
+    });
+
     is_proveedor.current = result?.is_proveedor ?? false
-    console.log('is_proveedor', is_proveedor.current)
+
     setItems(result?.data ?? [])
     setTotalCount(result?.totalCount ?? 0)
   }
