@@ -1,10 +1,27 @@
 <footer class="font-Inter_Medium bg-[#FFFFFF] mt-5">
   <style>
-    #modalPoliticasDev #modalTerminosCondiciones {
+    #modalPoliticasDev #modalTerminosCondiciones #modallinkPoliticasDatos {
+
+
+
+      ;
       height: 70vh;
       /* Establece la altura del modal al 70% de la altura de la ventana gráfica */
       overflow-y: auto;
       /* Permite el desplazamiento vertical si el contenido excede la altura del modal */
+    }
+
+    #modalPoliticasDev .prose,
+    #modalTerminosCondiciones .prose,
+    #modallinkPoliticasDatos .prose {
+      max-width: 100%;
+      text-align: justify;
+
+    }
+
+    .prose * {
+      margin-bottom: 0% !important;
+      margin-top: 0% !important;
     }
   </style>
 
@@ -110,7 +127,7 @@
     <!-- Modal body -->
     <div class="p-4 ">
       <h1 class="font-Inter_SemiBold">Terminos y condiciones</h1>
-      <p class="font-Inter_Regular p-2 prose">{!! $terminos->content ?? '' !!}</p>
+      <p class="font-Inter_Regular p-2 prose grid grid-cols-1">{!! $terminos->content ?? '' !!}</p>
     </div>
   </div>
   <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
@@ -118,7 +135,7 @@
     <div class="p-4 ">
       <h1 class="font-Inter_SemiBold">Politicas de devolucion</h1>
 
-      <p class="font-Inter_Regular p-2">{!! $politicas->content ?? '' !!}</p>
+      <p class="font-Inter_Regular p-2 w-full text-justify grid grid-cols-1 prose ">{!! $politicas->content ?? '' !!}</p>
 
 
     </div>
@@ -128,7 +145,7 @@
     <div class="p-4 ">
       <h1 class="font-Inter_SemiBold">Politicas de Datos</h1>
 
-      <p class="font-Inter_Regular  ">{!! $politicaDatos->content ?? '' !!}</p>
+      <p class="font-Inter_Regular  prose grid grid-cols-1">{!! $politicaDatos->content ?? '' !!}</p>
 
 
     </div>
