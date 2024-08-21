@@ -17,7 +17,7 @@ import axios from 'axios'
 const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_cat: selected_category, tag_id, subCatId }) => {
   const take = 12
   const [items, setItems] = useState([]);
-  const [filter, setFilter] = useState(selected_category ? { category_id: [selected_category] } : { 'txp.tag_id': [tag_id] });
+  const [filter, setFilter] = useState({});
   const [totalCount, setTotalCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
@@ -34,6 +34,28 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
       document.body.removeChild(script);
     };
   }, []);
+
+  useEffect(() => {
+    // Leer el parámetro 'tag' de la URL
+    const params = new URLSearchParams(window.location.search);
+    const tag = params.get('tag');
+
+    // Actualizar el filtro con el 'tag_id' si existe
+    if (tag) {
+      setFilter(prevFilter => ({
+        ...prevFilter,
+        'txp.tag_id': [tag]
+      }));
+    }
+
+    // Si hay una categoría seleccionada, agregarla al filtro
+    if (selected_category) {
+      setFilter(prevFilter => ({
+        ...prevFilter,
+        category_id: [selected_category]
+      }));
+    }
+  }, [selected_category]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -67,26 +89,42 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
           [
             ['precio', '>=', filter.minPrice],
             'or',
-            ['descuento', '>=', filter.minPrice]
+            [
+              ['descuento', '>=', filter.minPrice],
+              'and',
+              ['descuento', '<>', 0]
+            ]
           ],
           'and',
           [
             ['precio', '<=', filter.maxPrice],
             'or',
-            ['descuento', '<=', filter.maxPrice]
+            [
+              ['descuento', '<=', filter.maxPrice],
+              'and',
+              ['descuento', '<>', 0]
+            ]
           ]
         ]);
       } else if (filter.minPrice) {
         filterBody.push([
           ['precio', '>=', filter.minPrice],
           'or',
-          ['descuento', '>=', filter.minPrice]
+          [
+            ['descuento', '>=', filter.minPrice],
+            'and',
+            ['descuento', '<>', 0]
+          ]
         ]);
       } else if (filter.maxPrice) {
         filterBody.push([
           ['precio', '<=', filter.maxPrice],
           'or',
-          ['descuento', '<=', filter.maxPrice]
+          [
+            ['descuento', '<=', filter.maxPrice],
+            'and',
+            ['descuento', '<>', 0]
+          ]
         ]);
       }
     }
