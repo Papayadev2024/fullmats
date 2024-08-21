@@ -127,7 +127,7 @@
     <!-- Modal body -->
     <div class="p-4 ">
       <h1 class="font-Inter_SemiBold">Terminos y condiciones</h1>
-      <p class="font-Inter_Regular p-2 prose grid grid-cols-1">{!! $terminos->content ?? '' !!}</p>
+      <p class="font-Inter_Regular  prose grid grid-cols-1">{!! $terminos->content ?? '' !!}</p>
     </div>
   </div>
   <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
@@ -135,7 +135,7 @@
     <div class="p-4 ">
       <h1 class="font-Inter_SemiBold">Politicas de devolucion</h1>
 
-      <p class="font-Inter_Regular p-2 w-full text-justify grid grid-cols-1 prose ">{!! $politicas->content ?? '' !!}</p>
+      <p class="font-Inter_Regular  prose grid grid-cols-1 ">{!! $politicas->content ?? '' !!}</p>
 
 
     </div>
