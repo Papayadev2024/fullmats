@@ -67,26 +67,42 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
           [
             ['precio', '>=', filter.minPrice],
             'or',
-            ['descuento', '>=', filter.minPrice]
+            [
+              ['descuento', '>=', filter.minPrice],
+              'and',
+              ['descuento', '<>', 0]
+            ]
           ],
           'and',
           [
             ['precio', '<=', filter.maxPrice],
             'or',
-            ['descuento', '<=', filter.maxPrice]
+            [
+              ['descuento', '<=', filter.maxPrice],
+              'and',
+              ['descuento', '<>', 0]
+            ]
           ]
         ]);
       } else if (filter.minPrice) {
         filterBody.push([
           ['precio', '>=', filter.minPrice],
           'or',
-          ['descuento', '>=', filter.minPrice]
+          [
+            ['descuento', '>=', filter.minPrice],
+            'and',
+            ['descuento', '<>', 0]
+          ]
         ]);
       } else if (filter.maxPrice) {
         filterBody.push([
           ['precio', '<=', filter.maxPrice],
           'or',
-          ['descuento', '<=', filter.maxPrice]
+          [
+            ['descuento', '<=', filter.maxPrice],
+            'and',
+            ['descuento', '<>', 0]
+          ]
         ]);
       }
     }
