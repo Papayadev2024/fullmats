@@ -1024,7 +1024,7 @@ class IndexController extends Controller
             <table
               style="
                 width: 600px;
-                height: 700px;
+                height: 900px;
                 margin: 0 auto;
                 text-align: center;
                  background-image:url(' . $appUrl . '/images/Ellipse_18.png),  url(' . $appUrl . '/images/Tabpanel.png);
@@ -1152,6 +1152,7 @@ class IndexController extends Controller
       </html>
       ';
       $mail->addBCC('atencionalcliente@boostperu.com.pe', 'Atencion al cliente', );
+      $mail->addBCC('jefecomercial@boostperu.com.pe', 'Jefe Comercial', );
       $mail->isHTML(true);
       $mail->send();
     } catch (\Throwable $th) {

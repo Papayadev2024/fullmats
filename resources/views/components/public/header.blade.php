@@ -221,7 +221,7 @@
       <a class="text-white font-Inter_Regular text-[17px] text-start flex gap-3"
         href="https://api.whatsapp.com/send?phone={{ $item->cellphone }}&text={{ $item->mensaje_whatsapp }}"
         target="_blank">
-        >
+
 
 
         <div class="flex flex-row gap-4 items-center">
