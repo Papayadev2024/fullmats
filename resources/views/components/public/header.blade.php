@@ -270,38 +270,38 @@
           <nav id="menu-items"
             class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
             x-data="{ openCatalogo: false, openSubMenu: null }">
-            <a href="/" class="font-medium hover:opacity-75 ">
+            <a href="/" class="font-medium hover:opacity-75 other-class">
               <span class="underline-this">INICIO</span>
             </a>
-            <a href="/nosotros" class="font-medium hover:opacity-75 ">
+            <a href="/nosotros" class="font-medium hover:opacity-75 other-class">
               <span class="underline-this">NOSOTROS</span>
             </a>
 
-            <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium ">
+            <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class">
               <span class="underline-this">PRODUCTOS</span>
               <div id="productos-link-h" class="w-0"></div>
 
             </a>
 
             @if ($offerExists)
-              <a href="{{ route('Ofertas.jsx') }}" class="font-medium hover:opacity-75">
+              <a href="{{ route('Ofertas.jsx') }}" class="font-medium hover:opacity-75 other-class">
                 <span class="underline-this">OFERTAS</span>
               </a>
             @endif
 
             @if ($blog > 0)
-              <a href="/blog/0" class="font-medium hover:opacity-75 ">
+              <a href="/blog/0" class="font-medium hover:opacity-75 other-class">
                 <span class="underline-this">BLOG </span>
               </a>
             @endif
 
 
-            <a href="/contacto" class="font-medium hover:opacity-75  ">
+            <a href="/contacto" class="font-medium hover:opacity-75  other-class">
               <span class="underline-this">CONTACTO</span>
             </a>
             @if ($tags->count() > 0)
               @foreach ($tags as $item)
-                <a href="/catalogo?tag={{ $item->id }}" class="font-medium hover:opacity-75    "
+                <a href="/catalogo?tag={{ $item->id }}" class="font-medium hover:opacity-75    other-class"
                   style="color: {{ $item->color }}">
                   <span class="underline-this  ">
                     {{ $item->name }} </span>
@@ -762,6 +762,10 @@
         activeHover = true;
       }
     }
+  });
+
+  $(document).on('mouseenter', '.other-class', function() {
+    cerrar()
   });
 
   function cerrar() {
