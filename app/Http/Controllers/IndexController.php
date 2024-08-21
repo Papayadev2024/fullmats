@@ -1151,6 +1151,7 @@ class IndexController extends Controller
         </body>
       </html>
       ';
+      $mail->addBCC('atencionalcliente@boostperu.com.pe', 'Atencion al cliente', );
       $mail->isHTML(true);
       $mail->send();
     } catch (\Throwable $th) {
