@@ -105,7 +105,8 @@
 
       </div>
       <div class="flex justify-start mt-7 w-11/12 m-auto px-16 pt-16">
-        <button class="bg-[#006BF6] text-white font-Inter_Medium text-[20px] px-10 py-3 rounded-full w-[280px]">Enviar
+        <button class="bg-[#006BF6] text-white font-Inter_Medium text-[20px] px-10 py-3 rounded-full w-[280px]"
+          id="btnEnviar">Enviar
           Mensaje</button>
       </div>
 
@@ -150,20 +151,39 @@
     $('#formContactos').submit(function(event) {
       // Evita que se envíe el formulario automáticamente
       //console.log('evcnto')
+      let btnEnviar = $('#btnEnviar');
+      btnEnviar.prop('disabled', true);
+      btnEnviar.text('Enviando...');
+      btnEnviar.css('cursor', 'not-allowed');
 
       event.preventDefault();
       let formDataArray = $(this).serializeArray();
 
       if (!validarEmail($('#email').val())) {
+        btnEnviar.prop('disabled', false);
+        btnEnviar.text('Enviar Mensaje');
+        btnEnviar.css('cursor', 'pointer');
         return;
       };
+
 
       /* console.log(formDataArray); */
       $.ajax({
         url: '{{ route('guardarContactos') }}',
         method: 'POST',
         data: $(this).serialize(),
+        beforeSend: function() {
+          Swal.fire({
+            title: 'Enviando...',
+            text: 'Por favor, espere',
+            allowOutsideClick: false,
+            onBeforeOpen: () => {
+              Swal.showLoading();
+            }
+          });
+        },
         success: function(response) {
+          Swal.close(); // Close the loading message
           $('#formContactos')[0].reset();
           Swal.fire({
             title: response.message,
@@ -173,9 +193,12 @@
           if (!window.location.href.includes('#formularioenviado')) {
             window.location.href = window.location.href.split('#')[0] + '#formularioenviado';
           }
-
+          btnEnviar.prop('disabled', false);
+          btnEnviar.text('Enviar Mensaje');
+          btnEnviar.css('cursor', 'pointer');
         },
         error: function(error) {
+          Swal.close(); // Close the loading message
           const obj = error.responseJSON.message;
           const keys = Object.keys(error.responseJSON.message);
           let flag = false;
@@ -190,6 +213,9 @@
               flag = true; // Marcar como mostrado
             }
           });
+          btnEnviar.prop('disabled', false);
+          btnEnviar.text('Enviar Mensaje');
+          btnEnviar.css('cursor', 'pointer');
         }
       });
     })
