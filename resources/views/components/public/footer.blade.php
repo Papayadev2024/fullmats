@@ -37,32 +37,32 @@
 
       <div class="flex flex-row gap-4 text-[#333333] mt-6 pt-2">
         @if ($datosgenerales->facebook)
-          <a href="{{ $datosgenerales->facebook }}">
+          <a href="{{ $datosgenerales->facebook }}" target="_blank">
             <i class="fa-brands fa-facebook fa-2xl"></i>
           </a>
         @endif
         @if ($datosgenerales->instagram)
-          <a href="{{ $datosgenerales->instagram }}">
+          <a href="{{ $datosgenerales->instagram }}" target="_blank">
             <i class="fa-brands fa-instagram fa-2xl"></i>
           </a>
         @endif
         @if ($datosgenerales->linkedin)
-          <a href="{{ $datosgenerales->linkedin }}">
+          <a href="{{ $datosgenerales->linkedin }}" target="_blank">
             <i class="fa-brands fa-linkedin fa-2xl"></i>
           </a>
         @endif
         @if ($datosgenerales->tiktok)
-          <a href="{{ $datosgenerales->tiktok }}">
+          <a href="{{ $datosgenerales->tiktok }}" target="_blank">
             <i class="fa-brands fa-tiktok fa-2xl"></i>
           </a>
         @endif
         @if ($datosgenerales->twitter)
-          <a href="{{ $datosgenerales->twitter }}">
+          <a href="{{ $datosgenerales->twitter }}" target="_blank">
             <i class="fa-brands fa-twitter fa-2xl"></i>
           </a>
         @endif
         @if ($datosgenerales->youtube)
-          <a href="{{ $datosgenerales->youtube }}">
+          <a href="{{ $datosgenerales->youtube }}" target="_blank">
             <i class="fa-brands fa-youtube fa-2xl"></i>
           </a>
         @endif
