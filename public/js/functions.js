@@ -484,7 +484,8 @@ function calcularTotal() {
   })
   const suma = total.reduce((total, elemento) => total + elemento, 0);
 
-  $('#itemsTotal').text(`S/. ${suma} `)
+  $('#itemsTotal').text(`S/. ${suma.toFixed(2)} `)
+  console.log("tofixed  ", suma.toFixed(2))
 
 }
 

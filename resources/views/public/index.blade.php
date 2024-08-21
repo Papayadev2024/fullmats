@@ -197,7 +197,7 @@
       })
       const suma = total.reduce((total, elemento) => total + elemento, 0);
 
-      $('#itemsTotal').text(`S/. ${suma} `)
+      $('#itemsTotal').text(`S/. ${suma.toFixed(2)} `)
 
     }
     $(document).ready(function() {
