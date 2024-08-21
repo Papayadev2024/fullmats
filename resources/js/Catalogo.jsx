@@ -16,7 +16,7 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
   const take = 12
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = "https://cdn.sode.me/extends/notify.extend.min.js";
+    script.src = "js/notify.extend.min.js";
     script.async = true;
     document.body.appendChild(script);
 
