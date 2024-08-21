@@ -174,7 +174,7 @@
 
 
 
-            <div class="font-medium text-base font-Inter_Regular w-full mt-4 text-[#444]">
+            <div class="font-medium text-base font-Inter_Regular w-full mt-4 text-[#444] text-justify">
               {!! $product->description !!}
             </div>
           </div>
