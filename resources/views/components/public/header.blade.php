@@ -277,7 +277,7 @@
               <span class="underline-this">NOSOTROS</span>
             </a>
 
-            <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium other-class">
+            <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium ">
               <span class="underline-this">PRODUCTOS</span>
               <div id="productos-link-h" class="w-0"></div>
 
@@ -654,9 +654,7 @@
 
     PintarCarrito()
 
-    $(document).on('mouseenter', '.other-class', function() {
-      cerrar()
-    });
+
 
 
 
@@ -715,6 +713,13 @@
   });
 </script>
 <script>
+  $(document).ready(function() {
+    $(document).on('mouseenter', '.other-class', function() {
+      console.log('detected hover');
+      cerrar()
+    });
+  })
+
   const categorias = @json($categorias);
   var activeHover = false
   document.getElementById('productos-link').addEventListener('mouseenter', function(event) {
@@ -770,6 +775,7 @@
 
 
   function cerrar() {
+    console.log('cerrando')
     let padre = document.getElementById('productos-link-h');
     activeHover = false
     padre.innerHTML = '';
