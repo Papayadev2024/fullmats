@@ -192,7 +192,7 @@ class BlogController extends Controller
                       <span ></span>
                     </p>
                     <img src="'. $appUrl .'/'. $post->url_image . $post->name_image.'" alt="Boost_Peru"  style="
-                    margin: auto;
+                    margin: auto; width: 500px; height: 300px; object-fit: cover; border-radius: 10px; margin-top: 20px; margin-bottom: 20px;
                   "/>
                   </td>
                 </tr>
