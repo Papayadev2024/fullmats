@@ -151,15 +151,22 @@
               <div class="flex flex-row gap-3 content-center items-center mt-4">
                 @if ($product->descuento == 0)
                   <div class="content-center flex flex-row gap-2 items-center">
-                    <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">S/
+                    <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">Precio Regular S/
                       {{ $product->precio }}</span>
                   </div>
                 @else
-                  <div class="content-center flex flex-row gap-2 items-center">
-                    <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">S/
-                      {{ $product->descuento }}</span>
-                    <span class="text-[#15294C] opacity-80 font-Inter_Regular line-through text-sm">S/
-                      {{ $product->precio }}</span>
+                  <div class="content-start flex flex-col gap-2 ">
+                    <div>
+                      <span class="font-Inter_SemiBold text-2xl gap-2 text-[#006BF6]">Precio Promo: S/
+                        {{ $product->descuento }}</span>
+
+                    </div>
+                    <div>
+                      <span>Precio Regular</span>
+                      <span class="text-[#15294C] opacity-80 font-Inter_Regular line-through text-sm"> S/
+                        {{ $product->precio }}</span>
+                    </div>
+
                   </div>
                   @php
                     $descuento = round((($product->precio - $product->descuento) * 100) / $product->precio);
