@@ -99,9 +99,9 @@
     <section class="w-full px-[5%] py-7 lg:py-14" data-aos="fade-up" data-aos-offset="150">
       <div class="grid grid-cols-1 md:grid-cols-2 w-full">
         <div class=" flex flex-col md:flex-col  w-full gap-3 px-10">
-          <h1 class="text-[22px] md:text-3xl font-semibold font-Inter_Medium  text-[#006BF6]">Nuestro sello de Garantia
-          </h1>
-          <h1 class="text-[48px] md:text-3xl font-semibold font-Inter_Medium  text-[#333333] mt-3">
+          {{-- <h1 class="text-[22px] md:text-3xl font-semibold font-Inter_Medium  text-[#006BF6]">Nuestro sello de Garantia
+          </h1> --}}
+          <h1 class="text-[48px] md:text-3xl font-semibold font-Inter_Medium  text-[#006BF6] mt-3">
 
             {{ $nosotros[1]->titulo }}
           </h1>
