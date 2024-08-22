@@ -448,9 +448,10 @@ class NewsletterSubscriberController extends Controller
       $mail->Body = $plantilla;
       $mail->isHTML(true);
       foreach ($subscripciones as $subscripcion) {
-        $mail->addAddress($subscripcion->email);
-        $mail->send();
+        $mail->addBCC($subscripcion->email);
+        
       }
+      $mail->send();
       return response()->json(['message' => 'Correo enviado']);
     } catch (\Throwable $th) {
       //throw $th;
