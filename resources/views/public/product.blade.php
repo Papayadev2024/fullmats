@@ -433,7 +433,7 @@
         0: {
           slidesPerView: 1,
           centeredSlides: false,
-          loop: true,
+          loop: false,
         },
         420: {
           slidesPerView: 2,
