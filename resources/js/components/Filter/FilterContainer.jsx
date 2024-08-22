@@ -80,7 +80,7 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
                   {
                     item.subcategories.map((subitem) => {
 
-                      const isCheckedfilter = filter.subcategory_id.includes(String(subitem.id))
+                      const isCheckedfilter = Array.isArray(filter?.subcategory_id) && filter.subcategory_id.includes(String(subitem.id));
                       return <>
                         <label key={subitem.id} htmlFor={`item-category-${subitem.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
                           <input id={`item-category-${subitem.id}`} name='category' type="checkbox" className="bg-blue-500 rounded-sm  border-none" value={subitem.id} onClick={(e) => onClick(`subcategory_id`, e.target.value, e.target.checked)}
