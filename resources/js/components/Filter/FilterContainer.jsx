@@ -79,7 +79,7 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
                 <div className="p-4 border border-t-0 border-gray-200 space-y-4">
                   {
                     item.subcategories.map((subitem) => {
-                      { console.log(subitem.id, filter.subcategory_id.includes(String(subitem.id))) }
+
                       const isCheckedfilter = filter.subcategory_id.includes(String(subitem.id))
                       return <>
                         <label key={subitem.id} htmlFor={`item-category-${subitem.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
