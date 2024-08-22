@@ -101,7 +101,7 @@
         <div class=" flex flex-col md:flex-col  w-full gap-3 px-10">
           {{-- <h1 class="text-[22px] md:text-3xl font-semibold font-Inter_Medium  text-[#006BF6]">Nuestro sello de Garantia
           </h1> --}}
-          <h1 class="text-[48px] md:text-3xl font-semibold font-Inter_Medium  text-[#006BF6] mt-3">
+          <h1 class="text-[48px] md:text-3xl font-semibold font-Inter_Medium  text-[#006BF6] mb-3">
 
             {{ $nosotros[1]->titulo }}
           </h1>
