@@ -258,9 +258,9 @@
           alt="menu hamburguesa" onclick="show()" />
       </div>
 
-      <div class="w-auto">
+      <div class="w-auto min-w-[110px]">
         <a href="#">
-          <img id="logo-boostperu" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
+          <img id="logo-boostperu" class="w-[170px]  " {{-- public\images\svg\LOGO2.png --}}
             src="{{ asset($isIndex ? 'images/svg/LOGO2.png' : 'images/svg/LOGO2.png') }}" alt="boostperu" />
         </a>
       </div>
