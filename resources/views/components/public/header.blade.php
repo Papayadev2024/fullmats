@@ -132,34 +132,34 @@
             @if (count($categorias) > 0)
 
 
-              @foreach ($categorias as $item)
-                <a href="/catalogo/{{ $item->id }}"
-                  class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300"
-                  @click="openCategories[{{ $item->id }}] = !openCategories[{{ $item->id }}]">
-                  <span>{{ $item->name }}</span>
-                  {{--  <svg class="w-5 h-5 transform transition-transform"
-                            :class="{ 'rotate-180': openCategories[{{ $item->id }}] }" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                          </svg> --}}
-                </a>
+              <div x-data="{ openCategories: {} }">
+                @foreach ($categorias as $item)
+                  <div
+                    class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300"
+                    @click="openCategories[{{ $item->id }}] = !openCategories[{{ $item->id }}]">
+                    <span>{{ $item->name }}</span>
+                    <svg class="w-5 h-5 transform transition-transform"
+                      :class="{ 'rotate-180': openCategories[{{ $item->id }}] }" fill="none"
+                      stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </div>
 
-                {{-- <div x-show="openCategories[{{ $item->id }}]"
-                        class="p-4 border border-t-0 border-gray-200 space-y-4">
-                        @foreach ($item->subcategories as $subitem)
-                          <label for="item-category-{{ $subitem->id }}"
-                            class="text-custom-border flex flex-row gap-2 items-center cursor-pointer">
-                            <a href="/catalogo/{{ $subitem->id }}" id="item-category-{{ $subitem->id }}"
-                              name="category"
-                              class=" rounded-sm border-none text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300"
-                              value="{{ $subitem->id }}">
-                              {{ $subitem->name }}
-                            </a>
-                          </label>
-                        @endforeach
-                      </div> --}}
-              @endforeach
+                  <div x-show="openCategories[{{ $item->id }}]" class="p-2  border-t-0 border-gray-200 ">
+                    @foreach ($item->subcategories as $subitem)
+                      <label for="item-category-{{ $subitem->id }}"
+                        class="text-custom-border flex flex-row gap-2 items-center cursor-pointer">
+                        <a href="/catalogo?subcategoria={{ $subitem->id }}" id="item-category-{{ $subitem->id }}"
+                          name="category"
+                          class="rounded-sm border-none text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300"
+                          value="{{ $subitem->id }}">
+                          {{ $subitem->name }}
+                        </a>
+                      </label>
+                    @endforeach
+                  </div>
+                @endforeach
+              </div>
 
             @endif
           </li>
