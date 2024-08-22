@@ -358,7 +358,7 @@
             <span id="itemsCount" class="text-white"></span>
           </div> --}}
 
-        <div class="relative inline-block cursor-pointer justify-center ">
+        <div class="relative inline-block cursor-pointer justify-center min-w-7">
           <button onclick="openSearch()" class="flex justify-center items-center">
             <img src="{{ asset('images/svg/search_boost.svg') }}"
               class="bg-white rounded-lg max-w-full h-auto cursor-pointer" />
@@ -367,7 +367,7 @@
         </div>
 
 
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center min-w-[38px]">
           <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
             <span id="itemsCount"
               class="bg-[#EB5D2C] text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>
