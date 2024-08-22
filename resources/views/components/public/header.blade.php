@@ -268,7 +268,7 @@
       <div class="hidden lg:flex items-center justify-center ">
         <div>
           <nav id="menu-items"
-            class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
+            class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-6 items-center justify-center "
             x-data="{ openCatalogo: false, openSubMenu: null }">
             <a href="/" class="font-medium hover:opacity-75 other-class">
               <span class="underline-this">INICIO</span>
@@ -325,7 +325,8 @@
               @click.prevent="open = !open" :aria-expanded="open">
               <div class="flex items-center truncate">
                 <span id="username"
-                  class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200 text-[#272727] ">{{ Auth::user()->name }}</span>
+                  class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200 text-[#272727] ">
+                  {{ explode(' ', Auth::user()->name)[0] }}</span>
                 <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
                   <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
                 </svg>
