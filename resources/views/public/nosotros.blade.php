@@ -19,6 +19,12 @@
     margin-bottom: 0 !important;
 
   }
+
+  @media (max-width: 600px) {
+    .fixedWhastapp {
+      right: 116px !important;
+    }
+  }
 </style>
 
 @section('content')

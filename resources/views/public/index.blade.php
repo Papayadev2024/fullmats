@@ -13,9 +13,12 @@
   });
 @endphp
 <style>
-  .fixedWhastapp {
-    right: 50px !important;
+  @media (max-width: 600px) {
+    .fixedWhastapp {
+      right: 13px !important;
+    }
   }
+
 
 
   @media (max-width: 400px) {

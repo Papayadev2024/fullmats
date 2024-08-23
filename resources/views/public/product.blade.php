@@ -22,7 +22,7 @@
     }
 
     .fixedWhastapp {
-      right: 128px !important;
+      right: 2vw !important;
     }
 
     .clase_table td {

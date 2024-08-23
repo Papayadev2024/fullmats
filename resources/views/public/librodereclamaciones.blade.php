@@ -7,7 +7,7 @@
 
 <style>
   .fixedWhastapp {
-    right: 128px !important;
+    right: 2vw !important;
   }
 </style>
 
