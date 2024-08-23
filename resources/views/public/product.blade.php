@@ -44,28 +44,32 @@
       z-index: 20;
     }
 
-    #offers .swiper-slide {
-      margin-right: 100px !important;
-    }
 
-    #offers .swiper-slide::before {
-      content: '+';
-      display: block;
-      position: absolute;
-      top: 50%;
-      right: -70px;
-      transform: translateY(-50%);
-      font-size: 32px;
-      font-weight: bolder;
-      color: #ffffff;
-      padding: 0px 12px;
-      background-color: #0d2e5e;
-      border-radius: 50%;
-      box-shadow: 0 0 5px rgba(0, 0, 0, .125);
-    }
+    @media (min-width: 600px) {
+      #offers .swiper-slide {
+        margin-right: 100px !important;
+      }
 
-    #offers .swiper-slide:last-child::before {
-      content: none;
+      #offers .swiper-slide::before {
+        content: '+';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: -70px;
+        transform: translateY(-50%);
+        font-size: 32px;
+        font-weight: bolder;
+        color: #ffffff;
+        padding: 0px 12px;
+        background-color: #0d2e5e;
+        border-radius: 50%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .125);
+      }
+
+      #offers .swiper-slide:last-child::before {
+        content: none;
+      }
+
     }
   </style>
 
