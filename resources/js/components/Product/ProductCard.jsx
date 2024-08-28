@@ -108,7 +108,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
               </div></>
 
             ) :
-            (<div className="flex content-between flex-row gap-4 items-center justify-between">
+            (<div className="flex content-between flex-row gap-4 items-center justify-center text-center">
               <span className="text-[#006BF6] text-[16.45px] font-bold">{item.descuento > 0 ? <div className='flex flex-col justify-center items-center'>
                 <span className='text-sm font-light'>Precio promo</span>
                 <span>S/. {item.descuento}</span>
