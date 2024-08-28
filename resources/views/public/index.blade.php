@@ -145,7 +145,7 @@
 
     @if ($benefit->count() > 0)
       <section class="py-10 lg:py-13 bg-[#F8F8F8] w-full px[5%]" data-aos="zoom-out-right">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 ">
+        <div class="grid grid-cols-1  gap-6 @if ($benefit < 4) md:grid-cols-3 @else md:grid-cols-4 @endif">
           @foreach ($benefit as $item)
             <div class="flex flex-col items-center w-full gap-1 justify-center text-center px-[10%] xl:px-[18%]">
               <img src="{{ asset($item->icono) }}" alt="">
