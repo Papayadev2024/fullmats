@@ -111,10 +111,10 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
             (<div className="w-full flex content-between flex-row gap-4 items-center justify-center text-center">
               <span className="text-[#006BF6] text-[16.45px] font-bold">{item.descuento > 0 ? <div className='flex flex-col justify-center items-center'>
                 <span className='text-sm font-light'>Precio Promo</span>
-                <span>S/. {item.descuento}</span>
+                <span className=''>S/. {item.descuento}</span>
               </div> : <div className='flex flex-col justify-center items-center'>
                 <span className='text-sm font-light'>Precio Regular</span>
-                <span className='text-sm'>S/. {item.precio}</span>
+                <span className=''>S/. {item.precio}</span>
               </div>
               }
               </span>
@@ -122,7 +122,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
                 <>
                   <div className='flex flex-col items-center'>
                     <span className='text-sm text-[#15294C] font-light'>Precio Regular</span>
-                    <span className="text-sm text-[#15294C] opacity-80 line-through"> S/. {item.precio}</span>
+                    <span className=" text-[#15294C] opacity-80 line-through"> S/. {item.precio}</span>
                   </div>
 
 
