@@ -601,7 +601,7 @@
           "producto": nombre,
           "descuento": data.descuento,
           "precio": data.precio,
-          "imagen": data.imagen ?? '/images/img/noimagen.jpg',
+          "imagen": data.imagen ?? `${appUrl}/images/img/noimagen.jpg`,
           "cantidad": 1,
           "color": null
         }]
