@@ -122,7 +122,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
                 <>
                   <div className='flex flex-col items-center'>
                     <span className='text-sm font-light'>Precio Regular</span>
-                    <span className="text-sm text-[#15294C] opacity-80 line-through"> S/. {item.precio}</span>
+                    <span className="text-sm text-[#15294C] opacity-80 line-through font-light"> S/. {item.precio}</span>
                   </div>
 
 
