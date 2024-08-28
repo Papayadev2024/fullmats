@@ -79,7 +79,7 @@ class IndexController extends Controller
     $popups = Popup::where('status', '=', 1)->where('visible', '=', 1)->get();
 
     $general = General::all();
-    $benefit = Strength::where('status', '=', 1)->take(3)->get();
+    $benefit = Strength::where('status', '=', 1)->take(4)->get();
     $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
     $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
