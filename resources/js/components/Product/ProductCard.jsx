@@ -88,7 +88,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
       </div>
       <a href={`/producto/${item.id}`} className='p-2'>
         <Tippy content={item.producto}>
-          <h2 className="block text-[17px] text-center overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 2, textOverflow: 'ellipsis', WebkitBoxOrient: 'vertical', height: '51px' }}>
+          <h2 className="block text-[17px] text-center overflow-hidden font-bold" style={{ display: '-webkit-box', WebkitLineClamp: 2, textOverflow: 'ellipsis', WebkitBoxOrient: 'vertical', height: '51px' }}>
             {item.producto}
           </h2>
         </Tippy>
