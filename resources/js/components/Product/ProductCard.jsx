@@ -47,7 +47,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
               src={item.imagen ? `/${item.imagen}` : '/images/img/noimagen.jpg'}
               alt={item.name}
               onError={(e) => e.target.src = '/images/img/noimagen.jpg'}
-              className={`transition ease-out duration-300 transform w-full aspect-square object-${category.fit} reative inset-0`}
+              className={`transition ease-out duration-300 transform w-full aspect-square object-cover inset-0`}
             />
 
             {item.imagen_ambiente && (
@@ -88,7 +88,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
       </div>
       <a href={`/producto/${item.id}`} className='p-2'>
         <Tippy content={item.producto}>
-          <h2 className="block text-[17px] text-center overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 2, textOverflow: 'ellipsis', WebkitBoxOrient: 'vertical', height: '51px' }}>
+          <h2 className="block text-[17px] text-center overflow-hidden font-bold" style={{ display: '-webkit-box', WebkitLineClamp: 2, textOverflow: 'ellipsis', WebkitBoxOrient: 'vertical', height: '51px' }}>
             {item.producto}
           </h2>
         </Tippy>

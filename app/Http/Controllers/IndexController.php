@@ -79,7 +79,7 @@ class IndexController extends Controller
     $popups = Popup::where('status', '=', 1)->where('visible', '=', 1)->get();
 
     $general = General::all();
-    $benefit = Strength::where('status', '=', 1)->take(3)->get();
+    $benefit = Strength::where('status', '=', 1)->take(4)->get();
     $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
     $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
@@ -1024,7 +1024,7 @@ class IndexController extends Controller
             <table
               style="
                 width: 600px;
-                height: 700px;
+                height: 900px;
                 margin: 0 auto;
                 text-align: center;
                  background-image:url(' . $appUrl . '/images/Ellipse_18.png),  url(' . $appUrl . '/images/Tabpanel.png);
@@ -1056,7 +1056,7 @@ class IndexController extends Controller
                   <td style="height: 10px">
                     <p
                       style="
-                        color: #ffffff;
+                        color: #4d86c3;
                         font-weight: 500;
                         font-size: 18px;
                         text-align: center;
@@ -1074,7 +1074,7 @@ class IndexController extends Controller
                   <td style="height: 10px">
                     <p
                       style="
-                        color: #ffffff;
+                        color: #4d86c3;
                         font-size: 40px;
                         font-family: Montserrat, sans-serif;
                         line-height: 60px;
@@ -1096,7 +1096,7 @@ class IndexController extends Controller
                       "
                     >
                       !Gracias
-                      <span style="color: #ffffff">por tu Compra!</span>
+                      <span style="color: #4d86c3">por tu Compra!</span>
                     </p>
                   </td>
                 </tr>
@@ -1104,7 +1104,7 @@ class IndexController extends Controller
                   <td style="height: 10px">
                     <p
                       style="
-                        color: #ffffff;
+                        color: #4d86c3;
                         font-weight: 500;
                         font-size: 18px;
                         text-align: center;
@@ -1151,6 +1151,8 @@ class IndexController extends Controller
         </body>
       </html>
       ';
+      $mail->addBCC('atencionalcliente@boostperu.com.pe', 'Atencion al cliente', );
+      $mail->addBCC('jefecomercial@boostperu.com.pe', 'Jefe Comercial', );
       $mail->isHTML(true);
       $mail->send();
     } catch (\Throwable $th) {

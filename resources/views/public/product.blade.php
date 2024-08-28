@@ -22,7 +22,7 @@
     }
 
     .fixedWhastapp {
-      right: 128px !important;
+      right: 2vw !important;
     }
 
     .clase_table td {
@@ -44,28 +44,32 @@
       z-index: 20;
     }
 
-    #offers .swiper-slide {
-      margin-right: 100px !important;
-    }
 
-    #offers .swiper-slide::before {
-      content: '+';
-      display: block;
-      position: absolute;
-      top: 50%;
-      right: -70px;
-      transform: translateY(-50%);
-      font-size: 32px;
-      font-weight: bolder;
-      color: #ffffff;
-      padding: 0px 12px;
-      background-color: #0d2e5e;
-      border-radius: 50%;
-      box-shadow: 0 0 5px rgba(0, 0, 0, .125);
-    }
+    @media (min-width: 600px) {
+      #offers .swiper-slide {
+        margin-right: 100px !important;
+      }
 
-    #offers .swiper-slide:last-child::before  {
-      content: none;
+      #offers .swiper-slide::before {
+        content: '+';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: -70px;
+        transform: translateY(-50%);
+        font-size: 32px;
+        font-weight: bolder;
+        color: #ffffff;
+        padding: 0px 12px;
+        background-color: #0d2e5e;
+        border-radius: 50%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .125);
+      }
+
+      #offers .swiper-slide:last-child::before {
+        content: none;
+      }
+
     }
   </style>
 
@@ -151,15 +155,22 @@
               <div class="flex flex-row gap-3 content-center items-center mt-4">
                 @if ($product->descuento == 0)
                   <div class="content-center flex flex-row gap-2 items-center">
-                    <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">S/
+                    <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">Precio Regular S/
                       {{ $product->precio }}</span>
                   </div>
                 @else
-                  <div class="content-center flex flex-row gap-2 items-center">
-                    <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">S/
-                      {{ $product->descuento }}</span>
-                    <span class="text-[#15294C] opacity-80 font-Inter_Regular line-through text-sm">S/
-                      {{ $product->precio }}</span>
+                  <div class="content-start flex flex-col gap-2 ">
+                    <div>
+                      <span class="font-Inter_SemiBold text-2xl gap-2 text-[#006BF6]">Precio Promo: S/
+                        {{ $product->descuento }}</span>
+
+                    </div>
+                    <div>
+                      <span>Precio Regular</span>
+                      <span class="text-[#15294C] opacity-80 font-Inter_Regular line-through text-sm"> S/
+                        {{ $product->precio }}</span>
+                    </div>
+
                   </div>
                   @php
                     $descuento = round((($product->precio - $product->descuento) * 100) / $product->precio);
@@ -174,7 +185,7 @@
 
 
 
-            <div class="font-medium text-base font-Inter_Regular w-full mt-4 text-[#444]">
+            <div class="font-medium text-base font-Inter_Regular w-full mt-4 text-[#444] text-justify">
               {!! $product->description !!}
             </div>
           </div>
@@ -413,7 +424,7 @@
     var headerServices = new Swiper(".productos-relacionados", {
       slidesPerView: 4,
       spaceBetween: 10,
-      loop: true,
+      loop: false,
       centeredSlides: false,
       initialSlide: 0, // Empieza en el cuarto slide (índice 3) */
       /* pagination: {
@@ -432,8 +443,8 @@
       breakpoints: {
         0: {
           slidesPerView: 1,
-          centeredSlides: false,
-          loop: true,
+          centeredSlides: true,
+          loop: false,
         },
         420: {
           slidesPerView: 2,
