@@ -108,7 +108,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
               </div></>
 
             ) :
-            (<div className="flex content-between flex-col gap-4 items-center justify-center min-h-[65px]">
+            (<div className="flex content-between flex-col gap-4 items-center justify-start " style={{ minHeight: '65px' }}>
               <span className="text-[#006BF6] text-[16.45px] font-bold">{item.descuento > 0 ? `Precio Promo: S/.  ${item.descuento}` : `Precio Regular: S/. ${item.precio}`}</span>
               {item.descuento > 0 && (
                 <>
