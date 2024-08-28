@@ -47,7 +47,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
               src={item.imagen ? `/${item.imagen}` : '/images/img/noimagen.jpg'}
               alt={item.name}
               onError={(e) => e.target.src = '/images/img/noimagen.jpg'}
-              className={`transition ease-out duration-300 transform w-full h-[300px] object-${category.fit} absolute inset-0`}
+              className={`transition ease-out duration-300 transform w-full h-[300px] object-cover absolute inset-0`}
             />
 
             {item.imagen_ambiente && (
@@ -108,7 +108,7 @@ const ProductCard = ({ item, width, bgcolor, is_reseller }) => {
               </div></>
 
             ) :
-            (<div className="flex content-between flex-col gap-4 items-center justify-center">
+            (<div className="flex content-between flex-col gap-4 items-center justify-center min-h-[65px]">
               <span className="text-[#006BF6] text-[16.45px] font-bold">{item.descuento > 0 ? `Precio Promo: S/.  ${item.descuento}` : `Precio Regular: S/. ${item.precio}`}</span>
               {item.descuento > 0 && (
                 <>
