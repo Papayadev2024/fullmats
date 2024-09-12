@@ -22,9 +22,8 @@
           <table id="tabladatos" class="display text-lg" style="width:100%">
             <thead>
               <tr>
-                <th>Titulo </th>
                 <th>Pregunta</th>
-                <th>Respuesta</th>
+                
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>
@@ -33,9 +32,9 @@
 
               @foreach ($faqs as $item)
                 <tr>
-                  <td>{{ $item->titulo }}</td>
+
                   <td>{{ $item->pregunta }}</td>
-                  <td>{{ $item->respuesta }}</td>
+                  
 
                   <td>
                     <form method="POST" action="">
@@ -75,9 +74,8 @@
             </tbody>
             <tfoot>
               <tr>
-                <th>Titulo </th>
+              
                 <th>Pregunta</th>
-                <th>Respuesta</th>
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>

@@ -95,332 +95,285 @@
     }
 
   @endphp
-  @component('components.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
-  @endcomponent
+  {{-- @component('components.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
+  @endcomponent --}}
   <main class="font-Inter_Regular" id="mainSection">
-    @csrf
-    <section class="w-full px-[5%] md:px-[8%]">
-      <div class="grid grid-cols-1 2md:grid-cols-2 gap-10 md:gap-16 pt-8 lg:pt-16">
-        {{-- grid grid-col-1 sm:grid-cols-3  gap-6  mt-5 h-max w-6/12 --}}
-        {{-- flex flex-col justify-center items-center gap-5 h-max w-6/12 --}}
-        <div class="flex flex-col justify-start items-center gap-5">
-          {{-- <div class="col-span-3 h-max md:h-[400px] 2xl:h-[580px]  " id="containerProductosdetail">
-                    <img class="w-full h-max md:h-[400px] 2xl:h-[580px] object-cover" src="{{ asset($product->imagen) }}"
-                        alt="">
-                </div> --}}
-          <div id="containerProductosdetail"
-            class="w-full flex justify-center items-center h-[330px] 2xs:h-[400px] sm:h-[450px] xl:h-[550px] rounded-3xl overflow-hidden">
-            <img src="{{ asset($product->imagen) }}" alt="computer" class="w-full h-full object-contain" data-aos="fade-up"
-              data-aos-offset="150" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';">
-          </div>
-          <x-product-slider :product="$product" />
-        </div>
-        <div class="flex flex-col gap-6  mt-4">
-          <div class="flex flex-col gap-3">
-            <h3 class="font-Inter_Medium text-4xl text-[#333] font-normal tracking-tight"> {{ $product->producto }}</h3>
-            <p class="font-Inter_Regular text-base gap-2">Disponibilidad:
-              @if ($product->stock == 0)
-                <span class="text-[#f6000c]">No hay Stock disponible</span>
-              @else
-                <span class="text-[#006BF6]">Quedan {{ round((float) $product->stock) }} en stock</span>
-              @endif
-            </p>
-            <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-              <div class="bg-blue-600 h-1.5 rounded-full" style="width: {{ $stock }}%"></div>
-            </div>
-          </div>
+        @csrf
+        <section class="w-full px-[5%] md:px-[8%]">
+            <div class="grid grid-cols-1 2md:grid-cols-2 gap-10 md:gap-16 pt-8 lg:pt-16">
 
-          <div class="flex flex-col gap-3 ">
-            @if ($product->sku)
-              <p class="font-Inter_Regular text-[15.34px] gap-2 text-[#666666] mt-2">SKU: {{ $product->sku }}</p>
-            @endif
-
-
-            @if ($is_reseller)
-              <div class="flex flex-col gap-3 content-start items-start mt-4">
-
-                <div class="content-center flex flex-row gap-2 items-center ">
-                  <span class="font-Inter_Regular text-sm gap-2 text-[#666666] line-through">S/
-                    {{ $product->descuento }}</span>
-                  <span class="text-[#666666] font-Inter_Regular line-through text-sm">S/
-                    {{ $product->precio }}</span>
-                </div>
-                <div class="content-center flex flex-row gap-2 items-center ">
-                  Reseller:
-                  <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">S/
-                    {{ $product->precio_reseller }}</span>
-                </div>
-              </div>
-            @else
-              <div class="flex flex-row gap-3 content-center items-center mt-4">
-                @if ($product->descuento == 0)
-                  <div class="content-center flex flex-row gap-2 items-center">
-                    <span class="font-Inter_SemiBold text-3xl gap-2 text-[#006BF6]">Precio Regular S/
-                      {{ $product->precio }}</span>
-                  </div>
-                @else
-                  <div class="content-start flex flex-col gap-2 ">
-                    <div>
-                      <span class="font-Inter_SemiBold text-2xl gap-2 text-[#006BF6]">Precio Promo: S/
-                        {{ $product->descuento }}</span>
-
+                <div class="flex flex-col justify-start items-center gap-5">
+                    <div id="containerProductosdetail"
+                        class="w-full flex justify-center items-center h-[330px] 2xs:h-[400px] sm:h-[450px] xl:h-[550px] rounded-3xl overflow-hidden">
+                        <img src="{{ asset($product->imagen) }}" alt="computer" class="w-full h-full object-contain"
+                            data-aos="fade-up" data-aos-offset="150"
+                            onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';">
                     </div>
-                    <div>
-                      <span>Precio Regular</span>
-                      <span class="text-[#15294C] opacity-80 font-Inter_Regular line-through text-sm"> S/
-                        {{ $product->precio }}</span>
+                    <x-product-slider :product="$product" />
+                </div>
+
+                <div class="flex flex-col gap-6  mt-2">
+                    @foreach ($atributos as $item)
+                     @foreach ($valorAtributo as $value)
+                            @if ($value->attribute_id == $item->id)
+                              
+                                  @isset($valoresdeatributo)
+                                      @foreach($valoresdeatributo as $valorat)
+                                        @if($valorat->attribute_value_id == $value->id)
+                                          <img src={{asset($value->imagen)}} class="w-24 h-12 object-contain"/>
+                                        @endif
+                                      @endforeach
+                                  @endisset
+                              
+                            @endif
+                      @endforeach
+                    @endforeach
+                    <div class="flex flex-col">
+                        <h3 class="font-Helvetica_Medium text-4xl text-[#111111] font-normal tracking-tight">
+                            {{ $product->producto }}</h3>
+                        {{-- <p class="font-Inter_Regular text-base gap-2">Disponibilidad:
+                            @if ($product->stock == 0)
+                                <span class="text-[#f6000c]">No hay Stock disponible</span>
+                            @else
+                                <span class="text-[#006BF6]">Quedan {{ round((float) $product->stock) }} en stock</span>
+                            @endif
+                        </p> --}}
+
+                        {{-- <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                            <div class="bg-blue-600 h-1.5 rounded-full" style="width: {{ $stock }}%"></div>
+                        </div> --}}
                     </div>
 
-                  </div>
-                  @php
-                    $descuento = round((($product->precio - $product->descuento) * 100) / $product->precio);
-                  @endphp
-                  <span
-                    class="ml-2 font-Inter_Medium text-center content-center text-xs gap-2 bg-[#006BF6] text-white h-9 w-16 rounded-3xl px-2">
-                    -{{ $descuento }}% </span>
-                @endif
-              </div>
+                    <div class="flex flex-col gap-3">
+                    
+                        <div class="flex flex-row gap-3 content-center items-center">
+                            @if ($product->descuento == 0)
+                                <div class="content-center flex flex-row gap-2 items-center">
+                                    <span class="font-Helvetica_Bold text-3xl gap-2 text-[#FD1F4A]">S/
+                                        {{ $product->precio }}</span>
+                                </div>
+                            @else
+                                <div class="content-center flex flex-row gap-2 items-center">
+                                    <span class="font-Helvetica_Bold text-3xl gap-2 text-[#FD1F4A]">S/
+                                        {{ $product->descuento }}</span>
+                                    <span class="text-[#111111] font-Helvetica_Medium line-through text-lg">S/
+                                        {{ $product->precio }}</span>
+                                </div>
+                                @php
+                                    $descuento = round(
+                                        (($product->precio - $product->descuento) * 100) / $product->precio,
+                                    );
+                                @endphp
+                                <span
+                                    class="ml-2 font-Helvetica_Medium text-center content-center text-sm gap-2 bg-[#FD1F4A] text-white h-9 w-16 rounded-3xl px-2">
+                                    -{{ $descuento }}% </span>
+                            @endif
+                        </div>
+                        
+                        <div class="font-medium text-base font-Helvetica_Light w-full mt-4 text-[#444]">
+                            {!! $product->description !!}
+                        </div>
 
-            @endif
-
-
-
-            <div class="font-medium text-base font-Inter_Regular w-full mt-4 text-[#444] text-justify">
-              {!! $product->description !!}
-            </div>
-          </div>
-
-          @if (!$product->attributes->isEmpty())
-            <div class="flex flex-col gap-8 mt-4 font-Inter_Regular text-lg">
-              @php
-                $groupedAttributes = $product->attributes->groupBy('titulo');
-              @endphp
-
-              @foreach ($groupedAttributes as $titulo => $items)
-                <div class="flex flex-row gap-3 text-center text-base font-Inter_Medium">
-                  <span>{{ $titulo }}:</span>
-                  @foreach ($items as $item)
-                    @php
-                      // Encuentra el objeto en $valorAtributo que tiene el id igual a $item->pivot->attribute_value_id
-                      $atributo = $valorAtributo->firstWhere('id', $item->pivot->attribute_value_id);
-                    @endphp
-                    @if ($atributo)
-                      <!-- Muestra el valor del atributo encontrado -->
-                      <span class="bg-[#006BF6] text-white rounded-md px-5 text-base">{{ $atributo->valor }}</span>
-                    @endif
-                  @endforeach
-                </div>
-              @endforeach
-            </div>
-          @endif
-
-          @if (!$especificaciones->isEmpty())
-            <p class="font-Inter_Medium text-base gap-2 ">Especificaciones: </p>
-            <div class="min-w-full divide-y divide-gray-200">
-              <table class=" divide-y divide-gray-200 ">
-                <tbody>
-                  @foreach ($especificaciones as $item)
-                    <tr>
-                      <td class="px-4 py-1 border border-gray-200">
-                        {{ $item->tittle }}
-                      </td>
-                      <td class="px-4 py-1 border border-gray-200">
-                        {{ $item->specifications }}
-                      </td>
-                    </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-          @endif
-
-          <div class="flex flex-col xl:flex-row gap-6 font-Inter_Regular text-base">
-            <div class="flex flex-row gap-2 items-center">
-              <i class="h-5 w-5 inline-block"
-                style="background-image: url('{{ asset('images/img/carrito.png') }}'); background-size: contain; background-position: center; background-repeat: no-repeat;"></i>
-              <span class=""> Envio a Domicilio</span>
-            </div>
-            <div class="flex flex-row gap-2 items-center">
-              <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-8" />
-              <a href="https://api.whatsapp.com/send?phone={{ $general->whatsapp }}&text=Hola! Quería solicitar informacion para el producto  {{ $product->producto }}. 
-                "
-                target="_blank" class="">Preguntar sobre este producto</a>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-4">
-            <div class="flex flex-col xl:flex-row gap-5">
-              <div class="flex mb-4">
-                <div class="flex justify-center items-center bg-[#F5F5F5] cursor-pointer hover:bg-slate-300">
-                  <button class="py-2.5 px-5 text-lg font-Inter_SemiBold" id=disminuir type="button">-</button>
-                </div>
-                <div id=cantidadSpan
-                  class="py-2.5 px-5 flex justify-center items-center bg-[#F5F5F5] text-lg font-Inter_SemiBold">
-                  <span>1</span>
-                </div>
-                <div class="flex justify-center items-center bg-[#F5F5F5] cursor-pointer hover:bg-slate-300">
-                  <button class="py-2.5 px-5 text-lg font-Inter_SemiBold" id=aumentar type="button">+</button>
-                </div>
-              </div>
-              <div class="xl:ml-8 flex flex-row gap-5 justify-start items-center">
-                @if ($product->status == 1 && $product->visible == 1)
-                  <button id="btnAgregarCarritoPr" data-id="{{ $product->id }}"
-                    class="bg-[#0D2E5E] w-[286px] h-16  text-white text-center rounded-full font-Inter_SemiBold tracking-wide text-lg hover:bg-[#1E8E9E]">
-                    Agregar
-                    al Carrito
-                  </button>
-                @endif
-
-                @if (Auth::user() !== null)
-                  <button
-                    class=" @if ($isWhishList) bg-[#0D2E5E]  @else bg-[#99b9eb] @endif w-12 h-12 rounded-full text-white flex justify-center items-center hover:bg-[#1E8E9E]"
-                    type="button" id="addWishlist">
-                    <img src="{{ asset('images/img/blanco.png') }}" alt="" class="w-8 h-8">
-                  </button>
-                @endif
-
-
-              </div>
-            </div>
-          </div>
-
-
-          <div class="flex flex-col gap-2 pb-8 lg:pb-16" data-aos="fade-up">
-            <span class="text-base font-Inter_Medium">
-              Pago seguro garantizado
-            </span>
-            <div class="flex flex-wrap gap-2 px-1 mt-2">
-              <img src="{{ asset('images\svg\american.svg') }}" alt="" class="h-9 w-14">
-              <img src="{{ asset('images\svg\visa.svg') }}" alt="" class="h-9 w-14">
-              <img src="{{ asset('images/svg/mastercad.svg') }}" alt="mastercad" class="h-9 w-14" />
-            </div>
-            <div class="flex flex-row gap-4 mt-6">
-              <span class="text-base font-Inter_Medium">Compartir</span>
-              <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank">
-                <img src="{{ asset('images/svg/gb.svg') }}" alt="Facebook" class="h-8 w-8"></a>
-              <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}" target="_blank">
-                <img src="{{ asset('images/svg/twitter.svg') }}" alt="Twitter" class="h-8 w-8"></a>
-              <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}&media={{ urlencode(asset($product->imagen)) }}&description=YourDescription"
-                target="_blank">
-                <img src="{{ asset('images/svg/pinterest.svg') }}" alt="Pinterest" class="h-8 w-8"></a>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    @if ($combo->id)
-      <section class="bg-[#F8F8F8] py-10 lg:py-14">
-        <div class="w-full px-[5%] md:px-[8%]">
-          <div class="flex flex-col justify-between w-full ">
-            <h1 class="text-3xl font-Inter_SemiBold tracking-tight">Por tu compra llévate</h1>
-            <div class="flex flex-col mt-7">
-              <div class="border rounded-md shadow-sm py-4 px-6">
-                <div class="flex justify-between items-center mb-4">
-                  <div>
-                    <b class="block text-xl">{{ $combo->producto }}</b>
-                    <span class="flex items-start gap-1">
-                      <span class="text-lg font-semibold">S/. {{ $combo->descuento }}</span>
-                      <span class="text-sm line-through">{{ $combo->precio }}</span>
-                    </span>
-                  </div>
-                  <button id="btnAgregarCombo" type="button"
-                    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-3 py-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                    data-id={{ $combo->id }}>
-                    <i class="fa fa-cart-plus"></i>
-                    Agregar al carrito
-                  </button>
-                </div>
-                <div class="grid grid-cols-3 gap-3  mb-6">
-                  <div class="col-span-3">
-                    <div class="swiper productos-relacionados ">
-                      <div class="swiper-wrapper h-full" id="offers">
-                        @foreach ($combo->products as $item)
-                          <div class="swiper-slide w-full h-full col-span-1">
-                            <div class="flex flex-col items-center justify-center col-span-1  shadow-lg py-2  pb-5">
-                              <a href="/producto/{{ $item->id }}" target="_blanck">
-                                {{-- <img src="{{ asset('images\img\1.png') }}" alt="" class="h-40 w-40 ">
-                                                                    <span> {{ $item->producto }}</span>
-                                                                    <h2 class="font-Inter_Bold text-[#006BF6]">S/ 80.00</h2> --}}
-                                {{--  <x-product.container-combinalo width="" height="h-[300px]" bgcolor="bg-[#FFFFFF]"
-                                        textpx="text-[17px]" :item="$item" /> --}}
-                                <x-product.container width="col-span-1 " bgcolor="" :item="$item" />
-                              </a>
+                        @if ($product->sku)
+                            <p class="font-Helvetica_Light text-base gap-2 text-[#444] mt-2">SKU: {{ $product->sku }}
+                            </p>
+                        @endif
+                    </div>
+                    
+                     @if ($otherProducts->isNotEmpty())
+                        <p class="mb-2 "><b>Característica</b>:
+                        <span class="block bg-[#F5F5F7] p-3 mt-2" tippy> {{ $product->color }}</span>
+                        
+                        <p class="-mb-4 "><b>Otras opciones</b>:</p>
+                                
+                            <div class="flex flex-wrap gap-2">
+                                @foreach ($otherProducts as $x)
+                                <a class="block bg-[#F5F5F7] hover:bg-[#ebebf2] p-3" href="/producto/{{ $x->id }}" tippy> {{ $x->color }}</a>
+                                @endforeach
                             </div>
-                          </div>
-                        @endforeach
-                      </div>
+
+                    @endif
+                    {{-- @if (!$product->attributes->isEmpty())
+                        <div class="flex flex-col gap-8 mt-4 font-Inter_Regular text-lg">
+                            @php
+                                $groupedAttributes = $product->attributes->groupBy('titulo');
+                            @endphp
+
+                            @foreach ($groupedAttributes as $titulo => $items)
+                                <div class="flex flex-row gap-3 text-center text-base font-Inter_Medium">
+                                    <span>{{ $titulo }}:</span>
+                                    @foreach ($items as $item)
+                                        @php
+                                            // Encuentra el objeto en $valorAtributo que tiene el id igual a $item->pivot->attribute_value_id
+                                            $atributo = $valorAtributo->firstWhere(
+                                                'id',
+                                                $item->pivot->attribute_value_id,
+                                            );
+                                        @endphp
+                                        @if ($atributo)
+                                            <!-- Muestra el valor del atributo encontrado -->
+                                            <span
+                                                class="bg-[#006BF6] text-white rounded-md px-5 text-base">{{ $atributo->valor }}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif --}}
+
+                    @if (!$especificaciones->isEmpty())
+                        <p class="font-Inter_Medium text-base gap-2 ">Especificaciones: </p>
+                        <div class="min-w-full divide-y divide-gray-200">
+                            <table class=" divide-y divide-gray-200 ">
+                                <tbody>
+                                    @foreach ($especificaciones as $item)
+                                        <tr>
+                                            <td class="px-4 py-1 border border-gray-200">
+                                                {{ $item->tittle }}
+                                            </td>
+                                            <td class="px-4 py-1 border border-gray-200">
+                                                {{ $item->specifications }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+
+                
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col xl:flex-row gap-5 items-center">
+                            <div class="flex">
+                                <div
+                                    class="flex justify-center items-center bg-[#F5F5F5] cursor-pointer rounded-l-3xl">
+                                    <button class="py-2.5 px-5 text-lg font-Helvetica_Bold rounded-full bg-black m-1 text-white" id=disminuir
+                                        type="button">-</button>
+                                </div>
+                                <div id=cantidadSpan
+                                    class="py-2.5 px-5 flex justify-center items-center bg-[#F5F5F5] text-lg font-Helvetica_Bold">
+                                    <span>1</span>
+                                </div>
+                                <div
+                                    class="flex justify-center items-center bg-[#F5F5F5] cursor-pointer rounded-r-3xl">
+                                    <button class="py-2.5 px-5 text-lg font-Helvetica_Bold rounded-full bg-black m-1 text-white" id=aumentar
+                                        type="button">+</button>
+                                </div>
+                            </div>
+                            <div class="xl:ml-8 flex flex-row gap-5 justify-start items-center w-full">
+                                @if ($product->status == 1 && $product->visible == 1)
+                                  <button id="btnAgregarCarritoPr" data-id="{{ $product->id }}"
+                                      class="bg-[#FD1F4A] w-full py-3  text-white text-center rounded-full font-Helvetica_Medium tracking-wide text-lg hover:bg-[#e61e45]">
+                                      Agregar
+                                      al Carrito
+                                  </button>
+                                @endif
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                 
 
+                    <div class="flex flex-col gap-2" data-aos="fade-up">
+                         <div class="flex flex-row gap-5 justify-start items-center w-full">
+                                <a
+                                    class="bg-[#25D366] flex justify-center items-center w-full py-3  text-white text-center rounded-full font-Helvetica_Medium tracking-wide text-lg hover:bg-[#1fcf61]">
+                                    <span class="text-sm mr-3">Agente Emilio</span>Consulta vía WhatsApp
+                                </a>
+                          </div>
+                          <div class="flex flex-row gap-5 justify-start items-center w-full">
+                                <a
+                                    class="bg-[#25D366] flex justify-center items-center w-full py-3  text-white text-center rounded-full font-Helvetica_Medium tracking-wide text-lg hover:bg-[#1fcf61]">
+                                    <span class="text-sm mr-3">Agente Emilio</span>Consulta vía WhatsApp
+                                </a>
+                          </div>
+                    </div>
                 </div>
-              </div>
-
             </div>
-          </div>
-        </div>
-      </section>
-    @endif
+        </section>
 
-    <section class="bg-[#F8F8F8] py-10 lg:py-14">
-      <div class="w-full px-[5%] md:px-[8%]">
-        <div class="flex flex-col md:flex-row justify-between w-full ">
-          <h1 class="text-3xl font-Inter_SemiBold tracking-tight">Productos Relacionados</h1>
-          @php
-            $url = '#';
-            if (isset($ProdComplementarios) && count($ProdComplementarios) > 0) {
-                $url = "/catalogo/{$ProdComplementarios[0]->categoria_id}";
-            }
-          @endphp
-          <a href="{{ $url }}" class="flex items-center text-base font-Inter_SemiBold text-[#006BF6] ">Ver
-            todos los productos <img src="{{ asset('images/img/arrowBlue.png') }}" alt="Icono" class="ml-5 "></a>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-14 w-full">
-          @foreach ($ProdComplementarios->take(4) as $item)
-            {{-- <x-product.container-combinalo width="" height="h-[400px]" bgcolor="bg-[#FFFFFF]"
-              textpx="text-[20px]" :item="$item" /> --}}
-            <x-product.container width="col-span-1 " bgcolor="bg-[#FFFFFF]" :item="$item" />
-          @endforeach
-        </div>
-      </div>
 
-    </section>
-
-    @if ($testimonios->count() > 0)
-      <section class="">
-        <div class="w-full px-[5%] md:px-[8%]">
-          <h3 class="text-[34.7px] font-Inter_Medium "> ¿Qué dicen los clientes sobre nosotros?</h3>
-          <div class="grid grid-cols-3 w-full gap-8 pt-16">
-            @foreach ($testimonios->take(3) as $item)
-              <div class="flex flex-col bg-[#F7F7F7] col-span-1 p-12 gap-4">
-                <div class="flex items-center gap-4 pt-3">
-                  <!-- Contenedor Flex para la imagen y el texto -->
-                  <p class="font-Inter_Medium text-[24px] flex-1">{{ $item->name }}</p>
-                  <!-- flex-1 hace que el texto ocupe el espacio disponible -->
-                  <img src="{{ asset('images\svg\icons8-comillas-48.png') }}" alt=""
-                    class="w-10 h-10 rounded-full">
-                </div>
-                <div class="min-h-[130px]">
-                  <p class="font-Inter_Medium text-[19px] pt-1 leading-8 ">
-                    {{ $item->testimonie }}
-                  </p>
-                </div>
-
-                <div class="font-Inter_Bold text-[24px] w-5">
-                  {{ $item->ocupation }}
-                </div>
-                <p class="text-[16px] font-Inter_Regular">Lima, Peru</p>
+        <section class="w-full px-[5%] md:px-[8%] py-12 lg:py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <div class="flex flex-col gap-4 justify-center">
+                   <h3 class="font-Helvetica_Medium text-4xl text-[#111111] font-normal tracking-tight">
+                            Llamadas, mensajes, música y mucho más ¡Actualiza tu auto!</h3>
+                   <p class="font-medium text-base font-Helvetica_Light w-full text-[#444]">
+                            Apple CarPlay & Android Auto hace que resulte más fácil que nunca navegar, comunicarse y 
+                            reproducir música en la carretera. Solo tienes que conectar tu iPhone para ver todo lo 
+                            que quieras en la amplia pantalla táctil.
+                    </p>  
+                    <img src={{ asset('images/img/logosandroid.png') }} class="w-1/2 h-auto object-contain mt-2"/>      
               </div>
-            @endforeach
-          </div>
-        </div>
-      </section>
-    @endif
 
-  </main>
+              <div>
+                    <img src={{ asset('images/img/portadaproducto.png') }} class="w-full h-96 object-contain mt-2"/>      
+              </div>
+            </div>
+        </section>
+
+
+         <section class="w-full px-[5%] md:px-[8%] py-12 lg:py-20 bg-[#F5F5F7] space-y-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-10">
+              <div class="order-2 lg:order-1">
+                    <img src={{ asset('images/img/portadaproducto1.png') }} class="w-full h-80 lg:h-96 object-contain mt-2"/>      
+              </div>
+
+              <div class="flex flex-col gap-4 justify-center order-1 lg:order-2">
+                   <h3 class="font-Helvetica_Medium text-4xl text-[#111111] font-normal tracking-tight">
+                            Disfrute de sus aplicaciones favoritas</h3>
+                   <p class="font-medium text-base font-Helvetica_Light w-full text-[#444]">
+                            ¿Le gusta utilizar Spotify, Apple Music o cualquier otra plataforma en línea? 
+                            ¿Navegas con Waze o Google maps?. Apple CarPlay & Android Auto funciona con las 
+                            aplicaciones de su smartphone, para que pueda disfrutar de un entretenimiento sin 
+                            límites mientras conduce.
+                    </p>   
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-10">
+              <div class="flex flex-col gap-4 justify-center">
+                   <h3 class="font-Helvetica_Medium text-4xl text-[#111111] font-normal tracking-tight">
+                            ¿Necesitas instalación?</h3>
+                   <p class="font-medium text-base font-Helvetica_Light w-full text-[#444]">
+                            Contamos con Talleres especializados ubicados en los puntos más céntricos de Lima y 
+                            Provincias para asegurar su correcta instalación y funcionamiento.
+                    </p>  
+                    <div class="mt-3">
+                      <a 
+                        class="bg-[#FD1F4A] px-5 py-3  text-white text-center rounded-full font-Helvetica_Medium tracking-wide text-base hover:bg-[#e61e45]">
+                         Ver Talleres Autorizados            
+                      </a>                          
+                    </div> 
+              </div>
+
+              <div>
+                    <img src={{ asset('images/img/portadaproducto2.png') }} class="w-full h-80 lg:h-96 object-contain mt-2"/>      
+              </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="bg-white py-10 lg:py-14">
+            <div class="w-full px-[5%] md:px-[8%]">
+                <div class="flex flex-col">
+                    <h3 class="text-lg font-Helvetica_Light tracking-tight text-[#FD1F4A]">Apúrate que se acaban</h3>
+                    <h1 class="text-4xl font-Helvetica_Medium tracking-tight">También te puede interesar</h1>
+                </div>
+                <div class="grid grid-cols-4 gap-4 mt-14 w-full">
+                    @foreach ($ProdComplementarios->take(4) as $item)
+                        {{-- <x-product.container-combinalo width="" height="h-[400px]" bgcolor="bg-[#FFFFFF]"
+              textpx="text-[20px]" :item="$item" /> --}}
+                        <x-product.container width="col-span-1 " bgcolor="bg-[#FFFFFF]" :item="$item" />
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
 
 @section('scripts_importados')
   <script>

@@ -4,9 +4,10 @@
 
 @stop
 
+
+
+
 @section('content')
-
-
 
     <main>
 
@@ -16,8 +17,8 @@
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/1f15375dac970433a2abe3921fa2c31e35c32f7b26a37b841431aaba1861d380?placeholderIfAbsent=true&apiKey=72fae0f4c808496790606e16dad566da"
                 alt="" class="object-cover absolute inset-0 size-full opacity-15" />
             <div class="flex relative flex-col max-w-full w-[499px]">
-                <h2 class="self-center text-[#FD1F4A] font-Helvetica_Medium">Contacto</h2>
-                <h3 class="mt-3 text-5xl text-center max-md:max-w-full font-Helvetica_Medium">Comunícate</h3>
+                <h2 class="self-center text-rose-600 font-Helvetica_Medium">FAQs</h2>
+                <h3 class="mt-3 text-5xl text-center max-md:max-w-full font-Helvetica_Medium">Centro de ayuda</h3>
                 <p class="mt-3 text-lg font-light text-center max-md:max-w-full ">
                     Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis
                     est.
@@ -26,122 +27,72 @@
         </section>
 
 
-        <section class="flex flex-col mt-8 lg:mt-16 font-Helvetica_Light">
-            <div class="flex flex-wrap gap-10 items-start px-[5%] lg:px-[8%] w-full">
-                <div class="flex flex-col grow shrink min-w-[240px] w-[390px] max-md:max-w-full">
+
+        <section class="flex flex-col py-12 lg:py-20 font-Helvetica_Light">
+            <div class="flex flex-col lg:flex-row gap-10 items-start px-[5%] lg:px-[8%] w-full">
+                
+                <div class="flex flex-col grow shrink w-full lg:w-2/5">
                     <header class="flex flex-col max-w-full text-neutral-900 w-[488px]">
-                        <h1 class="text-5xl font-medium max-md:max-w-full font-Helvetica_Medium">A nuestro amable equipo le
-                            encantaría saber de
-                            usted</h1>
-                        <p class="mt-3 text-base font-light max-md:max-w-full">Donec vehicula, lectus vel pharetra semper,
-                            justo massa pharetra nunc, non venenatis ante augue quis est.</p>
+                        <h1 class="text-5xl font-medium max-md:max-w-full font-Helvetica_Medium">Preguntas frecuentes</h1>
+                        <p class="mt-3 text-base font-light max-md:max-w-full">Todo lo que necesitas saber sobre nuestro
+                            servicio.</p>
                     </header>
-                    <aside class="flex flex-col mt-12 max-w-full w-full max-md:mt-10">
-                        <div class="flex flex-col w-full">
-                            <h2 class="text-xl font-medium text-[#FD1F4A] font-Helvetica_Medium">Horario de oficina</h2>
-                            <p class="flex flex-col mt-2 max-w-full text-base font-light text-neutral-900 w-full">
-                                @if ($general->schedule)
-                                    <span>{{ $general->schedule }}</span>
-                                @endif
-                            </p>
-                        </div>
-                        <div class="flex flex-col mt-8 w-full">
-                            <h2 class="text-xl font-medium text-[#FD1F4A] font-Helvetica_Medium">Nuestra dirección</h2>
-                            <address class="flex flex-col mt-2 max-w-full text-base font-light text-neutral-900 w-full">
-                                @if ($general->address && is_null($general->inside))
-                                    <span>{{ $general->address }}</span>
-                                @elseif(is_null($general->address) && $general->inside)
-                                    <span>{{ $general->inside }}</span>
-                                @elseif($general->address && $general->inside)
-                                    <span>{{ $general->address }}, {{ $general->inside }}</span>
-                                @endif
 
-                                @if ($general->district && is_null($general->city))
-                                    <span>{{ $general->district }}</span>
-                                @elseif(is_null($general->district) && $general->city)
-                                    <span>{{ $general->city }}</span>
-                                @elseif($general->district && $general->city)
-                                    <span>{{ $general->district }}, {{ $general->city }}</span>
-                                @endif
-
-                            </address>
-                        </div>
-                        <div class="flex flex-col mt-8 w-full">
-                            <h2 class="text-xl font-medium text-[#FD1F4A] font-Helvetica_Medium">Ponerse en contacto</h2>
-                            <p class="flex flex-col mt-2 max-w-full text-base font-light text-neutral-900 w-full">
-                                @if ($general->cellphone)
-                                    <a href="tel:+51{{ $general->cellphone }}">{{ $general->cellphone }}</a>
-                                @endif
-
-                                @if ($general->office_phone)
-                                    <a href="tel:+51{{ $general->office_phone }}">{{ $general->office_phone }}</a>
-                                @endif
-                            </p>
-                        </div>
-                    </aside>
                 </div>
-                <div class="flex flex-col grow shrink justify-center px-0 lg:px-10 min-w-[240px] w-[494px]">
-                    <header class="flex flex-col w-full text-neutral-900 max-md:max-w-full">
-                        <h2 class="text-3xl font-medium max-md:max-w-full font-Helvetica_Medium">Ponerse en contacto</h2>
-                        <p class="mt-4 text-base font-light max-md:max-w-full">Donec vehicula, lectus vel pharetra semper,
-                            justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                    </header>
-                    <form class="flex flex-col mt-12 w-full max-md:mt-10 max-md:max-w-full" id="formContactos">
-                        <div class="flex flex-wrap gap-4 items-start w-full text-neutral-900 max-md:max-w-full">
-                            <div class="flex flex-col flex-1 shrink basis-0 min-w-[240px]">
-                                <label for="nombre" class="text-[15px] font-medium font-Helvetica_Medium">Nombre</label>
-                                <input id="nombre" type="text" placeholder="Ingresa tu nombre" name="name"
-                                    class="px-4 py-3 mt-1.5 w-full text-base font-light bg-white rounded-lg border border-gray-300 border-solid shadow-sm"
-                                    aria-label="Ingresa tu nombre">
-                            </div>
-                            <div class="flex flex-col flex-1 shrink basis-0 min-w-[240px]">
-                                <label for="apellido" class="text-[15px] font-medium font-Helvetica_Medium">Apellido</label>
-                                <input id="apellido" type="text" placeholder="Ingresa tu apellido" name="lastname"
-                                    class="px-4 py-3 mt-1.5 w-full text-base font-light bg-white rounded-lg border border-gray-300 border-solid shadow-sm"
-                                    aria-label="Ingresa tu apellido">
+
+                <div class="flex flex-col grow shrink justify-center px-0 w-full lg:w-3/5">
+                        <div class="relative px-0 lg:px-6">
+                            <div class="mx-auto px-0 lg:px-5">
+                                <div class="mx-auto grid max-w-[800px] divide-y divide-neutral-200">
+                                  @foreach($faqs as $faq)
+                                     <div class="py-3">
+                                        <details class="group">
+                                            <summary
+                                                class="flex cursor-pointer list-none items-center justify-between font-medium">
+                                                <span class="text-lg font-Helvetica_Medium text-[#FD1F4A] tracking-normal">
+                                                   {{$faq->pregunta}}</span>
+                                                <span class="transition group-open:rotate-180">
+                                                    <svg width="15" height="15" viewBox="0 0 18 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M16.2923 11.3882L9.00065 18.3327M9.00065 18.3327L1.70898 11.3882M9.00065 18.3327L9.00065 1.66602"
+                                                            stroke="#FD1F4A" stroke-width="3.33333" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </span>
+                                            </summary>
+                                            <p class="group-open:animate-fadeIn mt-3 text-[#111111] font-Helvetica_Light text-base">
+                                                {{$faq->respuesta}}
+                                            </p>
+                                        </details>
+                                    </div>
+                                  @endforeach  
+                                </div>
                             </div>
                         </div>
-                        <div class="flex flex-col mt-6 w-full text-neutral-900 max-md:max-w-full">
-                            <label for="email" class="text-[15px] font-medium font-Helvetica_Medium">E-mail</label>
-                            <input id="email" type="email" placeholder="Ingresa tu dirección de correo electrónico"
-                                name="email"
-                                class="px-4 py-3 mt-1.5 w-full text-base font-light bg-white rounded-lg border border-gray-300 border-solid shadow-sm max-md:max-w-full"
-                                aria-label="Ingresa tu dirección de correo electrónico">
-                        </div>
-                        <div class="flex flex-col mt-6 w-full whitespace-nowrap text-neutral-900 max-md:max-w-full">
-                            <label for="telefono"
-                                class="text-[15px] font-medium max-md:max-w-full font-Helvetica_Medium">Telefono</label>
-                            <input id="telefono" type="tel" placeholder="+51..." name="phone"
-                                class="px-4 py-3 mt-1.5 w-full text-base font-light bg-white rounded-lg border border-gray-300 border-solid shadow-sm max-md:max-w-full"
-                                aria-label="Ingresa tu número de teléfono">
-                        </div>
-                        <div class="flex flex-col mt-6 w-full text-neutral-900 max-md:max-w-full">
-                            <label for="mensaje"
-                                class="text-[15px] font-medium max-md:max-w-full font-Helvetica_Medium">Escribe un
-                                mensaje</label>
-                            <textarea id="mensaje" placeholder="Escríbenos tu pregunta aquí" name="message"
-                                class="px-4 py-3 mt-1.5 w-full text-base font-light bg-white rounded-lg border border-gray-300 border-solid shadow-sm max-md:max-w-full"
-                                rows="3" aria-label="Escribe tu mensaje"></textarea>
-                        </div>
-                        <div class="flex flex-wrap gap-3 items-center mt-6 w-full max-md:max-w-full">
-                            <input type="checkbox" id="privacy-policy" required
-                                class="w-5 h-5 bg-white rounded-md border border-gray-300 border-solid">
-                            <label for="privacy-policy"
-                                class="text-[15px] font-light text-neutral-900 font-Helvetica_Light">Usted acepta nuestra
-                                amigable política de privacidad.</label>
-                        </div>
-                        <button type="submit"
-                            class="font-Helvetica_Medium tracking-wider gap-2.5 self-stretch px-4 py-3 mt-8 w-full text-base font-bold text-center text-white bg-[#FD1F4A] rounded-3xl min-h-[43px] max-md:max-w-full">Enviar
-                            mensaje</button>
-                    </form>
                 </div>
-            </div>
-            <div class="flex flex-row items-start justify-start">
-                <img loading="lazy" src="{{ asset('images/img/fondofwc.png') }}"
-                    class="object-contain self-center mt-10 lg:-mt-20 max-w-full aspect-[1.84] shadow-[-179px_91px_56px_rgba(0,0,0,0)] w-full lg:w-2/3 "
-                    alt="">
+
             </div>
         </section>
+
+        <section class="px-[5%] lg:px-[8%] mb-10 lg:mb-20">
+            <div class="flex flex-col items-center p-8 text-center rounded-sm bg-[#F5F5F7] max-md:px-5">
+                <img loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/1d7149afca12f9df6b222decab2b6aa440fcedd62f3f9103979de6f32ac8d09f?placeholderIfAbsent=true&apiKey=72fae0f4c808496790606e16dad566da"
+                    class="object-contain max-w-full aspect-[2.14] w-[120px]" alt="Company logo" />
+                <div class="flex flex-col mt-8 max-w-full text-neutral-900 w-[768px]">
+                    <h2 class="text-2xl font-medium max-md:max-w-full font-Helvetica_Medium">¿Aún tienes preguntas?</h2>
+                    <p class="self-center mt-2 text-base font-light max-md:max-w-full font-Helvetica_Light">¿No encuentras
+                        la respuesta que
+                        buscas? Por favor chatee con nuestro amigable equipo.</p>
+                </div>
+                <a href="{{route('contacto')}}"
+                    class="gap-2.5  px-4 py-3 tracking-wider mt-8 text-base font-bold text-white bg-rose-600 rounded-3xl min-h-[43px] font-Helvetica_Medium">
+                    Ponerse en contacto
+                </a>
+            </div>
+        </section>
+
 
     </main>
 
@@ -170,39 +121,20 @@
         $('#formContactos').submit(function(event) {
             // Evita que se envíe el formulario automáticamente
             //console.log('evcnto')
-            let btnEnviar = $('#btnEnviar');
-            btnEnviar.prop('disabled', true);
-            btnEnviar.text('Enviando...');
-            btnEnviar.css('cursor', 'not-allowed');
 
             event.preventDefault();
             let formDataArray = $(this).serializeArray();
 
             if (!validarEmail($('#email').val())) {
-                btnEnviar.prop('disabled', false);
-                btnEnviar.text('Enviar Mensaje');
-                btnEnviar.css('cursor', 'pointer');
                 return;
             };
-
 
             /* console.log(formDataArray); */
             $.ajax({
                 url: '{{ route('guardarContactos') }}',
                 method: 'POST',
                 data: $(this).serialize(),
-                beforeSend: function() {
-                    Swal.fire({
-                        title: 'Enviando...',
-                        text: 'Por favor, espere',
-                        allowOutsideClick: false,
-                        onBeforeOpen: () => {
-                            Swal.showLoading();
-                        }
-                    });
-                },
                 success: function(response) {
-                    Swal.close(); // Close the loading message
                     $('#formContactos')[0].reset();
                     Swal.fire({
                         title: response.message,
@@ -211,14 +143,11 @@
 
                     if (!window.location.href.includes('#formularioenviado')) {
                         window.location.href = window.location.href.split('#')[0] +
-                        '#formularioenviado';
+                            '#formularioenviado';
                     }
-                    btnEnviar.prop('disabled', false);
-                    btnEnviar.text('Enviar Mensaje');
-                    btnEnviar.css('cursor', 'pointer');
+
                 },
                 error: function(error) {
-                    Swal.close(); // Close the loading message
                     const obj = error.responseJSON.message;
                     const keys = Object.keys(error.responseJSON.message);
                     let flag = false;
@@ -233,9 +162,6 @@
                             flag = true; // Marcar como mostrado
                         }
                     });
-                    btnEnviar.prop('disabled', false);
-                    btnEnviar.text('Enviar Mensaje');
-                    btnEnviar.css('cursor', 'pointer');
                 }
             });
         })
@@ -269,6 +195,7 @@
 
         })
     </script>
+
     <script>
         let articulosCarrito = [];
 

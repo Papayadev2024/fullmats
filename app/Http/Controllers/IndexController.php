@@ -7,6 +7,7 @@ use App\Http\Requests\StoreIndexRequest;
 use App\Http\Requests\UpdateIndexRequest;
 use App\Models\AboutUs;
 use App\Models\Address;
+use App\Models\AttributeProductValues;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
 use App\Models\Banners;
@@ -20,6 +21,7 @@ use App\Models\Slider;
 use App\Models\Strength;
 use App\Models\Testimony;
 use App\Models\Category;
+use App\Models\ClientLogos;
 use App\Models\Department;
 use App\Models\Galerie;
 use App\Models\Offer;
@@ -64,8 +66,16 @@ class IndexController extends Controller
     // $productos = Products::all();
     $url_env = env('APP_URL');
     $productos =  Products::with('tags')->get();
-    $ultimosProductos = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->orderBy('products.id', 'desc')->take(5)->get();
-    $productosPupulares = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->where('products.destacar', '=', 1)->orderBy('products.id', 'desc')->take(8)->get();
+    $ultimosProductos = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->orderBy('products.id', 'desc')->take(4)->get();
+    $productosPupulares = Products::select('products.*')
+          ->join('categories', 'products.categoria_id', '=', 'categories.id')
+          ->where('categories.visible', 1)
+          ->where('products.status', '=', 1)
+          ->where('products.visible', '=', 1)
+          ->where('products.destacar', '=', 1)
+          ->orderBy('products.id', 'desc')
+          ->take(8)
+          ->get();
     $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->orderBy('id', 'desc')->take(3)->get();
     $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
 
@@ -85,9 +95,11 @@ class IndexController extends Controller
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
     $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
 
+    $logos = ClientLogos::where('status', '=', 1)->get();
+    $categoriasindex = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
 
 
-    return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
+    return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'categoriasindex','logos'));
   }
 
   public function catalogo(Request $request, string $id_cat = null)
@@ -659,6 +671,7 @@ class IndexController extends Controller
       ->get();
     $atributos = Attributes::where("status", "=", true)->get();
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
+    $valoresdeatributo = AttributeProductValues::where("product_id", "=", $id)->get();
     $url_env = env('APP_URL');
 
     $capitalizeFirstLetter = function ($string) {
@@ -703,7 +716,7 @@ class IndexController extends Controller
 
     if (!$combo) $combo = new Offer();
 
-    return view('public.product', compact('is_reseller', 'atributos', 'isWhishList', 'testimonios', 'general', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env', 'product', 'capitalizeFirstLetter', 'categorias', 'destacados', 'otherProducts', 'galery', 'combo'));
+    return view('public.product', compact('is_reseller', 'atributos', 'isWhishList', 'testimonios', 'general', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env', 'product', 'capitalizeFirstLetter', 'categorias', 'destacados', 'otherProducts', 'galery', 'combo', 'valoresdeatributo'));
   }
 
   public function wishListAdd(Request $request)
@@ -1235,4 +1248,13 @@ class IndexController extends Controller
 
     return response()->json($resultados);
   }
+
+
+  public function help()
+  { 
+    $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
+    $url_env = env('APP_URL');
+    return view('public.help', compact('url_env','faqs'));
+  }
 }
+

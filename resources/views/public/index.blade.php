@@ -12,30 +12,11 @@
       return $banner['potition'] === 'mid';
   });
 @endphp
+
 <style>
   @media (max-width: 600px) {
     .fixedWhastapp {
       right: 13px !important;
-    }
-  }
-
-
-
-  @media (max-width: 400px) {
-    #cart-modal {
-      width: 302px !important;
-      right: 25% !important;
-      top: 5px !important;
-      /* left: 0% !important; */
-    }
-  }
-
-  @media (min-width: 400px) and (max-width: 700px) {
-    #cart-modal {
-      width: 302px !important;
-      right: 16% !important;
-      top: 5px;
-      /* left: 0% !important; */
     }
   }
 </style>
@@ -44,67 +25,54 @@
 
 @section('content')
 
-  <main class="z-[15] ">
-
-    <section class="bg-[#f1f1f1]  sectionOverflow">
+   <main class="z-[15] ">
+  @if (count($slider) > 0) 
+    <section class="">
       <x-swipper-card :items="$slider" />
     </section>
+   @endif
 
-
-    @if ($categorias->count() > 0)
-      <x-sections.simple title="Categorias" class="sectionOverflow">
-        <div style="overflow-x: hidden">
-          <x-swipper-card-categoria :items="$categorias" />
-
+   @if (count($logos) > 0) 
+    <section class="w-full px-[5%] lg:px-[8%] py-12 lg:py-20 flex flex-col gap-10">
+        <div class="text-center">
+            {{-- <h3 class="font-Helvetica_Medium text-[#FD1F4A] text-base">Selecciona la marca de tu automóvil</h3> --}}
+            <h2 class="font-Helvetica_Bold text-[#010101] text-4xl">Autoradios IOS</h2>
         </div>
-      </x-sections.simple>
-    @endif
 
-
-    {{-- seccion Ultimos Productos  --}}
-    @if ($ultimosProductos->count() > 0)
-      <section class="w-full px-[5%] py-10 lg:py-20 overflow-visible" style="overflow-x: visible">
-        <div class="flex flex-col md:flex-row justify-between w-full gap-3" data-aos="zoom-out-left">
-          <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232]">Últimos productos agregados</h1>
-          <a href="/catalogo" class="flex items-center text-base font-Inter_Medium font-semibold text-[#006BF6] ">Ver
-            todos
-            los productos <img src="{{ asset('images/img/arrowBlue.png') }}" alt="Icono" class="ml-2 "></a>
+        <div class="flex flex-wrap justify-between gap-8 ">
+            @foreach ($logos as $logo)
+                <img class="w-32 object-contain mx-auto" src="{{ asset($logo->url_image) }}" />
+            @endforeach
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 md:flex-row gap-4 mt-14 w-full">
-          @foreach ($ultimosProductos as $item)
-            <x-product.container width="col-span-1 " bgcolor="" :item="$item" />
-            {{-- <x-productos-card width="w-1/5" bgcolor="" :item="$item" /> --}}
-          @endforeach
-        </div>
-      </section>
-    @endif
-
+    </section>
+   @endif
 
     {{-- seccion Gran Descuento  --}}
     @if (count($bannerMid) > 0)
-      <section class="flex flex-col md:flex-row justify-between bg-[#EEEEEE] mt-14 overflow-visible" data-aos="fade-down"
-        style="overflow-x: visible">
-        <x-banner-section :banner="$bannerMid" />
+      <section>
+        <x-banner-section-cover :banner="$bannerMid" />
       </section>
     @endif
 
+
     {{-- seccion Productos populares  --}}
     @if ($productosPupulares->count() > 0)
-      <section class=" bg-[#F8F8F8] overflow-visible" style="overflow-x: visible">
-        <div class="w-full px-[5%] py-14 lg:py-20" data-aos="fade-down">
+      <section>
+        <div class="w-full px-[5%] py-14 lg:py-20">
           <div class="flex flex-col md:flex-row justify-between w-full gap-3">
-            <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232]">Productos Destacados</h1>
-            {{-- <div class="flex  flex-col md:flex-row gap-2 md:gap-8">
-              <a href="/catalogo" class="flex items-center   font-Inter_Medium  hover:text-[#006BF6] ">Todos</a>
-              @foreach ($categoriasAll as $item)
-                <a href="/catalogo/{{ $item->id }}"
-                  class="flex items-center font-Inter_Medium  hover:text-[#006BF6]  transition ease-out duration-300 transform  ">{{ $item->name }}
-                </a>
-              @endforeach
-            </div> --}}
+            <div class="flex flex-col">
+              <h3 class="text-[#FD1F4A] font-semibold font-Helvetica_Light text-lg">Descuentos especiales</h3>
+              <h1 class="text-2xl md:text-3xl font-semibold font-Helvetica_Medium text-[#111] tracking-wide">Los más vendidos</h1>
+            </div>
+            <div class="flex flex-col items-center justify-center">
+              <a href="/catalogo" class="bg-[#FD1F4A] text-base font-normal text-white text-center font-Helvetica_Medium px-6 py-3 rounded-3xl flex items-center justify-center w-auto">
+                Vamos a comprar</a>
+            </div>
           </div>
           @foreach ($productosPupulares->chunk(4) as $taken)
+          
             <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:flex-row gap-4 mt-14 w-full">
+             
               @foreach ($taken as $item)
                 <x-product.container width="w-1/4" bgcolor="bg-[#FFFFFF]" :item="$item" />
                 {{-- <x-productos-card width="w-1/4" bgcolor="bg-[#FFFFFF]" :item="$item" /> --}}
@@ -114,10 +82,146 @@
         </div>
       </section>
     @endif
+    
+
+    @php
+          $categories = $categoriasindex;
+          $chunks = $categories->chunk(3);
+          $processedCategories = collect();
+    @endphp
+
+    @foreach ($chunks as $chunk)
+            @if ($chunk->count() == 3)
+                <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
+                    @foreach ($chunk as $category)
+                      @if ($loop->first) 
+                          <div class="w-full md:row-span-2 md:col-span-2">
+                            <a href="{{ route('Catalogo.jsx', $category->id) }}">
+                              <div class="h-full w-full relative flex flex-col group">
+                                  <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
+                                      class="h-96 md:h-full w-full flex flex-col justify-end items-start object-cover"
+                                      onerror="this.src='/images/img/noimagen.jpg';">
+                                  <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                                   <div class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
+                                  <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
+                                  <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis est.</p>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                      @else
+                          <div class="w-full md:col-span-2">
+                            <a href="{{ route('Catalogo.jsx', $category->id) }}">
+                              <div class="h-full w-full relative flex flex-col group">
+                                <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
+                                    class="h-60 md:h-64 lg:h-60 xl:h-80 w-full flex flex-col justify-end items-start object-cover"
+                                    onerror="this.src='/images/img/noimagen.jpg';">
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                                <div class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
+                                  <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
+                                  <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis est.</p>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                       @endif
+                    @endforeach
+                </div>
+            @endif
+          
+            @php
+                  $processedCategories = $processedCategories->merge($chunk); // Guardamos las categorías procesadas.
+            @endphp
+    @endforeach 
+
+    @php
+        $remainder = $categories->count() % 3;
+        $remainderCategories = $categories->diff($processedCategories);
+    @endphp
+      
+    @php
+        $remainderCategories = $categories->slice(-$remainder);
+    @endphp
+
+    @if ($remainder > 0)
+          @if ($remainder == 1)
+                <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
+                  @foreach ($remainderCategories as $category)
+                    <div class="col-span-4">
+                              <a href="{{ route('Catalogo.jsx', $category->id) }}">
+                                <div class="h-full w-full relative flex flex-col group">
+                                  <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
+                                      class="h-60 md:h-64 lg:h-60 xl:h-96 w-full flex flex-col justify-end items-start object-cover"
+                                      onerror="this.src='/images/img/noimagen.jpg';">
+                                  <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                                  <div class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
+                                    <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
+                                    <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis est.</p>
+                                  </div>
+                                </div>
+                              </a>
+                      </div>
+                    </div>
+                  @endforeach
+                </div>
+ 
+          @elseif ($remainder == 2)
+                <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
+                    @foreach ($remainderCategories as $category)
+                        <div class="w-full md:col-span-2">
+                                  <a href="{{ route('Catalogo.jsx', $category->id) }}">
+                                    <div class="h-full w-full relative flex flex-col group">
+                                      <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
+                                          class="h-60 md:h-64 lg:h-60 xl:h-80 w-full flex flex-col justify-end items-start object-cover"
+                                          onerror="this.src='/images/img/noimagen.jpg';">
+                                      <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                                      <div class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
+                                        <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
+                                        <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis est.</p>
+                                      </div>
+                                    </div>
+                                  </a>
+                        </div>
+                    @endforeach
+                </div>
+          @endif
+    @endif
+
+
+    {{-- seccion Ultimos Productos  --}}
+    @if ($ultimosProductos->count() > 0)
+    <section>
+      <div class="w-full px-[5%] py-14 lg:py-20">
+        <div class="flex flex-col md:flex-row justify-between w-full gap-3">
+          <div class="flex flex-col">
+            <h3 class="text-[#FD1F4A] font-semibold font-Helvetica_Light text-lg">Apúrate que se acaban</h3>
+            <h1 class="text-2xl md:text-3xl font-semibold font-Helvetica_Medium text-[#111] tracking-wide">Equipos nuevos</h1>
+          </div>
+          <div class="flex flex-col items-center justify-center">
+            <a href="/catalogo" class="bg-[#FD1F4A] text-base font-normal text-white text-center font-Helvetica_Medium px-6 py-3 rounded-3xl flex items-center justify-center w-auto">
+              Autoradios</a>
+          </div>
+        </div>
+        @foreach ($ultimosProductos->chunk(4) as $taken)
+          <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:flex-row gap-6 mt-14 w-full">
+            @foreach ($taken as $item)
+              <x-product.container width="w-full" bgcolor="bg-[#FFFFFF]" :item="$item" />
+              {{-- <x-productos-card width="w-1/4" bgcolor="bg-[#FFFFFF]" :item="$item" /> --}}
+            @endforeach
+          </div>
+        @endforeach
+      </div>
+    </section>
+    @endif
+
+
+    
+    
+  
 
     {{-- Seccion Blog --}}
-    @if ($blogs->count() > 0)
-      <section class="w-full px-[5%] py-7 lg:py-14 overflow-visible" data-aos="fade-up" style="overflow-x: visible">
+    {{-- @if ($blogs->count() > 0)
+      <section class="w-full px-[5%] py-7 lg:py-14" data-aos="fade-up">
         <div class="flex flex-col md:flex-row justify-between w-full gap-3">
           <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232]">Blog & Eventos</h1>
           <a href="/blog/0" class="flex items-center text-base font-Inter_Medium font-semibold text-[#006BF6]">Ver todos
@@ -130,22 +234,22 @@
         </div>
 
       </section>
-    @endif
+    @endif --}}
 
 
     {{-- gran descuento --}}
-    @if (count($bannersBottom) > 0)
+    {{-- @if (count($bannersBottom) > 0)
       <section class="w-full px-[5%] mt-7 lg:mt-10 " data-aos="zoom-out-right">
         <div class="bg-gradient-to-b from-gray-50 to-white flex flex-col md:flex-row justify-between bg-[#EEEEEE]">
           <x-banner-section :banner="$bannersBottom" />
         </div>
       </section>
-    @endif
+    @endif --}}
 
 
-    @if ($benefit->count() > 0)
+    {{-- @if ($benefit->count() > 0)
       <section class="py-10 lg:py-13 bg-[#F8F8F8] w-full px[5%]" data-aos="zoom-out-right">
-        <div class="grid grid-cols-1  gap-6 @if ($benefit->count() < 4) md:grid-cols-3 @else md:grid-cols-4 @endif">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 ">
           @foreach ($benefit as $item)
             <div class="flex flex-col items-center w-full gap-1 justify-center text-center px-[10%] xl:px-[18%]">
               <img src="{{ asset($item->icono) }}" alt="">
@@ -155,28 +259,20 @@
           @endforeach
         </div>
       </section>
-    @endif
+    @endif --}}
 
 
 
   </main>
-  {{-- modalOfertas --}}
 
-
-
-  <!-- Modal toggle -->
 
 
   <!-- Main modal -->
-
   <div id="modalofertas" class="modal modalbanner">
-
     <!-- Modal body -->
     <div class="p-1 ">
       <x-swipper-card-ofertas :items="$popups" id="modalOfertas" />
     </div>
-
-
   </div>
 
 

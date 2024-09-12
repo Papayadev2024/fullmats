@@ -97,6 +97,9 @@
         <x-menu.item id="sobrenosotros" href="{{ route('aboutus.index') }}" icon="fas fa-address-card">
           Sobre Nosotros
         </x-menu.item>
+        <x-menu.item id="faqs" href="{{ route('faqs.index') }}" icon="fas fa-address-card">
+          Preguntas Frecuentes
+        </x-menu.item>
         <x-menu.item id="politicas-de-devolucion" href="{{ route('politicas-de-devolucion.edit', 1) }}"
           icon="fas fa-undo-alt">
           Politicas de Devolucion

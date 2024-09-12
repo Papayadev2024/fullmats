@@ -6,9 +6,9 @@
     </svg>
     @if (isset($href))
       <a href="{{ $href }}"
-        class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">{{ $slot }}</a>
+        class="ms-1 text-[15px] font-medium text-gray-700 hover:text-[#fd1f4a] md:ms-2">{{ $slot }}</a>
     @else
-      <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">{{ $slot }}</span>
+      <span class="ms-1 text-[15px] font-medium text-gray-700 md:ms-1">{{ $slot }}</span>
     @endisset
 </div>
 </li>

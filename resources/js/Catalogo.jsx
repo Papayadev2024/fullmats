@@ -221,24 +221,41 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
     return acc;
   }, {});
 
-  return (<>
-    <style>
+  const categoryDetails = categories.find(category => category.id === Number(selected_category));
 
-    </style>
-    <form className="flex flex-col md:flex-row gap-6  mx-auto font-poppins bg-[#F1F1F1] w-full" style={{ padding: '40px' }}>
-      <section className="hidden md:flex md:flex-col gap-4 md:basis-3/12 bg-white p-6 rounded-lg h-max md:sticky top-2">
+  console.log(categoryDetails);
+
+  return (<>
+   <div>
+      <section
+            class="flex relative flex-col justify-center items-center px-[5%] py-28 text-base font-medium min-h-[345px] text-neutral-900 max-md:py-24">
+            <img loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/1f15375dac970433a2abe3921fa2c31e35c32f7b26a37b841431aaba1861d380?placeholderIfAbsent=true&apiKey=72fae0f4c808496790606e16dad566da"
+                alt="" class="object-cover absolute inset-0 size-full opacity-15" />
+            <div class="flex relative flex-col max-w-full w-[499px]">
+                <h2 class="self-center text-[#FD1F4A] font-Helvetica_Medium">Catálogo</h2>
+                <h3 class="mt-3 text-5xl text-center max-md:max-w-full font-Helvetica_Medium">{categoryDetails?.name ?? "Todas las categorías"}</h3>
+                <p class="mt-3 text-lg font-light text-center max-md:max-w-full ">
+                 {categoryDetails?.description ?? "Explora nuestro catálogo completo de productos cuidadosamente seleccionados para ofrecerte la mejor calidad y variedad."} 
+                </p>
+            </div>
+      </section>
+      
+    <form className="flex flex-col lg:flex-row gap-6  mx-auto font-Helvetica_Light font-bold w-full p-5 lg:p-10">
+      {/* sticky */}
+      <section className="hidden lg:flex md:flex-col gap-4 md:basis-3/12 bg-white p-6 rounded-lg h-max top-2">
         <FilterContainer setFilter={setFilter} filter={filter} minPrice={minPrice ?? 0} maxPrice={maxPrice ?? 0} categories={categories} tags={tags} attribute_values={Object.values(attributes)} selected_category={selected_category} tag_id={tag_id} />
       </section>
       <section className="flex flex-col gap-6 md:basis-9/12">
         <div className="w-full bg-white rounded-lg font-medium flex flex-row justify-between items-center px-2 py-3">
-          <div className='flex flex-row gap-2'>
-            <span className="font-normal text-[17px] text-[#666666] ml-3">
+          <div className='flex flex-col xl:flex-row  justify-start xl:justify-between items-start gap-2 '>
+            <span className="font-normal text-[17px] text-[#666666] xl:ml-3">
               Mostrando {((currentPage - 1) * take) + 1} - {currentPage * take > totalCount ? totalCount : currentPage * take} de {totalCount} resultados
             </span>
-            <button type="button" className='md:hidden text-[#006BF6]' onClick={() => setShowModal(true)}> Mostrar Filtros</button>
+            <button type="button" className='lg:hidden text-[#006BF6]' onClick={() => setShowModal(true)}> Mostrar Filtros</button>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:pr-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:pr-4">
           {items.map((item, i) => <ProductCard key={`product-${item.id}`} item={item} bgcolor={'bg-white'} is_reseller={is_proveedor.current} />)}
         </div>
         <div className="w-full font-medium flex flex-row justify-center items-center">
@@ -247,14 +264,14 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
       </section>
       {/* modal */}
 
-      {showModal && (<div className="fixed z-40 top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center max-h-[80vh] " id="modal">
+      {showModal && (<div className="fixed z-40 top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center max-h-[80vh] p-5" id="modal">
         {/* btn para cerrar modal */}
         <div className="z-50 flex items-center content-center justify-center absolute  p-4 bg-black rounded-full h-6 w-6" style={{ top: '20px', right: '20px' }}>
           <button type='button' onClick={() => setShowModal(false)} className="text-white text-md ">X</button>
 
         </div>
 
-        <div className='flex flex-col gap-4 md:basis-3/12 bg-white p-6 rounded-lg top-2 overflow-y-auto mt-10' style={{ maxHeight: '90vh', maxWidth: "85vh" }}>
+        <div className='flex flex-col gap-4 w-full bg-white p-6 rounded-lg top-2 overflow-y-auto mt-10' style={{ maxHeight: '90vh', maxWidth: "85vh" }}>
           <FilterContainer setFilter={setFilter} filter={filter} minPrice={minPrice ?? 0} maxPrice={maxPrice ?? 0} categories={categories} tags={tags} attribute_values={Object.values(attributes)} selected_category={selected_category} tag_id={tag_id} />
         </div>
 
@@ -262,6 +279,8 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
 
 
     </form>
+
+    </div>
   </>)
 }
 

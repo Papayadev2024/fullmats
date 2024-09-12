@@ -40,27 +40,27 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
   }
 
   return (<>
-    <button className="w-full h-12 text-[17px] bg-[#006BF6] text-white text-center font-semibold rounded-full" type="reset">
+    <button className="w-full py-3 text-base bg-[#FD1F4A] tracking-wider text-white text-center font-Helvetica_Medium rounded-2xl" type="reset">
       Limpiar filtros
     </button>
 
-    <FilterItem title="Precio" className="flex flex-row gap-4 w-full">
-      <input type="number" className="w-28 rounded-md border" placeholder="Desde" min={minPrice} max={maxPrice} step={0.01} onChange={setMinPrice} />
-      <input type="number" className="w-28 rounded-md border" placeholder="Hasta" min={minPrice} max={maxPrice} step={0.01} onChange={setMaxPrice} />
+    <FilterItem title="Rango de precio" className="flex flex-row gap-4 w-full mt-3">
+      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FD1F4A]" placeholder="Desde" min={minPrice} max={maxPrice} step={0.01} onChange={setMinPrice} />
+      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FD1F4A]" placeholder="Hasta" min={minPrice} max={maxPrice} step={0.01} onChange={setMaxPrice} />
     </FilterItem>
     {
       categories.length > 0 && (
 
         <div className="w-full ">
-          <h2 className="font-semibold mb-4">Categorias</h2>
-
+          <h2 className="font-Helvetica_Light tracking-wide font-bold text-base mb-4">Categorias</h2>
+          <div className='bg-black p-[1px] -mt-2 mb-5'></div>
           {categories.map((item) => {
 
             return item.subcategories.length > 0 && (<div key={item.id} className="w-full">
               <div className="border-b border-gray-200">
                 <button
                   type="button"
-                  className="w-full flex justify-between items-center py-2 px-4 text-left text-[#006BF6] bg-gray-100 hover:bg-gray-200 focus:outline-none"
+                  className="w-full flex justify-between items-center py-2 px-4 text-left text-base text-[#111111]  bg-gray-100 hover:bg-gray-200 focus:outline-none"
                   onClick={() => toggleAccordion(item.id)}
                 >
                   <span>{item.name}</span>
@@ -83,7 +83,7 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
                       const isCheckedfilter = Array.isArray(filter?.subcategory_id) && filter.subcategory_id.includes(String(subitem.id));
                       return <>
                         <label key={subitem.id} htmlFor={`item-category-${subitem.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
-                          <input id={`item-category-${subitem.id}`} name='category' type="checkbox" className="bg-blue-500 rounded-sm  border-none" value={subitem.id} onClick={(e) => onClick(`subcategory_id`, e.target.value, e.target.checked)}
+                          <input id={`item-category-${subitem.id}`} name='category' type="checkbox" className="text-[#FD1F4A] bg-[#FD1F4A] rounded-sm focus:ring-0 border-none" value={subitem.id} onClick={(e) => onClick(`subcategory_id`, e.target.value, e.target.checked)}
                             defaultChecked={isCheckedfilter}
                           />
                           {subitem.name}
@@ -122,7 +122,7 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
     }
     {
       attribute_values.map((x, i) => (
-        <FilterItem key={`attribute-${i}`} title={x[0].attribute.titulo} items={x} itemName='valor' onClick={onClick} />
+        <FilterItem key={`attribute-${i}`} title={x[0].attribute.titulo} items={x} itemName='valor' itemImg='imagen' onClick={onClick} />
       ))
     }
     {/* <button className="text-white bg-[#0168EE] rounded-md font-bold h-10 w-24" type="submit">

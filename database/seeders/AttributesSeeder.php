@@ -12,17 +12,11 @@ class AttributesSeeder extends Seeder
      */
     public function run()
     {
-        Attributes::updateOrCreate(['titulo' => 'Marca'], [
+        Attributes::updateOrCreate(['titulo' => 'Marcas'], [
             'id' => 1,
-            'titulo' => 'Marca'
+            'titulo' => 'Marcas',
+            'is_multiple' => 0
         ]);
-        Attributes::updateOrCreate(['titulo' => 'Color'], [
-            'id' => 2,
-            'titulo' => 'Color'
-        ]);
-        Attributes::updateOrCreate(['titulo' => 'Tamaño'], [
-            'id' => 3,
-            'titulo' => 'Tamaño'
-        ]);
+     
     }
 }

@@ -29,12 +29,11 @@ export default {
             },
 
             fontFamily: {
-                Inter_Bold: ["Inter_Bold"],
-                Inter_ExtraBold: ["Inter_ExtraBold"],
-                Inter_Light: ["Inter_Light"],
-                Inter_Medium: ["Inter_Medium"],
-                Inter_Regular: ["Inter_Regular"],
-                Inter_SemiBold: ["Inter_SemiBold"],
+                Helvetica_Bold: ["Helvetica_Bold"],
+                Helvetica_Heavy: ["Helvetica_Heavy"],
+                Helvetica_Black: ["Helvetica_Black"],
+                Helvetica_Light: ["Helvetica_Light"],
+                Helvetica_Medium: ["Helvetica_Medium"],
             },
 
             screens: {

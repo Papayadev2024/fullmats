@@ -6,7 +6,7 @@
   <div class="swiper-wrapper !h-max">
     @foreach ($items as $item)
       <div class="swiper-slide">
-        <x-content-slider :item="$item" />
+        <x-content-slider-second :item="$item" />
       </div>
     @endforeach
   </div>

@@ -429,22 +429,23 @@ function PintarCarrito() {
   articulosCarrito.forEach(element => {
     
     let plantilla = `<tr class=" font-poppins border-b">
-          <td class="p-2">
-            <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
+          <td class="p-2 w-24">
+            <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 w-24 object-contain" alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
           </td>
           <td class="p-2">
-            <p class="font-semibold text-[14px] text-[#151515] mb-1">
+            
+            <p class="limited-text font-semibold text-[14px] text-[#151515] mb-1">
               ${element.producto}
             </p>
             <div class="flex w-20 justify-center text-[#151515] border-[1px] border-[#6C7275] rounded-md">
-              <button type="button" onClick="(deleteOnCarBtn(${element.id}, ${element.isCombo}))" class="w-6 h-6 flex justify-center items-center ">
-                <span  class="text-[20px]">-</span>
+              <button type="button" onClick="(deleteOnCarBtn(${element.id}, ${element.isCombo}))" class="w-6  py-0 flex justify-center items-center ">
+               <div><i class="fa-solid fa-minus text-xs"></i></div>
               </button>
-              <div class="w-6 h-6 flex justify-center items-center">
-                <span  class="font-semibold text-[12px]">${element.cantidad}</span>
+              <div class="w-6 py-1 flex justify-center items-center">
+                <span  class="font-semibold text-sm">${element.cantidad}</span>
               </div>
-              <button type="button" onClick="(addOnCarBtn(${element.id}, ${element.isCombo}))" class="w-6 h-6 flex justify-center items-center ">
-                <span class="text-[20px]">+</span>
+              <button type="button" onClick="(addOnCarBtn(${element.id}, ${element.isCombo}))" class="w-6 py-0  flex justify-center items-center ">
+                <div><i class="fa-solid fa-plus text-xs"></i></div>
               </button>
             </div>
           </td>

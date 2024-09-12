@@ -1,216 +1,205 @@
-<footer class="font-Inter_Medium bg-[#FFFFFF] mt-5">
-  <style>
-    #modalPoliticasDev #modalTerminosCondiciones #modallinkPoliticasDatos {
+<footer class="font-Helvetica_Light bg-[#FFFFFF] mt-5">
+    <style>
+        #modalPoliticasDev #modalTerminosCondiciones #modallinkPoliticasDatos {
+            ;
+            height: 70vh;
+            /* Establece la altura del modal al 70% de la altura de la ventana gráfica */
+            overflow-y: auto;
+            /* Permite el desplazamiento vertical si el contenido excede la altura del modal */
+        }
 
+        #modalPoliticasDev .prose,
+        #modalTerminosCondiciones .prose,
+        #modallinkPoliticasDatos .prose {
+            max-width: 100%;
+            text-align: justify;
 
+        }
 
-      ;
-      height: 70vh;
-      /* Establece la altura del modal al 70% de la altura de la ventana gráfica */
-      overflow-y: auto;
-      /* Permite el desplazamiento vertical si el contenido excede la altura del modal */
-    }
+        .prose * {
+            margin-bottom: 0% !important;
+            margin-top: 0% !important;
+        }
+    </style>
 
-    #modalPoliticasDev .prose,
-    #modalTerminosCondiciones .prose,
-    #modallinkPoliticasDatos .prose {
-      max-width: 100%;
-      text-align: justify;
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:justify-center w-full px-[5%] py-8 lg:py-16 bg-cover object-cover"
+        style="background-image: url('{{ asset('images/img/fondofooter.png') }}');">
 
-    }
+        <div class="flex flex-col text-white text-base gap-1">
+            <h3 class="font-semibold text-lg tracking-wider text-white pb-3">Contacta con Nosotros</h3>
+            <p>{{ config('app.name') }}</p>
+            <p>{{ $datosgenerales->address }}</p>
+            <p>{{ $datosgenerales->city }} - {{ $datosgenerales->country }}</p>
+            <p>{{ $datosgenerales->cellphone }}</p>
+            <p>{{ $datosgenerales->email }}</p>
+        </div>
 
-    .prose * {
-      margin-bottom: 0% !important;
-      margin-top: 0% !important;
-    }
-  </style>
+        <div class="flex flex-col text-white text-base gap-1">
+            <h3 class="font-semibold text-lg tracking-wider text-white pb-3">Información</h3>
+            <a href="/">Inicio</a>
+            <a href="{{ route('Catalogo.jsx') }}">Autoradios</a>
+            <a href="#">Accesorios</a>
+        </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:justify-center w-full px-[5%] py-8 lg:py-16 ">
+        <div class="flex flex-col text-white text-base gap-1">
+            <h3 class="font-semibold text-lg tracking-wider text-white pb-3">Servicio al Cliente</h3>
+            <a href="/contacto">Contacto</a>
+            <a id="linkTerminos">Terminos y condiciones </a>
+            <a id="linkPoliticas">Politicas de devolucion </a>
 
-    <div class="flex flex-col text-[#444444] text-base gap-1">
-      <h3 class="font-bold text-xl text-[#333333] pb-3">Contacta con Nosotros</h3>
-      <p>{{ config('app.name') }}</p>
-      <p>{{ $datosgenerales->address }}</p>
-      <p> {{ $datosgenerales->city }} - {{ $datosgenerales->country }}</p>
-      <p>{{ $datosgenerales->cellphone }}</p>
-      <p>{{ $datosgenerales->email }}</p>
+            <a href="{{ route('librodereclamaciones') }}"><img class="w-24 mt-2"
+                    src="{{ asset('images/img/reclamaciones.png') }}" /></a>
+        </div>
 
-      <div class="flex flex-row gap-4 text-[#333333] mt-6 pt-2">
-        @if ($datosgenerales->facebook)
-          <a href="{{ $datosgenerales->facebook }}" target="_blank">
-            <i class="fa-brands fa-facebook fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->instagram)
-          <a href="{{ $datosgenerales->instagram }}" target="_blank">
-            <i class="fa-brands fa-instagram fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->linkedin)
-          <a href="{{ $datosgenerales->linkedin }}" target="_blank">
-            <i class="fa-brands fa-linkedin fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->tiktok)
-          <a href="{{ $datosgenerales->tiktok }}" target="_blank">
-            <i class="fa-brands fa-tiktok fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->twitter)
-          <a href="{{ $datosgenerales->twitter }}" target="_blank">
-            <i class="fa-brands fa-twitter fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->youtube)
-          <a href="{{ $datosgenerales->youtube }}" target="_blank">
-            <i class="fa-brands fa-youtube fa-2xl"></i>
-          </a>
-        @endif
-      </div>
-    </div>
-
-    <div class="flex flex-col text-[#444444] text-base gap-1">
-      <h3 class="font-bold text-xl text-[#333333] pb-3">Información</h3>
-      <a href="/">Inicio</a>
-      <a href="{{ route('Catalogo.jsx') }}">Productos</a>
-      <a href="{{ route('blog', 0) }}">Blog</a>
-    </div>
-
-    <div class="flex flex-col text-[#444444] text-base gap-1">
-      <h3 class="font-bold text-xl text-[#333333] pb-3">Servicio al Cliente</h3>
-      <a href="/contacto">Contacto</a>
-      <a id="linkTerminos">Terminos y condiciones </a>
-      <a id="linkPoliticas">Politicas de devolucion </a>
-      <a id="linkPoliticasDatos">Politica de Datos</a>
-
-      <a href="{{ route('librodereclamaciones') }}"><img class="w-24"
-          src="{{ asset('images/img/reclamaciones.png') }}" /></a>
-    </div>
-
-    <div class=" flex flex-col gap-2 text-[#444444] text-base">
-      <h3 class="font-bold text-xl text-[#333333] pb-3">Únete al Blog</h3>
-      <p>¡Suscríbete ahora para no perderte ninguno de nuestros artículos!</p>
-      <div class="relative bg-[#F8F8F8] rounded-full p-2 px-4">
-        <form id="subsEmail" class="flex">
-          @csrf
-          <input type="email" name="email" id="emailFooter" placeholder="Déjanos tu e-mail"
-            class="w-full border-none focus:border-transparent ring-0 focus:ring-0 p-2 bg-[#F8F8F8]" />
-          <input type="text" name="tipo" value="Inscripción" hidden />
-          <button type="submit" class=" text-[#444444] p-2 font-semibold">Enviar</button>
-        </form>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="bg-[#F8F8F8] py-4 flex items-center justify-center">
-    <div class="flex flex-col lg:flex-row justify-between items-center gap-5 w-full px-[5%]">
-      <div class="text-center">
-        <p class="font-normal text-sm text-[#444444]">
-          Copyright &copy; 2023 {{ config('app.name') }}. Reservados todos los derechos. Powered by <a
-            href="https://www.mundoweb.pe" target="_blank" class="text-[#006BF6] border-b border-[#006BF6]"> Mundo Web
-          </a>
-        </p>
-      </div>
-      <div class="flex gap-2 items-center justify-center">
-        <img src="{{ asset('images/svg/visa.svg') }}" alt="visa" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/american.svg') }}" alt="american" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/mastercad.svg') }}" alt="mastercad" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/stripe.svg') }}" alt="stripe" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/paypal.svg') }}" alt="paypal" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/pay.svg') }}" alt="pay" class="h-7 md:h-10" />
-      </div>
-    </div>
-  </div>
-
-  <div id="modalTerminosCondiciones" class="modal" style="max-width: 900px !important;width: 100% !important;  ">
-    <!-- Modal body -->
-    <div class="p-4 ">
-      <h1 class="font-Inter_SemiBold">Terminos y condiciones</h1>
-      <p class="font-Inter_Regular  prose grid grid-cols-1">{!! $terminos->content ?? '' !!}</p>
-    </div>
-  </div>
-  <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
-    <!-- Modal body -->
-    <div class="p-4 ">
-      <h1 class="font-Inter_SemiBold">Politicas de devolucion</h1>
-
-      <p class="font-Inter_Regular  prose grid grid-cols-1 ">{!! $politicas->content ?? '' !!}</p>
-
+        <div class="flex flex-col text-white text-base gap-1">
+            <h3 class="font-semibold text-lg tracking-wider text-white pb-3">Siguenos en nuestras redes</h3>
+            <div class="flex flex-row gap-4 text-white pt-2">
+                @if ($datosgenerales->facebook)
+                    <a href="{{ $datosgenerales->facebook }}">
+                        <i class="fa-brands fa-facebook fa-2xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->instagram)
+                    <a href="{{ $datosgenerales->instagram }}">
+                        <i class="fa-brands fa-instagram fa-2xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->linkedin)
+                    <a href="{{ $datosgenerales->linkedin }}">
+                        <i class="fa-brands fa-linkedin fa-2xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->tiktok)
+                    <a href="{{ $datosgenerales->tiktok }}">
+                        <i class="fa-brands fa-tiktok fa-2xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->twitter)
+                    <a href="{{ $datosgenerales->twitter }}">
+                        <i class="fa-brands fa-twitter fa-2xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->youtube)
+                    <a href="{{ $datosgenerales->youtube }}">
+                        <i class="fa-brands fa-youtube fa-2xl"></i>
+                    </a>
+                @endif
+            </div>
+        </div>
 
     </div>
-  </div>
-  <div id="modallinkPoliticasDatos" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
-    <!-- Modal body -->
-    <div class="p-4 ">
-      <h1 class="font-Inter_SemiBold">Politicas de Datos</h1>
 
-      <p class="font-Inter_Regular  prose grid grid-cols-1">{!! $politicaDatos->content ?? '' !!}</p>
-
-
+    <div class="bg-[#F8F8F8] py-4 flex items-center justify-center">
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-5 w-full px-[5%]">
+            <div class="text-center">
+                <p class="font-normal text-sm text-[#444444]">
+                    Copyright &copy; 2023 {{ config('app.name') }}. Reservados todos los derechos. Powered by <a
+                        href="https://www.mundoweb.pe" target="_blank" class="text-[#006BF6] border-b border-[#006BF6]">
+                        Mundo Web
+                    </a>
+                </p>
+            </div>
+            <div class="flex gap-2 items-center justify-center">
+                <img src="{{ asset('images/svg/visa.svg') }}" alt="visa" class="h-7 md:h-10" />
+                <img src="{{ asset('images/svg/american.svg') }}" alt="american" class="h-7 md:h-10" />
+                <img src="{{ asset('images/svg/mastercad.svg') }}" alt="mastercad" class="h-7 md:h-10" />
+                <img src="{{ asset('images/svg/stripe.svg') }}" alt="stripe" class="h-7 md:h-10" />
+                <img src="{{ asset('images/svg/paypal.svg') }}" alt="paypal" class="h-7 md:h-10" />
+                <img src="{{ asset('images/svg/pay.svg') }}" alt="pay" class="h-7 md:h-10" />
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div id="modalTerminosCondiciones" class="modal" style="max-width: 900px !important;width: 100% !important;  ">
+        <!-- Modal body -->
+        <div class="p-4 ">
+            <h1 class="font-Inter_SemiBold">Terminos y condiciones</h1>
+            <p class="font-Inter_Regular  prose grid grid-cols-1">{!! $terminos->content ?? '' !!}</p>
+        </div>
+    </div>
+    
+    <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
+        <!-- Modal body -->
+        <div class="p-4 ">
+            <h1 class="font-Inter_SemiBold">Politicas de devolucion</h1>
+
+            <p class="font-Inter_Regular  prose grid grid-cols-1 ">{!! $politicas->content ?? '' !!}</p>
+
+
+        </div>
+    </div>
+    
+    <div id="modallinkPoliticasDatos" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
+        <!-- Modal body -->
+        <div class="p-4 ">
+            <h1 class="font-Inter_SemiBold">Politicas de Datos</h1>
+
+            <p class="font-Inter_Regular  prose grid grid-cols-1">{!! $politicaDatos->content ?? '' !!}</p>
+
+
+        </div>
+    </div>
 
 </footer>
 
 
 <script>
-  $(document).ready(function() {
+    $(document).ready(function() {
 
 
-    $(document).on('click', '#linkTerminos', function() {
-      $('#modalTerminosCondiciones').modal({
-        show: true,
-        fadeDuration: 400,
+        $(document).on('click', '#linkTerminos', function() {
+            $('#modalTerminosCondiciones').modal({
+                show: true,
+                fadeDuration: 400,
 
-      })
-    })
-    $(document).on('click', '#linkPoliticas', function() {
-      $('#modalPoliticasDev').modal({
-        show: true,
-        fadeDuration: 400,
-
-
-      })
-    })
-    $(document).on('click', '#linkPoliticasDatos', function() {
-      $('#modallinkPoliticasDatos').modal({
-        show: true,
-        fadeDuration: 400,
+            })
+        })
+        $(document).on('click', '#linkPoliticas', function() {
+            $('#modalPoliticasDev').modal({
+                show: true,
+                fadeDuration: 400,
 
 
-      })
-    })
-
-    function alerta(message) {
-      Swal.fire({
-        title: message,
-        icon: "error",
-      });
-    }
-
-    function validarEmail(value) {
-      const regex =
-        /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
-
-      if (!regex.test(value)) {
-        alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
-        return false;
-      }
-      return true;
-    }
+            })
+        })
+        $(document).on('click', '#linkPoliticasDatos', function() {
+            $('#modallinkPoliticasDatos').modal({
+                show: true,
+                fadeDuration: 400,
 
 
-    $("#subsEmail").submit(function(e) {
+            })
+        })
 
-      console.log('enviando subscripcion');
+        function alerta(message) {
+            Swal.fire({
+                title: message,
+                icon: "error",
+            });
+        }
 
-      e.preventDefault();
+        function validarEmail(value) {
+            const regex =
+                /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
 
-      Swal.fire({
+            if (!regex.test(value)) {
+                alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
+                return false;
+            }
+            return true;
+        }
 
-        title: 'Realizando suscripción',
-        html: `Registrando... 
+
+        $("#subsEmail").submit(function(e) {
+
+            console.log('enviando subscripcion');
+
+            e.preventDefault();
+
+            Swal.fire({
+
+                title: 'Realizando suscripción',
+                html: `Registrando... 
           <div class="max-w-2xl mx-auto overflow-hidden flex justify-center items-center mt-4">
               <div role="status">
               <svg aria-hidden="true" class="w-8 h-8 text-blue-600 animate-spin dark:text-gray-600 " viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -221,54 +210,55 @@
               </div>
           </div>
           `,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-          Swal.showLoading();
-        }
-      });
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading();
+                }
+            });
 
 
-      if (!validarEmail($('#emailFooter').val())) {
-        return;
-      };
-      $.ajax({
-        url: '{{ route('guardarUserNewsLetter') }}',
-        method: 'POST',
-        data: $(this).serialize(),
-        success: function(response) {
-          Swal.close();
-          Swal.fire({
-            title: response.message,
-            icon: "success",
-          });
-          $('#subsEmail')[0].reset();
-        },
-        error: function(response) {
-          let message = ''
+            if (!validarEmail($('#emailFooter').val())) {
+                return;
+            };
+            $.ajax({
+                url: '{{ route('guardarUserNewsLetter') }}',
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    Swal.close();
+                    Swal.fire({
+                        title: response.message,
+                        icon: "success",
+                    });
+                    $('#subsEmail')[0].reset();
+                },
+                error: function(response) {
+                    let message = ''
 
-          let isDuplicado = response.responseJSON.message.includes('Duplicate entry')
-          console.log(isDuplicado)
+                    let isDuplicado = response.responseJSON.message.includes(
+                        'Duplicate entry')
+                    console.log(isDuplicado)
 
-          if (isDuplicado) {
-            message =
-              'El correo que ha ingresado ya existe. Utilice  otra direccion de correo'
-          } else {
-            message = response.responseJSON.message
-          }
-          Swal.close();
-          Swal.fire({
-            title: message,
-            icon: "error",
-          });
-        }
-      });
+                    if (isDuplicado) {
+                        message =
+                            'El correo que ha ingresado ya existe. Utilice  otra direccion de correo'
+                    } else {
+                        message = response.responseJSON.message
+                    }
+                    Swal.close();
+                    Swal.fire({
+                        title: message,
+                        icon: "error",
+                    });
+                }
+            });
+
+        })
+
+
+
+
+
 
     })
-
-
-
-
-
-
-  })
 </script>

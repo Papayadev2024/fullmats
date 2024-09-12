@@ -380,12 +380,15 @@
 
                 <div class="md:col-span-5">
                   <label for="producto">Atributos</label>
+                 
+                 
                   <div class="flex flex-wrap gap-2 mt-2 relative mb-2 ">
                     @foreach ($atributos as $item)
                       <div href="#"
                         class="w-[300px] !important block px-3 py-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                         <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                           {{ $item->titulo }}
+                          
                         </h5>
                         <p class="font-normal text-gray-700 dark:text-gray-400 mb-2">
                           {{ $item->descripcion }}</p>
@@ -393,7 +396,15 @@
                           @foreach ($valorAtributo as $value)
                             @if ($value->attribute_id == $item->id)
                               <div class="flex items-center">
-                                <input type="{{ $item->is_multiple ? 'checkbox' : 'radio' }}"
+                                <input 
+                                  @isset($valoresdeatributo)
+                                      @foreach($valoresdeatributo as $valorat)
+                                        @if($valorat->attribute_value_id == $value->id)
+                                          checked
+                                        @endif
+                                      @endforeach
+                                  @endisset
+                                  type="{{ $item->is_multiple ? 'checkbox' : 'radio' }}"
                                   id="attribute-{{ $item->id }}-{{ $value->id }}"
                                   name="attributes[{{ $item->id }}]{{ $item->is_multiple ? '[]' : '' }}"
                                   value="{{ $value->id }}"

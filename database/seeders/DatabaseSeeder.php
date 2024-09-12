@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Strength;
+use Attribute;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
             MarketerSeeder::class,
             CampaignMarketerSeeder::class,
             */
+            AttributesSeeder::class,
             RoleSeeder::class,
             UsersSeeder::class,
             MessageSeeder::class,
@@ -40,11 +42,12 @@ class DatabaseSeeder extends Seeder
             BeneficiosSeeder::class,
             SliderSeeder::class,
             SubCategorySeeder::class,
-            ProductSeeder::class,
+            //ProductSeeder::class,
             StatusSeeder::class,
             PricesTableSeeder::class,
             PoliticasDatos::class,
             AboutUsSeeder::class
+            
             //ServiceSeeder::class,
         ]);
         

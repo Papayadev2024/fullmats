@@ -45,13 +45,13 @@
           </x-ecommerce.gateway.container>
         </div>
         <div class="basis-4/12 flex flex-col justify-start gap-5">
-          <h2 class="font-semibold text-[20px] text-[#151515]">
+          <h2 class="font-semibold text-[20px] tracking-wide text-[#151515] font-Helvetica_Medium">
             Resumen de la compra
           </h2>
           <div>
-            <div class="flex flex-col gap-5">
+            <div class="flex flex-col gap-5 font-Helvetica_Medium">
               <div class="text-[#151515] flex justify-between items-center">
-                <p class="font-normal text-[14px]">SubTotal</p>
+                <p class="text-[14px] font-semibold">Subtotal</p>
                 <span id="itemSubtotal" class="font-semibold text-[14px]">s/ 114.00</span>
               </div>
               <div class="text-[#151515] flex justify-between items-center">
@@ -59,13 +59,13 @@
                 <span id="itemTotal" class="font-semibold text-[20px]">s/ 0.00</span>
               </div>
               <a id="btnSiguiente" href="/pago"
-                class="text-white bg-[#006BF6] w-full py-4 rounded-3xl cursor-pointer font-semibold text-[16px] inline-block text-center">Siguiente</a>
+                class="text-white bg-[#FD1F4A] w-full py-3 rounded-3xl cursor-pointer tracking-wider font-semibold text-lg inline-block text-center">Siguiente</a>
             </div>
           </div>
         </div>
       </div>
       @if ($destacados->count() > 0)
-        <h1 class="text-2xl md:text-3xl font-semibold font-Inter_Medium text-[#323232] mb-6">Aprovecha estas ofertas
+        <h1 class="text-2xl md:text-3xl font-semibold font-Helvetica_Medium text-[#323232] mb-2 mt-4">Aprovecha estas ofertas
           especiales
           antes de completar tu compra</h1>
         <div class="relative">

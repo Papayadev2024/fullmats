@@ -248,9 +248,10 @@ class ProductsController extends Controller
     $tags = Tag::where('status', 1)->get();
     $categoria = Category::all();
     $subcategories = SubCategory::all();
+    $valoresdeatributo = AttributeProductValues::where("product_id", "=", $id)->get();
     $galery = Galerie::where("product_id", "=", $id)->get();
 
-    return view('pages.products.save', compact('product', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
+    return view('pages.products.save', compact('product', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery', 'valoresdeatributo'));
   }
 
   private function saveImg(Request $request, string $field)
