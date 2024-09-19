@@ -45,8 +45,8 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
     </button>
 
     <FilterItem title="Rango de precio" className="flex flex-row gap-4 w-full mt-3">
-      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FD1F4A]" placeholder="Desde" min={minPrice} max={maxPrice} step={0.01} onChange={setMinPrice} />
-      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FD1F4A]" placeholder="Hasta" min={minPrice} max={maxPrice} step={0.01} onChange={setMaxPrice} />
+      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FD1F4A] focus:ring-[#FD1F4A]" placeholder="Desde" min={minPrice} max={maxPrice} step={0.01} onChange={setMinPrice} />
+      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FD1F4A] focus:ring-[#FD1F4A]" placeholder="Hasta" min={minPrice} max={maxPrice} step={0.01} onChange={setMaxPrice} />
     </FilterItem>
     {
       categories.length > 0 && (
@@ -55,10 +55,20 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
           <h2 className="font-Helvetica_Light tracking-wide font-bold text-base mb-4">Categorias</h2>
           <div className='bg-black p-[1px] -mt-2 mb-5'></div>
           {categories.map((item) => {
+            
+           const isCheckedfilter = Array.isArray(filter?.categoria_id) && filter.categoria_id.includes(String(item.id));
+           
+           return categories.length > 0 && (<div key={item.id} className="w-full">
+              <div className="flex flex-row justify-between gap-3 mb-2">
 
-            return item.subcategories.length > 0 && (<div key={item.id} className="w-full">
-              <div className="border-b border-gray-200">
-                <button
+              <label key={item.id} htmlFor={`item-category-${item.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
+                          <input id={`item-category-${item.id}`} name='category' type="checkbox" className="bg-[#DEE2E6] text-[#FD1F4A]  rounded-sm  border-none focus:ring-0" value={item.id} onClick={(e) => onClick(`category_id`, e.target.value, e.target.checked)}
+                            defaultChecked={isCheckedfilter}
+                          />
+                          {item.name}
+              </label>
+
+                {/* <button
                   type="button"
                   className="w-full flex justify-between items-center py-2 px-4 text-left text-base text-[#111111]  bg-gray-100 hover:bg-gray-200 focus:outline-none"
                   onClick={() => toggleAccordion(item.id)}
@@ -73,9 +83,9 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
-                </button>
+                </button> */}
               </div>
-              {openCategories[item.id] && (
+              {/* {openCategories[item.id] && (
                 <div className="p-4 border border-t-0 border-gray-200 space-y-4">
                   {
                     item.subcategories.map((subitem) => {
@@ -94,7 +104,7 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
                   }
 
                 </div>
-              )}
+              )} */}
             </div>
             )
 

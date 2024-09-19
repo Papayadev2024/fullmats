@@ -38,16 +38,16 @@ class ProductSeeder extends Seeder
                     'name_image' => 'noimagen.jpg'
                 ]);
 
-                if ($row[3] == '') $subcategory = new SubCategory();
-                else {
-                    $subcategory = SubCategory::updateOrCreate(['id' => $row[3]], [
-                        'category_id' => $category->id,
-                        'name' => $row[4],
-                        'slug' => str_replace(' ', '-', strtolower($row[4])),
-                        'status' => true,
-                        'visible' => true
-                    ]);
-                }
+                // if ($row[3] == '') $subcategory = new SubCategory();
+                // else {
+                //     $subcategory = SubCategory::updateOrCreate(['id' => $row[3]], [
+                //         'category_id' => $category->id,
+                //         'name' => $row[4],
+                //         'slug' => str_replace(' ', '-', strtolower($row[4])),
+                //         'status' => true,
+                //         'visible' => true
+                //     ]);
+                // }
 
                 $price = str_replace(',', '.', Text::keep($row[11] ?? '', '0123456789,'));
                 $cost = str_replace(',', '.', Text::keep($row[12] ?? '', '0123456789,'));
@@ -55,7 +55,7 @@ class ProductSeeder extends Seeder
 
                 $product = Products::updateOrCreate(['sku' => $row[5]], [
                     'categoria_id' => $category->id,
-                    'subcategory_id' => $subcategory->id,
+                    //'subcategory_id' => $subcategory->id,
                     'sku' => $row[5],
                     'producto' => $row[6],
                     'color' => $row[7],
@@ -70,26 +70,26 @@ class ProductSeeder extends Seeder
                     'visible' => true
                 ]);
 
-                $path2search = "public/storage/images/products/{$category->id}/";
+                // $path2search = "public/storage/images/products/{$category->id}/";
 
-                $images = [];
-                try {
-                    $images = File::scan($path2search, [
-                        'type' => 'file',
-                        'startsWith' => $product->sku,
-                        'desc' => true
-                    ]);
-                } catch (\Throwable $th) {}
+                // $images = [];
+                // try {
+                //     $images = File::scan($path2search, [
+                //         'type' => 'file',
+                //         'startsWith' => $product->sku,
+                //         'desc' => true
+                //     ]);
+                // } catch (\Throwable $th) {}
 
-                foreach ($images as $key => $image_name) {
-                    $image = "storage/images/products/{$category->id}/{$image_name}";
-                    if ($key == 0) $product->imagen = $image;
-                    if ($key == 1) $product->imagen_ambiente = $image;
-                    else Galerie::create([
-                        'product_id' => $product->id,
-                        'imagen' => $image
-                    ]);
-                }
+                // foreach ($images as $key => $image_name) {
+                //     $image = "storage/images/products/{$category->id}/{$image_name}";
+                //     if ($key == 0) $product->imagen = $image;
+                //     if ($key == 1) $product->imagen_ambiente = $image;
+                //     else Galerie::create([
+                //         'product_id' => $product->id,
+                //         'imagen' => $image
+                //     ]);
+                // }
                 $product->save();
             }
         }, 'storage/app/utils/Products.xlsx');
