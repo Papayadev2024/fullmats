@@ -13,6 +13,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.js',
+        './resources/js/**/*.jsx',
         './node_modules/flowbite/**/*.js'
     ],
     darkMode: 'class',
@@ -29,11 +30,9 @@ export default {
             },
 
             fontFamily: {
-                Helvetica_Bold: ["Helvetica_Bold"],
-                Helvetica_Heavy: ["Helvetica_Heavy"],
-                Helvetica_Black: ["Helvetica_Black"],
-                Helvetica_Light: ["Helvetica_Light"],
-                Helvetica_Medium: ["Helvetica_Medium"],
+                aeoniktrial_bold: ["aeoniktrial_bold"],
+                aeoniktrial_regular: ["aeoniktrial_regular"],
+                aeoniktrial_light: ["aeoniktrial_light"],
             },
 
             screens: {

@@ -14,7 +14,7 @@ import axios from 'axios'
 
 
 
-const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_cat: selected_category, tag_id, subCatId }) => {
+const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_cat: selected_category, tag_id, subCatId, banners }) => {
   const take = 12
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState({});
@@ -222,26 +222,60 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
   }, {});
 
   const categoryDetails = categories.find(category => category.id === Number(selected_category));
-
-  console.log(categoryDetails);
+  const bannersBottom = banners.filter(banner => banner.potition === 'bottom' && banner.url_page === 'catalogo');
+  const bannerMid = banners.filter(banner => banner.potition === 'mid' && banner.url_page === 'catalogo');
+  const imgportada = 'images/img/portada_fm.webp';
+ 
 
   return (<>
    <div>
-      <section
-            class="flex relative flex-col justify-center items-center px-[5%] py-28 text-base font-medium min-h-[345px] text-neutral-900 max-md:py-24">
+      <section 
+            className='flex relative flex-col justify-center items-center px-[5%] pt-[136px] pb-[100px] text-base font-medium min-h-[345px] text-neutral-900'>
             <img loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/1f15375dac970433a2abe3921fa2c31e35c32f7b26a37b841431aaba1861d380?placeholderIfAbsent=true&apiKey=72fae0f4c808496790606e16dad566da"
-                alt="" class="object-cover absolute inset-0 size-full opacity-15" />
-            <div class="flex relative flex-col max-w-full w-[499px]">
-                <h2 class="self-center text-[#FD1F4A] font-Helvetica_Medium">Catálogo</h2>
-                <h3 class="mt-3 text-5xl text-center max-md:max-w-full font-Helvetica_Medium">{categoryDetails?.name ?? "Todas las categorías"}</h3>
-                <p class="mt-3 text-lg font-light text-center max-md:max-w-full ">
-                 {categoryDetails?.description ?? "Explora nuestro catálogo completo de productos cuidadosamente seleccionados para ofrecerte la mejor calidad y variedad."} 
-                </p>
+                src={imgportada}
+                alt="" className="object-cover absolute inset-0 size-full" />
+            <div className="flex relative flex-col max-w-full w-[499px] gap-10">
+                <h2 className="mt-3 text-5xl text-center text-white max-md:max-w-full font-aeoniktrial_bold">{categoryDetails?.name ?? "Encuentra el Piso Perfecto para tu Auto"}</h2>
+                <div className="flex flex-col items-center justify-center">
+                  <a href="/catalogo" className="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto">
+                      Explorar Pisos para tu Auto
+                  </a>
+                </div>
             </div>
       </section>
+
+
+      {/* Maquetación del banner "mid" */}
+      {bannerMid.length > 0 && (
+          <div className="flex flex-col md:flex-row justify-between bg-[#00152B] h-auto lg:h-[300px]">
+            <div className="w-full md:w-1/3 h-full">
+              {bannerMid.map((item, index) => (
+                <img key={index} className="object-contain object-left-top h-28 sm:h-full" src={item.image} alt={item.title} />
+              ))}
+            </div>
+            <div className="w-full md:w-2/3 flex flex-col items-start gap-8 justify-center py-10 px-[5%] lg:pl-[8%] ">
+              <h2 className="text-[#FF560A] text-3xl lg:text-4xl font-normal font-aeoniktrial_bold !leading-tight max-w-2xl">
+                {bannerMid.map((item, index) => (
+                  <span key={index}>{item.title}</span>
+                ))}
+              </h2>
+              <h3 className="text-xl font-medium font-aeoniktrial_light text-white">
+                {bannerMid.map((item, index) => (
+                  <span key={index}>{item.description}</span>
+                ))}
+              </h3>
+              {bannerMid.map((item, index) => (
+                <a key={index} href={item.url_btn}
+                  className="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto"
+                  type="button">
+                  {item.title_btn}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       
-    <form className="flex flex-col lg:flex-row gap-6  mx-auto font-Helvetica_Light font-bold w-full p-5 lg:p-10">
+    <form className="flex flex-col lg:flex-row gap-6  mx-auto font-Helvetica_Light font-bold w-full px-5 lg:px-10 py-10">
       {/* sticky */}
       <section className="hidden lg:flex md:flex-col gap-4 md:basis-3/12 bg-white p-6 rounded-lg h-max top-2">
         <FilterContainer setFilter={setFilter} filter={filter} minPrice={minPrice ?? 0} maxPrice={maxPrice ?? 0} categories={categories} tags={tags} attribute_values={Object.values(attributes)} selected_category={selected_category} tag_id={tag_id} />
@@ -280,10 +314,39 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
 
     </form>
 
+        {/* Maquetación del banner "bottom" */}
+        {bannersBottom.length > 0 && (
+          <div className="flex flex-col md:flex-row justify-between bg-[#00152B] h-auto lg:h-[300px]">
+            <div className="w-full md:w-1/3 h-full">
+              {bannersBottom.map((item, index) => (
+                <img key={index} className="object-cover w-full h-full object-center sm:h-full" src={item.image} alt={item.title} />
+              ))}
+            </div>
+            <div className="w-full md:w-2/3 flex flex-col items-start gap-8 justify-center py-10 px-[5%] lg:pl-[8%] ">
+              <h2 className="text-[#FF560A] text-3xl lg:text-4xl font-normal font-aeoniktrial_bold !leading-tight max-w-2xl">
+                {bannersBottom.map((item, index) => (
+                  <span key={index}>{item.title}</span>
+                ))}
+              </h2>
+              <h3 className="text-xl font-medium font-aeoniktrial_light text-white">
+                {bannersBottom.map((item, index) => (
+                  <span key={index}>{item.description}</span>
+                ))}
+              </h3>
+              {bannersBottom.map((item, index) => (
+                <a key={index} href={item.url_btn}
+                  className="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto"
+                  type="button">
+                  {item.title_btn}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
     </div>
   </>)
 }
 
 CreateReactScript((el, properties) => {
-  createRoot(el).render(<Catalogo {...properties} />);
+  createRoot(el).render(<Catalogo {...properties} activePage="catalogo" />);
 })

@@ -67,14 +67,15 @@ class IndexController extends Controller
     $url_env = env('APP_URL');
     $productos =  Products::with('tags')->get();
     $ultimosProductos = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->orderBy('products.id', 'desc')->take(4)->get();
-    $productosPupulares = Products::select('products.*')
+    $productosPupulares = Products::select('products.*', 'attributes_values.valor')
           ->join('categories', 'products.categoria_id', '=', 'categories.id')
+          ->join('attribute_product_values', 'products.id', '=', 'attribute_product_values.product_id')
+          ->join('attributes_values', 'attribute_product_values.attribute_value_id', '=', 'attributes_values.id')
           ->where('categories.visible', 1)
           ->where('products.status', '=', 1)
           ->where('products.visible', '=', 1)
           ->where('products.destacar', '=', 1)
           ->orderBy('products.id', 'desc')
-          ->take(8)
           ->get();
     $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->orderBy('id', 'desc')->take(3)->get();
     $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
@@ -125,7 +126,7 @@ class IndexController extends Controller
       ->min('descuento');
     if ($minPrice) Products::where('visible', true)->min('precio');
     $maxPrice = Products::max('precio');
-
+    $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
     $attribute_values = AttributesValues::select('attributes_values.*')
       ->with('attribute')
       ->join('attributes', 'attributes.id', '=', 'attributes_values.attribute_id')
@@ -139,6 +140,7 @@ class IndexController extends Controller
       'maxPrice' => $maxPrice,
       'categories' => $categories,
       'tags' => $tags,
+      'banners' => $banners,
       'attribute_values' => $attribute_values,
       'id_cat' => $id_cat,
       'tag_id' => $tag_id,

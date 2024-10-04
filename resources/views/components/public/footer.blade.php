@@ -1,4 +1,4 @@
-<footer class="font-Helvetica_Light bg-[#FFFFFF] mt-5">
+<footer class="bg-[#FF3D02]">
     <style>
         #modalPoliticasDev #modalTerminosCondiciones #modallinkPoliticasDatos {
             ;
@@ -22,27 +22,57 @@
         }
     </style>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:justify-center w-full px-[5%] py-8 lg:py-16 bg-cover object-cover"
-        style="background-image: url('{{ asset('images/img/fondofooter.png') }}');">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:justify-center w-full px-[5%] py-8 lg:py-16 bg-cover object-cover">
 
-        <div class="flex flex-col text-white text-base gap-1">
-            <h3 class="font-semibold text-lg tracking-wider text-white pb-3">Contacta con Nosotros</h3>
-            <p>{{ config('app.name') }}</p>
-            <p>{{ $datosgenerales->address }}</p>
-            <p>{{ $datosgenerales->city }} - {{ $datosgenerales->country }}</p>
-            <p>{{ $datosgenerales->cellphone }}</p>
-            <p>{{ $datosgenerales->email }}</p>
+
+        <div class="flex flex-col text-white text-base gap-1 items-start">
+            <img class="h-20 object-contain" src="{{asset('images/img/logowhite_fm.png')}}" />
+            <h3 class="font-aeoniktrial_light font-semibold text-lg tracking-wider text-white pb-3 pt-5">Siguenos en nuestras redes</h3>
+            <div class="flex flex-row gap-4 text-white pt-1">
+                @if ($datosgenerales->facebook)
+                    <a target="_blank" href="{{ $datosgenerales->facebook }}">
+                        <i class="fa-brands fa-facebook fa-xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->instagram)
+                    <a target="_blank" href="{{ $datosgenerales->instagram }}">
+                        <i class="fa-brands fa-instagram fa-xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->linkedin)
+                    <a target="_blank" href="{{ $datosgenerales->linkedin }}">
+                        <i class="fa-brands fa-linkedin fa-xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->tiktok)
+                    <a target="_blank" href="{{ $datosgenerales->tiktok }}">
+                        <i class="fa-brands fa-tiktok fa-xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->twitter)
+                    <a target="_blank" href="{{ $datosgenerales->twitter }}">
+                        <i class="fa-brands fa-twitter fa-xl"></i>
+                    </a>
+                @endif
+                @if ($datosgenerales->youtube)
+                    <a target="_blank" href="{{ $datosgenerales->youtube }}">
+                        <i class="fa-brands fa-youtube fa-xl"></i>
+                    </a>
+                @endif
+            </div>
         </div>
 
-        <div class="flex flex-col text-white text-base gap-1">
-            <h3 class="font-semibold text-lg tracking-wider text-white pb-3">Información</h3>
+       
+
+        <div class="flex flex-col text-white text-base gap-1 font-aeoniktrial_regular font-medium">
+            <h3 class="font-aeoniktrial_light font-semibold text-lg tracking-wider text-white pb-3">Información</h3>
             <a href="/">Inicio</a>
             <a href="{{ route('Catalogo.jsx') }}">Autoradios</a>
             <a href="#">Accesorios</a>
         </div>
 
-        <div class="flex flex-col text-white text-base gap-1">
-            <h3 class="font-semibold text-lg tracking-wider text-white pb-3">Servicio al Cliente</h3>
+        <div class="flex flex-col text-white text-base gap-1 font-aeoniktrial_regular font-medium">
+            <h3 class="font-aeoniktrial_light font-semibold text-lg tracking-wider text-white pb-3">Servicio al Cliente</h3>
             <a href="/contacto">Contacto</a>
             <a id="linkTerminos">Terminos y condiciones </a>
             <a id="linkPoliticas">Politicas de devolucion </a>
@@ -51,50 +81,25 @@
                     src="{{ asset('images/img/reclamaciones.png') }}" /></a>
         </div>
 
-        <div class="flex flex-col text-white text-base gap-1">
-            <h3 class="font-semibold text-lg tracking-wider text-white pb-3">Siguenos en nuestras redes</h3>
-            <div class="flex flex-row gap-4 text-white pt-2">
-                @if ($datosgenerales->facebook)
-                    <a href="{{ $datosgenerales->facebook }}">
-                        <i class="fa-brands fa-facebook fa-2xl"></i>
-                    </a>
-                @endif
-                @if ($datosgenerales->instagram)
-                    <a href="{{ $datosgenerales->instagram }}">
-                        <i class="fa-brands fa-instagram fa-2xl"></i>
-                    </a>
-                @endif
-                @if ($datosgenerales->linkedin)
-                    <a href="{{ $datosgenerales->linkedin }}">
-                        <i class="fa-brands fa-linkedin fa-2xl"></i>
-                    </a>
-                @endif
-                @if ($datosgenerales->tiktok)
-                    <a href="{{ $datosgenerales->tiktok }}">
-                        <i class="fa-brands fa-tiktok fa-2xl"></i>
-                    </a>
-                @endif
-                @if ($datosgenerales->twitter)
-                    <a href="{{ $datosgenerales->twitter }}">
-                        <i class="fa-brands fa-twitter fa-2xl"></i>
-                    </a>
-                @endif
-                @if ($datosgenerales->youtube)
-                    <a href="{{ $datosgenerales->youtube }}">
-                        <i class="fa-brands fa-youtube fa-2xl"></i>
-                    </a>
-                @endif
-            </div>
+        <div class="flex flex-col text-white text-base gap-1 font-aeoniktrial_regular font-medium">
+            <h3 class="font-aeoniktrial_light font-semibold text-lg tracking-wider text-white pb-3">Contacta con Nosotros</h3>
+            <p>{{ config('app.name') }}</p>
+            <p>{{ $datosgenerales->address }}</p>
+            <p>{{ $datosgenerales->city }} - {{ $datosgenerales->country }}</p>
+            <p>{{ $datosgenerales->cellphone }}</p>
+            <p>{{ $datosgenerales->email }}</p>
         </div>
+
+        
 
     </div>
 
-    <div class="bg-[#F8F8F8] py-4 flex items-center justify-center">
+    <div class="bg-[#FF3D02] py-4 flex items-center justify-center">
         <div class="flex flex-col lg:flex-row justify-between items-center gap-5 w-full px-[5%]">
             <div class="text-center">
-                <p class="font-normal text-sm text-[#444444]">
+                <p class="font-normal text-sm text-white font-aeoniktrial_regular">
                     Copyright &copy; 2023 {{ config('app.name') }}. Reservados todos los derechos. Powered by <a
-                        href="https://www.mundoweb.pe" target="_blank" class="text-[#006BF6] border-b border-[#006BF6]">
+                        href="https://www.mundoweb.pe" target="_blank" class="text-white border-b border-white">
                         Mundo Web
                     </a>
                 </p>

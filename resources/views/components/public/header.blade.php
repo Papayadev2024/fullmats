@@ -225,11 +225,11 @@
 </div>
 
 
-<header>
+<header class="absolute top-0 w-full z-20">
 
     <div
-        class="bg-[#F5F5F7] h-10 flex lg:justify-end justify-center w-full px-[5%] xl:px-[8%] py-3 text-base items-center">
-        <div class="text-[#111111] font-Helvetica_Medium font-medium  text-end flex gap-5 text-sm">
+        class="bg-transparent h-10  flex lg:justify-end justify-center w-full px-[5%] xl:px-[8%] py-3 text-base items-center">
+        <div class="text-white font-aeoniktrial_regular font-medium  text-end flex gap-5 text-sm">
             {{-- <a href="">Encuentra una tienda </a> |  --}}
             <a href="{{ route('help') }}">Ayuda </a> |
 
@@ -273,7 +273,7 @@
     </div>
 
     <div>
-        <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-4  text-[17px] relative ">
+        <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-4 bg-transparent  text-[17px] relative ">
             <div id="menu-burguer" class="lg:hidden z-10 w-max">
                 <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}"
                     alt="menu hamburguesa" onclick="show()" />
@@ -281,36 +281,40 @@
 
             <div class="w-auto">
                 <a href="/">
-                    <img id="logo-boostperu" class="w-[200px] "
-                        src="{{ asset($isIndex ? 'images\svg\wolfcarlogo.svg' : 'images\svg\wolfcarlogo.svg') }}"
-                        alt="boostperu" />
+                    <img  id="logo-boostperu" class="w-[100px] "
+                        src="{{ asset($isIndex ? 'images\svg\logo_fm.svg' : 'images\svg\logo_fm.svg') }}"
+                        alt="fullmats" />
                 </a>
             </div>
 
             <div class="hidden lg:flex items-center justify-center ">
                 <div>
                     <nav id="menu-items"
-                        class=" text-[#333] text-base font-Helvetica_Medium flex gap-5 xl:gap-10 items-center justify-center "
+                        class=" text-white text-base font-aeoniktrial_regular font-medium flex gap-5 xl:gap-10 items-center justify-center "
                         x-data="{ openCatalogo: false, openSubMenu: null }">
-                        <a href="/" class="font-medium hover:opacity-75 ">
+                        <a href="/" class="hover:opacity-75 {{ $pagina == 'index' ? 'text-[#FF3D02] font-bold' : '' }} ">
                             <span class="underline-this">Inicio</span>
                         </a>
 
-                        <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium ">
-                            <span class="underline-this">Autoradios</span>
+                        <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="{{ $pagina == 'Catalogo.jsx' ? 'text-[#FF3D02] font-bold' : '' }}">
+                            <span class="underline-this">Productos</span>
                             {{-- <div id="productos-link-h" class="w-0"></div> --}}
 
                         </a>
 
                         {{-- @if ($offerExists) --}}
-                        <a href="{{ route('Ofertas.jsx') }}" class="font-medium hover:opacity-75">
+                        {{-- <a href="{{ route('Ofertas.jsx') }}" class="{{ $pagina == 'Ofertas.jsx' ? 'text-[#FF3D02] font-bold' : '' }}">
                             <span class="underline-this">Accesorios</span>
-                        </a>
+                        </a> --}}
                         {{-- @endif --}}
+                        <a href="/nosotros" class="{{ $pagina == 'nosotros' ? 'text-[#FF3D02] font-bold' : '' }}">
+                            <span class="underline-this">Nosotros</span>
+                        </a>
 
-                        <a href="/contacto" class="font-medium hover:opacity-75  ">
+                        <a href="/contacto" class="{{ $pagina == 'contacto' ? 'text-[#FF3D02] font-bold' : '' }}">
                             <span class="underline-this">Contacto</span>
                         </a>
+                        
                         @if ($tags->count() > 0)
                             @foreach ($tags as $item)
                                 <a href="/catalogo?tag={{ $item->id }}" class="font-medium hover:opacity-75    "

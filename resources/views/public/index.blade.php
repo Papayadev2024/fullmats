@@ -6,10 +6,10 @@
 
 @php
   $bannersBottom = array_filter($banners, function ($banner) {
-      return $banner['potition'] === 'bottom';
+      return $banner['potition'] === 'bottom' && $banner['url_page'] === 'home';
   });
   $bannerMid = array_filter($banners, function ($banner) {
-      return $banner['potition'] === 'mid';
+      return $banner['potition'] === 'mid' && $banner['url_page'] === 'home';
   });
 @endphp
 
@@ -25,56 +25,98 @@
 
 @section('content')
 
-   <main class="z-[15] ">
-  @if (count($slider) > 0) 
+   <main class="z-[15]">
+
+   @if (count($slider) > 0) 
     <section class="">
       <x-swipper-card :items="$slider" />
     </section>
    @endif
 
    @if (count($logos) > 0) 
-    <section class="w-full px-[5%] lg:px-[8%] py-12 lg:py-20 flex flex-col gap-10">
-        <div class="text-center">
-            {{-- <h3 class="font-Helvetica_Medium text-[#FD1F4A] text-base">Selecciona la marca de tu automóvil</h3> --}}
-            <h2 class="font-Helvetica_Bold text-[#010101] text-4xl">Autoradios IOS</h2>
-        </div>
-
-        <div class="flex flex-wrap justify-between gap-8 ">
+    <section class="w-full px-[5%] py-12 lg:py-20 flex flex-col gap-10">
+         <div class="flex flex-col md:flex-row justify-between w-full gap-5 md:gap-10">
+            <div class="flex flex-col w-full md:w-1/2">
+              <h3 class="text-[#001429] font-aeoniktrial_bold text-3xl md:text-5xl">Explora Nuestras <span class="text-[#FF560A]">Marcas de Pisos</span></h3>
+            </div>
+            <div class="flex flex-col items-start justify-center gap-3 w-full md:w-1/2">
+              <h1 class="text-lg font-medium font-aeoniktrial_regular text-[#001429]">
+                Selecciona la marca, modelo y año de tu vehículo para descubrir los pisos que encajan a la perfección. Protege el interior de tu auto con estilo y durabilidad.
+              </h1>
+              <a href="/catalogo" class="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto">
+                Ver todas las marcas</a>
+            </div>
+          </div>
+          
+        <div class="swiper logos flex flex-row w-full">
+          <div class="swiper-wrapper">
             @foreach ($logos as $logo)
-                <img class="w-32 object-contain mx-auto" src="{{ asset($logo->url_image) }}" />
+              <div class="swiper-slide">
+                  <img class="h-28 object-contain mx-auto" src="{{ asset($logo->url_image) }}" />
+              </div>
             @endforeach
+          </div>
         </div>
     </section>
    @endif
-
+ 
+    {{-- seccion Productos populares  --}}
+    @if ($productosPupulares->count() > 0)
+      @php
+        $productosPorMarca = $productosPupulares->groupBy('valor');
+      @endphp
+      
+      @foreach ($productosPorMarca as $marca => $productos)
+        <section>
+          <div class="w-full px-[5%] pt-5 pb-5">
+            <div class="flex flex-col md:flex-row justify-between w-full gap-3">
+              <div class="flex flex-col">
+                <h3 class="text-[#001429] font-aeoniktrial_bold text-3xl">Pisos para Autos <span class="text-[#FF560A]">{{ $marca }}</span></h3>
+              </div>
+              <div class="flex flex-col items-start justify-center">
+                <a href="/catalogo" class="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto">
+                  Ver todos
+                </a>
+              </div>
+            </div>
+          
+              <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:flex-row gap-4 mt-5 w-full">
+                @foreach ($productos as $item)
+                  <x-product.container width="w-1/4" bgcolor="bg-[#FFFFFF]" :item="$item" />
+                @endforeach
+              </div>
+          
+          </div>
+        </section>
+      @endforeach
+    @endif
+    
     {{-- seccion Gran Descuento  --}}
     @if (count($bannerMid) > 0)
-      <section>
+      <section class="mt-5">
         <x-banner-section-cover :banner="$bannerMid" />
       </section>
     @endif
 
 
-    {{-- seccion Productos populares  --}}
-    @if ($productosPupulares->count() > 0)
+    {{-- seccion Ultimos Productos  --}}
+    @if ($ultimosProductos->count() > 0)
       <section>
         <div class="w-full px-[5%] py-14 lg:py-20">
           <div class="flex flex-col md:flex-row justify-between w-full gap-3">
             <div class="flex flex-col">
-              <h3 class="text-[#FD1F4A] font-semibold font-Helvetica_Light text-lg">Descuentos especiales</h3>
-              <h1 class="text-2xl md:text-3xl font-semibold font-Helvetica_Medium text-[#111] tracking-wide">Los más vendidos</h1>
+              <h3 class="text-[#001429] font-aeoniktrial_bold text-3xl">Los Pisos<span class="text-[#FF560A]"> Más Vendidos</span></h3>
             </div>
-            <div class="flex flex-col items-center justify-center">
-              <a href="/catalogo" class="bg-[#FD1F4A] text-base font-normal text-white text-center font-Helvetica_Medium px-6 py-3 rounded-3xl flex items-center justify-center w-auto">
-                Vamos a comprar</a>
+            <div class="flex flex-col items-start justify-center">
+              <a href="/catalogo" class="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto">
+                Ver todos
+              </a>
             </div>
           </div>
-          @foreach ($productosPupulares->chunk(4) as $taken)
-          
-            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:flex-row gap-4 mt-14 w-full">
-             
+          @foreach ($ultimosProductos->chunk(4) as $taken)
+            <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:flex-row gap-4 mt-5 w-full">
               @foreach ($taken as $item)
-                <x-product.container width="w-1/4" bgcolor="bg-[#FFFFFF]" :item="$item" />
+                <x-product.container width="w-full" bgcolor="bg-[#FFFFFF]" :item="$item" />
                 {{-- <x-productos-card width="w-1/4" bgcolor="bg-[#FFFFFF]" :item="$item" /> --}}
               @endforeach
             </div>
@@ -82,142 +124,52 @@
         </div>
       </section>
     @endif
+
     
+    <section class="flex flex-col lg:flex-row bg-[#001429] gap-6">
+      <div class="flex flex-col w-full lg:w-2/5 h-full py-10 lg:py-20 gap-6 pl-[5%]">
 
-    @php
-          $categories = $categoriasindex;
-          $chunks = $categories->chunk(3);
-          $processedCategories = collect();
-    @endphp
+          <h3 class="text-white font-aeoniktrial_bold text-3xl">Protegiendo el Interior de
+            tu<span class="text-[#FF560A]"> Auto con Estilo</span></h3>
 
-    @foreach ($chunks as $chunk)
-            @if ($chunk->count() == 3)
-                <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
-                    @foreach ($chunk as $category)
-                      @if ($loop->first) 
-                          <div class="w-full md:row-span-2 md:col-span-2">
-                            <a href="{{ route('Catalogo.jsx', $category->id) }}">
-                              <div class="h-full w-full relative flex flex-col group">
-                                  <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
-                                      class="h-96 md:h-full w-full flex flex-col justify-end items-start object-cover"
-                                      onerror="this.src='/images/img/noimagen.jpg';">
-                                  <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                                   <div class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
-                                  <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
-                                  <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                      @else
-                          <div class="w-full md:col-span-2">
-                            <a href="{{ route('Catalogo.jsx', $category->id) }}">
-                              <div class="h-full w-full relative flex flex-col group">
-                                <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
-                                    class="h-60 md:h-64 lg:h-60 xl:h-80 w-full flex flex-col justify-end items-start object-cover"
-                                    onerror="this.src='/images/img/noimagen.jpg';">
-                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                                <div class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
-                                  <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
-                                  <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                       @endif
-                    @endforeach
-                </div>
-            @endif
-          
-            @php
-                  $processedCategories = $processedCategories->merge($chunk); // Guardamos las categorías procesadas.
-            @endphp
-    @endforeach 
+          <p class="text-lg text-left font-aeoniktrial_regular font-medium text-white  leading-snug">
+            En FullMats, nos especializamos en ofrecer pisos para autos de alta calidad que combinan protección, 
+            estilo y durabilidad. Con años de experiencia en el mercado, trabajamos directamente con los mejores 
+            fabricantes para asegurarnos de que cada producto cumpla con los estándares más exigentes.
+          </p>
 
-    @php
-        $remainder = $categories->count() % 3;
-        $remainderCategories = $categories->diff($processedCategories);
-    @endphp
-      
-    @php
-        $remainderCategories = $categories->slice(-$remainder);
-    @endphp
+          <p class="text-lg text-left font-aeoniktrial_regular font-medium text-white  leading-snug">
+            Nuestro compromiso es ofrecer una experiencia de compra sencilla y personalizada, ayudando a cada 
+            cliente a encontrar el piso ideal para su vehículo, sea cual sea la marca o modelo.
+          </p>
 
-    @if ($remainder > 0)
-          @if ($remainder == 1)
-                <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
-                  @foreach ($remainderCategories as $category)
-                    <div class="col-span-4">
-                              <a href="{{ route('Catalogo.jsx', $category->id) }}">
-                                <div class="h-full w-full relative flex flex-col group">
-                                  <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
-                                      class="h-60 md:h-64 lg:h-60 xl:h-96 w-full flex flex-col justify-end items-start object-cover"
-                                      onerror="this.src='/images/img/noimagen.jpg';">
-                                  <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                                  <div class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
-                                    <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
-                                    <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                                  </div>
-                                </div>
-                              </a>
-                      </div>
-                    </div>
-                  @endforeach
-                </div>
- 
-          @elseif ($remainder == 2)
-                <div class="grid grid-cols-1 md:grid-cols-4 px-[5%] gap-8 lg:gap-12 pt-10">
-                    @foreach ($remainderCategories as $category)
-                        <div class="w-full md:col-span-2">
-                                  <a href="{{ route('Catalogo.jsx', $category->id) }}">
-                                    <div class="h-full w-full relative flex flex-col group">
-                                      <img src="{{ asset($category->url_image . $category->name_image) }}" alt=""
-                                          class="h-60 md:h-64 lg:h-60 xl:h-80 w-full flex flex-col justify-end items-start object-cover"
-                                          onerror="this.src='/images/img/noimagen.jpg';">
-                                      <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                                      <div class="absolute bottom-0 flex flex-col gap-5 w-full p-5 lg:p-10 opacity-0  group-hover:opacity-100 transition-opacity duration-300">
-                                        <h2 class="text-2xl text-white font-Helvetica_Bold">{{ $category->name }}</h2>
-                                        <p class="text-lg text-white font-Helvetica_Light">Donec vehicula, lectus vel pharetra semper, justo massa pharetra nunc, non venenatis ante augue quis est.</p>
-                                      </div>
-                                    </div>
-                                  </a>
-                        </div>
-                    @endforeach
-                </div>
-          @endif
-    @endif
-
-
-    {{-- seccion Ultimos Productos  --}}
-    @if ($ultimosProductos->count() > 0)
-    <section>
-      <div class="w-full px-[5%] py-14 lg:py-20">
-        <div class="flex flex-col md:flex-row justify-between w-full gap-3">
-          <div class="flex flex-col">
-            <h3 class="text-[#FD1F4A] font-semibold font-Helvetica_Light text-lg">Apúrate que se acaban</h3>
-            <h1 class="text-2xl md:text-3xl font-semibold font-Helvetica_Medium text-[#111] tracking-wide">Equipos nuevos</h1>
+          <div class="flex flex-col items-start justify-center">
+            <a href="/catalogo" class="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto">
+              Nosotros
+            </a>
           </div>
-          <div class="flex flex-col items-center justify-center">
-            <a href="/catalogo" class="bg-[#FD1F4A] text-base font-normal text-white text-center font-Helvetica_Medium px-6 py-3 rounded-3xl flex items-center justify-center w-auto">
-              Autoradios</a>
+
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-7 mt-3">
+              <div class="flex flex-col gap-1">
+                  <h2 class="font-aeoniktrial_regular font-semibold text-white text-5xl">40<span class="text-[#FF560A] font-black font-aeoniktrial_bold pl-1">+</span></h2>
+                  <p class="font-aeoniktrial_regular font-medium text-white">Modelos</p>
+              </div>
+              <div class="flex flex-col gap-1">
+                <h2 class="font-aeoniktrial_regular font-semibold text-white text-5xl">15<span class="text-[#FF560A] font-black font-aeoniktrial_bold pl-1">+</span></h2>
+                <p class="font-aeoniktrial_regular font-medium text-white">Marcas de auto</p>
+              </div>
+              <div class="flex flex-col gap-1">
+                <h2 class="font-aeoniktrial_regular font-semibold text-white text-5xl">99<span class="text-[#FF560A] font-black font-aeoniktrial_bold pl-1">%</span></h2>
+                <p class="font-aeoniktrial_regular font-medium text-white">Clientes satisfechos</p>
+            </div>
           </div>
-        </div>
-        @foreach ($ultimosProductos->chunk(4) as $taken)
-          <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:flex-row gap-6 mt-14 w-full">
-            @foreach ($taken as $item)
-              <x-product.container width="w-full" bgcolor="bg-[#FFFFFF]" :item="$item" />
-              {{-- <x-productos-card width="w-1/4" bgcolor="bg-[#FFFFFF]" :item="$item" /> --}}
-            @endforeach
-          </div>
-        @endforeach
+      </div>
+
+      <div class="w-full lg:w-3/5 flex flex-col items-center gap-8 justify-end bg-contain bg-right-top bg-no-repeat" style="background-image: url('{{ asset('images/img/textura_fm.png')}}');">
+            <img class="object-bottom" src="{{ asset('images/img/portadaf_fm.png') }}" />
       </div>
     </section>
-    @endif
 
-
-    
-    
-  
 
     {{-- Seccion Blog --}}
     {{-- @if ($blogs->count() > 0)
@@ -245,6 +197,11 @@
         </div>
       </section>
     @endif --}}
+    @if (count($bannersBottom) > 0)
+      <section class="mt-16">
+        <x-banner-section-cover :banner="$bannersBottom" />
+      </section>
+    @endif
 
 
     {{-- @if ($benefit->count() > 0)
@@ -317,6 +274,36 @@
       });
 
     })
+
+
+    var swiper = new Swiper(".logos", {
+            slidesPerView: 6,
+            spaceBetween: 10,
+            loop: true,
+            grabCursor: true,
+            centeredSlides: false,
+            initialSlide: 0,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                    
+                },
+                768: {
+                    slidesPerView: 4,
+                   
+                },
+                1024: {
+                    slidesPerView: 5,
+                },
+            },
+        });
   </script>
 
 
