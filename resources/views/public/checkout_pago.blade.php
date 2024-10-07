@@ -23,6 +23,13 @@
       z-index: 9999999999999;
     }
   </style>
+
+  <section
+            class='flex relative flex-col justify-center items-center px-[5%] pt-[136px] text-base font-medium min-h-[100px] text-neutral-900'>
+            <img loading="lazy" src={{ asset('images/img/portada_fm.webp') }} alt=""
+                class="object-cover absolute inset-0 size-full" />     
+  </section>
+
   <main>
     <form id="paymentForm" class="font-poppins w-11/12 mx-auto my-12 flex flex-col gap-10">
       @csrf
@@ -35,7 +42,7 @@
       <div class="flex md:gap-20 flex-col md:flex-row">
         <div class="flex justify-between items-center md:basis-8/12 w-full md:w-auto">
           <x-ecommerce.gateway.container completed="{{ 2 }}">
-            <div class="flex flex-col gap-5 mt-4 font-Helvetica_Medium">
+            <div class="flex flex-col gap-5 mt-4 font-aeoniktrial_regular">
               <div>
                 <div class="flex flex-col gap-8">
 
@@ -49,36 +56,36 @@
                       <div class="flex flex-col md:flex-row gap-5">
                         <div class="basis-2/3 flex flex-col gap-2">
                           <label for="email" class="font-medium text-[13px] text-[#6C7275]">E-mail <span
-                              class="text-red-500">*</span></label>
+                              class="text-[#ff3d02]">*</span></label>
                           <input id="email" type="email" placeholder="Correo electrónico" required=""
                             name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}"
-                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#FD1F4A] focus:border-[#FD1F4A] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
+                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
                             required>
                         </div>
                         <div class="basis-1/3 flex flex-col gap-2">
                           <label for="celular" class="font-medium text-[13px] text-[#6C7275]">Celular <span
-                              class="text-red-500">*</span></label>
+                              class="text-[#ff3d02]">*</span></label>
                           <input id="celular" type="text" placeholder="(+51) 000 000 000" name="phone"
                             value="{{ auth()->check() ? auth()->user()->phone : '' }}"
-                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#FD1F4A] focus:border-[#FD1F4A] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl"
+                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl"
                             required>
                         </div>
                       </div>
                       <div class="flex flex-col md:flex-row gap-5">
                         <div class="basis-1/2 flex flex-col gap-2">
                           <label for="nombre" class="font-medium text-[13px] text-[#6C7275]">Nombre <span
-                              class="text-red-500">*</span></label>
+                              class="text-[#ff3d02]">*</span></label>
                           <input id="nombre" type="text" placeholder="Nombre" name="nombre"
                             value="{{ auth()->check() ? auth()->user()->name : '' }}"
-                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#FD1F4A] focus:border-[#FD1F4A] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
+                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
                             required>
                         </div>
                         <div class="basis-1/2 flex flex-col gap-2">
                           <label for="apellidos" class="font-medium text-[13px] text-[#6C7275]">Apellido <span
-                              class="text-red-500">*</span></label>
+                              class="text-[#ff3d02]">*</span></label>
                           <input id="apellidos" type="text" placeholder="Apellido" name="apellidos"
                             value="{{ auth()->check() ? auth()->user()->lastname : '' }}"
-                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#FD1F4A] focus:border-[#FD1F4A] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
+                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
                             required>
 
                         </div>
@@ -87,7 +94,7 @@
                       </div>
 
                       <div class="basis-2/3 flex flex-row gap-2 ">
-                        <input id="termsandconditions" type="checkbox" required class="border-2 rounded-sm w-5 h-5 text-[#FD1F4A] ring-0 focus:ring-0" />
+                        <input id="termsandconditions" type="checkbox" required class="border-2 rounded-sm w-5 h-5 text-[#ff3d02] ring-0 focus:ring-0" />
                         <label for="termsandconditions" class="font-medium text-sm text-[#6C7275]">Estoy de acuerdo con
                           los <a class="font-bold" href="{{ route('terms_condition') }}" target="_blanck">terminos y
                             condiciones</a></label>
@@ -105,7 +112,7 @@
                         <input type="radio" name="envio" id="recoger-option" value="recoger" class="hidden peer"
                           required @if (!$hasDefaultAddress) checked @endif>
                         <label for="recoger-option"
-                          class="border inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-3 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-[#FD1F4A] hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                          class="border inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-3 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-[#ff3d02] hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                           <div class="block">
                             <svg class="w-6 h-6 mb-2 text-gray-800 dark:text-white" aria-hidden="true"
                               xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -124,7 +131,7 @@
                         <input type="radio" name="envio" id="express-option" value="express" class="hidden peer"
                           @if ($hasDefaultAddress) checked @endif>
                         <label for="express-option"
-                          class="border inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-3 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-[#FD1F4A] hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                          class="border inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-3 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-[#ff3d02] hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                           <div class="block">
                             <svg class="w-6 h-6 mb-2 text-gray-800 dark:text-white" aria-hidden="true"
                               xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -147,11 +154,11 @@
                           <div class="flex flex-col gap-5 md:flex-row">
                             <div class="basis-2/3 flex flex-col gap-2 z-[45]">
                               <label class="font-medium text-[12px] text-[#6C7275]">Tu lista de direcciones<span
-                                  class="text-red-500">*</span></label>
+                                  class="text-[#ff3d02]">*</span></label>
                               <div class="w-full">
                                 <div class="dropdown w-full">
                                   <select id="addresses"
-                                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FD1F4A] focus:border-[#FD1F4A] block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#ff3d02] focus:border-[#ff3d02] block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
                                     data-address>
                                     <option value>Agregar una nueva direccion</option>
                                     @foreach ($addresses as $address)
@@ -168,13 +175,13 @@
                           @if ($departments->count() > 0)
                             <div class="basis-1/3 flex flex-col gap-2 z-[45]">
                               <label class="font-medium text-[13px] text-[#6C7275] ">Departamento <span
-                                  class="text-red-500">*</span></label>
+                                  class="text-[#ff3d02]">*</span></label>
 
                               <div>
                                 <!-- combo -->
                                 <div class="dropdown w-full">
                                   <select name="departamento_id" id="departamento_id"
-                                    class="selectpicker mt-1 h-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FD1F4A] focus:border-[#FD1F4A] block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
+                                    class="selectpicker mt-1 h-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#ff3d02] focus:border-[#ff3d02] block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select2-hidden-accessible"
                                     data-address>
                                     <option value="" data-select2-id="select2-data-2-4o85">Seleccione un
                                       departamento</option>
@@ -191,7 +198,7 @@
 
                             <div class="basis-1/3 flex flex-col gap-2 z-[40]">
                               <label class="font-medium text-[13px] text-[#6C7275]">
-                                Provincia <span class="text-red-500">*</span>
+                                Provincia <span class="text-[#ff3d02]">*</span>
                               </label>
 
                               <div>
@@ -211,7 +218,7 @@
 
                             <div class="basis-1/3 flex flex-col gap-2 z-[30]">
                               <label class="font-medium text-[13px] text-[#6C7275]">
-                                Distrito <span class="text-red-500">*</span>
+                                Distrito <span class="text-[#ff3d02]">*</span>
                               </label>
 
                               <div>
@@ -236,11 +243,11 @@
 
                         <div data-show="new" class="flex flex-col gap-2">
                           <label for="nombre_calle" class="font-medium text-[13px] text-[#6C7275]">Avenida / Calle /
-                            Jirón <span class="text-red-500">*</span></label>
+                            Jirón <span class="text-[#ff3d02]">*</span></label>
 
                           <input id="nombre_calle" type="text" name="dir_av_calle"
                             placeholder="Ingresa el nombre de la calle"
-                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#FD1F4A] focus:border-[#FD1F4A] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
+                            class="w-full py-3 px-4 focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
                             data-address>
                         </div>
                       </div>
@@ -248,10 +255,10 @@
                         <div data-show="new" class="flex flex-col md:flex-row gap-5">
                           <div class="basis-1/2 flex flex-col gap-2">
                             <label for="numero_calle" class="font-medium text-[13px] text-[#6C7275]">Número <span
-                                class="text-red-500">*</span></label>
+                                class="text-[#ff3d02]">*</span></label>
                             <input id="numero_calle" name="dir_numero" type="text"
                               placeholder="Ingresa el número de la callle"
-                              class="w-full py-3 px-4 focus:outline-none focus:ring-[#FD1F4A] focus:border-[#FD1F4A] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
+                              class="w-full py-3 px-4 focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
                               data-address>
                           </div>
 
@@ -262,7 +269,7 @@
                               (opcional)</label>
                             <input id="direccion" type="text" name="dir_bloq_lote"
                               placeholder="Ejem. Casa 3, Dpto 101"
-                              class="w-full py-3 px-4 focus:outline-none focus:ring-[#FD1F4A] focus:border-[#FD1F4A] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
+                              class="w-full py-3 px-4 focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02] placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]">
                           </div>
                         </div>
                       </div>
@@ -277,7 +284,7 @@
           </x-ecommerce.gateway.container>
         </div>
         <div
-          class="basis-4/12 flex flex-col justify-start gap-0 py-4 order-1 2md:order-2 2md:sticky font-Helvetica_Medium top-4 h-min border rounded-md">
+          class="basis-4/12 flex flex-col justify-start gap-0 py-4 order-1 2md:order-2 2md:sticky font-aeoniktrial_regular top-4 h-min border rounded-md">
           <h2 class="font-semibold text-[20px] text-[#151515] px-4">
             Resumen del pedido
           </h2>
@@ -320,7 +327,7 @@
               </div>
 
               <button id="btnPagar"
-                class="text-white bg-[#FD1F4A] tracking-wider w-full py-3 rounded-3xl cursor-pointer font-semibold text-lg inline-block text-center">Pagar</button>
+                class="text-white bg-[#ff3d02] tracking-wider w-full py-3 rounded-xl cursor-pointer font-semibold text-lg inline-block text-center">Pagar</button>
             </div>
           </div>
         </div>
@@ -422,20 +429,20 @@
         $("#ElementosFacturacion").html('')
         $('#ElementosFacturacion').html(`
           <div class="col-span-2 mb-2">
-            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">DNI<span class="text-red-500">*</span></label>
-            <input maxlength="8" id="DNI" type="number"  placeholder="DNI" name="DNI" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">DNI<span class="text-[#ff3d02]">*</span></label>
+            <input maxlength="8" id="DNI" type="number"  placeholder="DNI" name="DNI" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275] focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02]" >
 
             
           </div>
           <div class="col-span-4 mb-2">
-            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Razon Social<span class="text-red-500">*</span></label>
-            <input  id="razonFact" type="text"  placeholder="Razon Social" name="razon_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Razon Social<span class="text-[#ff3d02]">*</span></label>
+            <input  id="razonFact" type="text"  placeholder="Razon Social" name="razon_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275] focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02]" >
 
             
           </div>
           <div class="col-span-4 mb-2">
-            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Direccion Facturacion<span class="text-red-500">*</span></label>
-            <input  id="direccionFact" type="text"  placeholder="Direccion Boleta" name="direccion_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Direccion Facturacion<span class="text-[#ff3d02]">*</span></label>
+            <input  id="direccionFact" type="text"  placeholder="Direccion Boleta" name="direccion_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275] focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02]" >
 
             
           </div>
@@ -444,18 +451,18 @@
         $("#ElementosFacturacion").html('')
         $('#ElementosFacturacion').html(`
           <div class="col-span-2 mb-2">
-            <label for="ruc" class="font-medium text-[12px] text-[#6C7275]">RUC <span class="text-red-500">*</span></label>
-            <input maxlength="11" id="RUC" type="number" placeholder="RUC" name="RUC" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+            <label for="ruc" class="font-medium text-[12px] text-[#6C7275]">RUC <span class="text-[#ff3d02]">*</span></label>
+            <input maxlength="11" id="RUC" type="number" placeholder="RUC" name="RUC" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275] focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02]" >
           </div>
           <div class="col-span-4 mb-2">
-            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Razon Social<span class="text-red-500">*</span></label>
-            <input  id="razonFact" type="text"  placeholder="Ingrese Razon Social" name="razon_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Razon Social<span class="text-[#ff3d02]">*</span></label>
+            <input  id="razonFact" type="text"  placeholder="Ingrese Razon Social" name="razon_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275] focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02]" >
 
             
           </div>
           <div class="col-span-4 mb-2">
-            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Direccion Facturacion<span class="text-red-500">*</span></label>
-            <input  id="direccionFact" type="text"  placeholder="Direccion Facturacion" name="direccion_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" >
+            <label for="nombre" class="font-medium text-[12px] text-[#6C7275]">Direccion Facturacion<span class="text-[#ff3d02]">*</span></label>
+            <input  id="direccionFact" type="text"  placeholder="Direccion Facturacion" name="direccion_fact" value="" class="w-full py-2 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275] focus:outline-none focus:ring-[#ff3d02] focus:border-[#ff3d02]" >
 
             
           </div>
@@ -553,7 +560,7 @@
 
 
       Culqi.settings({
-        title: 'Boost .its more',
+        title: 'FullMats',
         currency: 'PEN',
         amount: Math.round((precioProductos + precioEnvio) * 100),
       });

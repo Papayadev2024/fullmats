@@ -7,6 +7,11 @@
 
 @section('content')
 
+  <section
+            class='flex relative flex-col justify-center items-center px-[5%] pt-[136px] text-base font-medium min-h-[100px] text-neutral-900'>
+            <img loading="lazy" src={{ asset('images/img/portada_fm.webp') }} alt=""
+                class="object-cover absolute inset-0 size-full" />     
+  </section>
 
   <main>
     {{-- <section class="font-poppins my-12">

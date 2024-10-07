@@ -125,51 +125,45 @@
       </section>
     @endif
 
-    
-    <section class="flex flex-col lg:flex-row bg-[#001429] gap-6">
-      <div class="flex flex-col w-full lg:w-2/5 h-full py-10 lg:py-20 gap-6 pl-[5%]">
+    @if ($benefit->count() > 0)
+      <section class="flex flex-col lg:flex-row bg-[#001429] gap-6">
+        <div class="flex flex-col w-full lg:w-2/5 h-full py-10 lg:py-20 gap-6 pl-[5%]">
 
-          <h3 class="text-white font-aeoniktrial_bold text-3xl">Protegiendo el Interior de
-            tu<span class="text-[#FF560A]"> Auto con Estilo</span></h3>
+            <h3 class="text-white font-aeoniktrial_bold text-3xl">Protegiendo el Interior de
+              tu<span class="text-[#FF560A]"> Auto con Estilo</span></h3>
 
-          <p class="text-lg text-left font-aeoniktrial_regular font-medium text-white  leading-snug">
-            En FullMats, nos especializamos en ofrecer pisos para autos de alta calidad que combinan protección, 
-            estilo y durabilidad. Con años de experiencia en el mercado, trabajamos directamente con los mejores 
-            fabricantes para asegurarnos de que cada producto cumpla con los estándares más exigentes.
-          </p>
+            <p class="text-lg text-left font-aeoniktrial_regular font-medium text-white  leading-snug">
+              En FullMats, nos especializamos en ofrecer pisos para autos de alta calidad que combinan protección, 
+              estilo y durabilidad. Con años de experiencia en el mercado, trabajamos directamente con los mejores 
+              fabricantes para asegurarnos de que cada producto cumpla con los estándares más exigentes.
+            </p>
 
-          <p class="text-lg text-left font-aeoniktrial_regular font-medium text-white  leading-snug">
-            Nuestro compromiso es ofrecer una experiencia de compra sencilla y personalizada, ayudando a cada 
-            cliente a encontrar el piso ideal para su vehículo, sea cual sea la marca o modelo.
-          </p>
+            <p class="text-lg text-left font-aeoniktrial_regular font-medium text-white  leading-snug">
+              Nuestro compromiso es ofrecer una experiencia de compra sencilla y personalizada, ayudando a cada 
+              cliente a encontrar el piso ideal para su vehículo, sea cual sea la marca o modelo.
+            </p>
 
-          <div class="flex flex-col items-start justify-center">
-            <a href="/catalogo" class="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto">
-              Nosotros
-            </a>
-          </div>
-
-          <div class="grid grid-cols-2 lg:grid-cols-3 gap-7 mt-3">
-              <div class="flex flex-col gap-1">
-                  <h2 class="font-aeoniktrial_regular font-semibold text-white text-5xl">40<span class="text-[#FF560A] font-black font-aeoniktrial_bold pl-1">+</span></h2>
-                  <p class="font-aeoniktrial_regular font-medium text-white">Modelos</p>
-              </div>
-              <div class="flex flex-col gap-1">
-                <h2 class="font-aeoniktrial_regular font-semibold text-white text-5xl">15<span class="text-[#FF560A] font-black font-aeoniktrial_bold pl-1">+</span></h2>
-                <p class="font-aeoniktrial_regular font-medium text-white">Marcas de auto</p>
-              </div>
-              <div class="flex flex-col gap-1">
-                <h2 class="font-aeoniktrial_regular font-semibold text-white text-5xl">99<span class="text-[#FF560A] font-black font-aeoniktrial_bold pl-1">%</span></h2>
-                <p class="font-aeoniktrial_regular font-medium text-white">Clientes satisfechos</p>
+            <div class="flex flex-col items-start justify-center">
+              <a href="/catalogo" class="bg-[#FF3D02] text-base font-medium text-white text-center font-aeoniktrial_regular px-6 py-2 rounded-lg flex items-center justify-center w-auto">
+                Nosotros
+              </a>
             </div>
-          </div>
-      </div>
 
-      <div class="w-full lg:w-3/5 flex flex-col items-center gap-8 justify-end bg-contain bg-right-top bg-no-repeat" style="background-image: url('{{ asset('images/img/textura_fm.png')}}');">
-            <img class="object-bottom" src="{{ asset('images/img/portadaf_fm.png') }}" />
-      </div>
-    </section>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-7 mt-3">
+              @foreach ($benefit as $estadistica)
+                  <div class="flex flex-col gap-1">
+                      <h2 class="font-aeoniktrial_regular font-semibold text-white text-5xl">{{$estadistica->titulo}}<span class="text-[#FF560A] font-black font-aeoniktrial_bold pl-1">{{$estadistica->descripcionshort}}</span></h2>
+                      <p class="font-aeoniktrial_regular font-medium text-white">{{$estadistica->descripcion}}</p>
+                  </div>
+              @endforeach
+            </div>
+        </div>
 
+        <div class="w-full lg:w-3/5 flex flex-col items-center gap-8 justify-end bg-contain bg-right-top bg-no-repeat" style="background-image: url('{{ asset('images/img/textura_fm.png')}}');">
+              <img class="object-bottom" src="{{ asset('images/img/portadaf_fm.png') }}" />
+        </div>
+      </section>
+    @endif
 
     {{-- Seccion Blog --}}
     {{-- @if ($blogs->count() > 0)

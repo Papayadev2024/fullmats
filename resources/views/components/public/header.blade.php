@@ -231,10 +231,10 @@
         class="bg-transparent h-10  flex lg:justify-end justify-center w-full px-[5%] xl:px-[8%] py-3 text-base items-center">
         <div class="text-white font-aeoniktrial_regular font-medium  text-end flex gap-5 text-sm">
             {{-- <a href="">Encuentra una tienda </a> |  --}}
-            <a href="{{ route('help') }}">Ayuda </a> |
+            {{-- <a href="{{ route('help') }}">Ayuda </a> | --}}
 
             @if (Auth::user() == null)
-                <a href="/login">Crear Usuario </a> | <a href="/register">Iniciar Sesion</a>
+                <a href="/register">Crear Usuario </a> | <a href="/login">Iniciar Sesion</a>
             @else
                 <div class=" relative md:inline-flex" x-data="{ open: false }">
                     <button class="inline-flex justify-center items-center group" aria-haspopup="true"
@@ -247,16 +247,16 @@
                         </div>
                     </button>
                     <div
-                        class="origin-top-right z-10 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+                        class="origin-top-right z-10 text-[#ff3d02] bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
                         @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
                         <ul>
-                        <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
+                        <li class=" hover:bg-[#ff3d02] hover:text-white transition duration-100 ease-in">
                             <a class="font-medium text-sm  flex items-center py-1 px-3 " href="/micuenta" @click="open = false"
                             @focus="open = true" @focusout="open = false">Mi
                             Cuenta</a>
                         </li>
 
-                        <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
+                        <li class=" hover:bg-[#ff3d02] hover:text-white transition duration-100 ease-in">
                             <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
                             <button type="submit" class="font-medium text-sm  flex items-center py-1 px-3"
@@ -307,9 +307,9 @@
                             <span class="underline-this">Accesorios</span>
                         </a> --}}
                         {{-- @endif --}}
-                        <a href="/nosotros" class="{{ $pagina == 'nosotros' ? 'text-[#FF3D02] font-bold' : '' }}">
+                        {{-- <a href="/nosotros" class="{{ $pagina == 'nosotros' ? 'text-[#FF3D02] font-bold' : '' }}">
                             <span class="underline-this">Nosotros</span>
-                        </a>
+                        </a> --}}
 
                         <a href="/contacto" class="{{ $pagina == 'contacto' ? 'text-[#FF3D02] font-bold' : '' }}">
                             <span class="underline-this">Contacto</span>
@@ -471,7 +471,7 @@
     <div class="p-4 flex flex-col h-[90vh] justify-between gap-2">
         <div class="flex flex-col">
             <div class="flex justify-between ">
-                <h2 class="font-semibold font-Helvetica_Medium text-[28px] text-[#151515] pb-5">Carrito</h2>
+                <h2 class="font-semibold font-aeoniktrial_regular text-[28px] text-[#151515] pb-5">Carrito</h2>
                 <div id="close-cart" class="cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
@@ -489,13 +489,13 @@
         </div>
         <div class="flex flex-col gap-2 pt-2">
             <div class="text-[#111111]  text-xl flex justify-between items-center">
-                <p class="font-Helvetica_Medium font-semibold">Total</p>
-                <p class="font-Helvetica_Medium font-semibold" id="itemsTotal">S/ 0.00</p>
+                <p class="font-aeoniktrial_regular font-semibold">Total</p>
+                <p class="font-aeoniktrial_regular font-semibold" id="itemsTotal">S/ 0.00</p>
             </div>
             <div>
                 <a href="/carrito"
-                    class="font-normal font-Helvetica_Medium text-lg bg-[#FD1F4A]  py-3 px-5 rounded-2xl text-white cursor-pointer w-full inline-block text-center">Ir al
-                    Carrito</a>
+                    class="font-semibold font-aeoniktrial_regular text-lg bg-[#FF3D02]  py-3 px-5 rounded-xl text-white cursor-pointer w-full inline-block text-center">Ir al
+                    carrito</a>
             </div>
         </div>
     </div>

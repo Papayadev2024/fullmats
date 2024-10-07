@@ -7,6 +7,12 @@
 
 @section('content')
 
+  <section
+            class='flex relative flex-col justify-center items-center px-[5%] pt-[136px] text-base font-medium min-h-[100px] text-neutral-900'>
+            <img loading="lazy" src={{ asset('images/img/portada_fm.webp') }} alt=""
+                class="object-cover absolute inset-0 size-full" />     
+  </section>
+
   <main>
 
     {{-- <section class="font-poppins mt-12 mb-0 md:my-12">
@@ -21,12 +27,14 @@
             </div>
         </section> --}}
 
-    <section class="font-poppins my-8 md:my-16">
+    
+
+    <section class="font-aeoniktrial_regular my-8 md:my-16">
       <div class="flex flex-col gap-12 md:flex-row md:gap-28 w-full md:w-11/12 mx-auto">
 
         <x-side-section-dashboard :user="$user" />
 
-        <div class="basis-7/12 font-poppins w-11/12 md:w-full mx-auto">
+        <div class="basis-7/12 font-aeoniktrial_regular w-11/12 md:w-full mx-auto">
           <form method="POST" class="flex flex-col gap-5 mb-10" enctype='multipart/form-data' id="detalleCuenta">
             @csrf
             <h2 class="text-[20px] font-semibold text-[#151515]">
@@ -36,20 +44,20 @@
             <div class="flex flex-col gap-2">
               <label for="nombre_user" class="font-medium text-[12px] text-[#6C7275]">Nombres</label>
               <input id="nombre_user" type="text" placeholder="Nombres" name="name" value="{{ $user->name }}"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
+                class="focus:ring-[#FF3D02] focus:border-[#FF3D02] w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
             </div>
 
             <div class="flex flex-col gap-2">
               <label for="apellido_user" class="font-medium text-[12px] text-[#6C7275]">Apellidos</label>
               <input id="apellido_user" type="text" placeholder="Apellidos" name="lastname"
                 value="{{ $user->lastname }}"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
+                class="focus:ring-[#FF3D02] focus:border-[#FF3D02] w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
             </div>
 
             <div class="flex flex-col gap-2">
               <label for="email_user" class="font-medium text-[12px] text-[#6C7275]">E-mail</label>
               <input id="email_user" type="email" placeholder="hola@gmail.com" value="{{ $user->email }}"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
+                class="focus:ring-[#FF3D02] focus:border-[#FF3D02] w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
             </div>
 
             <div>
@@ -64,26 +72,26 @@
               <label for="contrasenia_anterior" class="font-medium text-[12px] text-[#6C7275]">Contraseña
                 actual</label>
               <input id="contrasenia_anterior" type="password" placeholder="*************" name="password"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
+                class="focus:ring-[#FF3D02] focus:border-[#FF3D02] w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
             </div>
 
             <div class="flex flex-col gap-2">
               <label for="contrasenia_nueva" class="font-medium text-[12px] text-[#6C7275]">Nueva
                 Contraseña</label>
               <input id="contrasenia_nueva" type="password" placeholder="*************" name="newpassword"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
+                class="focus:ring-[#FF3D02] focus:border-[#FF3D02] w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
             </div>
 
             <div class="flex flex-col gap-2">
               <label for="repetir_contrasenia" class="font-medium text-[12px] text-[#6C7275]">Repetir nueva
                 contraseña</label>
               <input id="repetir_contrasenia" type="password" placeholder="*************" name="confirmnewpassword"
-                class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
+                class="focus:ring-[#FF3D02] focus:border-[#FF3D02] w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
             </div>
 
             <div class="flex gap-5 flex-col md:flex-row">
               <a type="submit" value="Guardar cambios" id="botonGuardar"
-                class="text-white bg-[#006BF6] py-3 px-5 rounded-2xl cursor-pointer border-2 font-semibold text-[16px] text-center border-none inline-block">Guardar
+                class="text-white bg-[#FF3D02]  py-3 px-5 rounded-2xl cursor-pointer border-2 font-semibold text-[16px] text-center border-none inline-block">Guardar
                 cambios</a>
 
               <a onclick="window.location.href = window.location.href;"

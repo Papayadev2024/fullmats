@@ -40,19 +40,19 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
   }
 
   return (<>
-    <button className="w-full py-3 text-base bg-[#FD1F4A] tracking-wider text-white text-center font-Helvetica_Medium rounded-2xl" type="reset">
+    <button className="w-full py-3 text-base bg-[#FF560A] tracking-wider text-white text-center font-aeoniktrial_regular rounded-2xl" type="reset">
       Limpiar filtros
     </button>
 
-    <FilterItem title="Rango de precio" className="flex flex-row gap-4 w-full mt-3">
-      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FD1F4A] focus:ring-[#FD1F4A]" placeholder="Desde" min={minPrice} max={maxPrice} step={0.01} onChange={setMinPrice} />
-      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FD1F4A] focus:ring-[#FD1F4A]" placeholder="Hasta" min={minPrice} max={maxPrice} step={0.01} onChange={setMaxPrice} />
+    <FilterItem title="Rango de precio" className="flex flex-row gap-4 w-full mt-3 font-aeoniktrial_regular">
+      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FF560A] focus:ring-[#FF560A]" placeholder="Desde" min={minPrice} max={maxPrice} step={0.01} onChange={setMinPrice} />
+      <input type="number" className="w-1/2 rounded-md ring-0 border focus:border-[#FF560A] focus:ring-[#FF560A]" placeholder="Hasta" min={minPrice} max={maxPrice} step={0.01} onChange={setMaxPrice} />
     </FilterItem>
     {
       categories.length > 0 && (
 
         <div className="w-full ">
-          <h2 className="font-Helvetica_Light tracking-wide font-bold text-base mb-4">Categorias</h2>
+          <h2 className="font-aeoniktrial_regular tracking-wide font-bold text-base mb-4">Categorias</h2>
           <div className='bg-black p-[1px] -mt-2 mb-5'></div>
           {categories.map((item) => {
             
@@ -61,8 +61,8 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
            return categories.length > 0 && (<div key={item.id} className="w-full">
               <div className="flex flex-row justify-between gap-3 mb-2">
 
-              <label key={item.id} htmlFor={`item-category-${item.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
-                          <input id={`item-category-${item.id}`} name='category' type="checkbox" className="bg-[#DEE2E6] text-[#FD1F4A]  rounded-sm  border-none focus:ring-0" value={item.id} onClick={(e) => onClick(`category_id`, e.target.value, e.target.checked)}
+              <label key={item.id} htmlFor={`item-category-${item.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer font-aeoniktrial_light">
+                          <input id={`item-category-${item.id}`} name='category' type="checkbox" className="bg-[#DEE2E6] text-[#FF560A]  rounded-sm  border-none focus:ring-0" value={item.id} onClick={(e) => onClick(`category_id`, e.target.value, e.target.checked)}
                             defaultChecked={isCheckedfilter}
                           />
                           {item.name}
@@ -93,7 +93,7 @@ const FilterContainer = ({ minPrice, setFilter, filter, maxPrice, categories = [
                       const isCheckedfilter = Array.isArray(filter?.subcategory_id) && filter.subcategory_id.includes(String(subitem.id));
                       return <>
                         <label key={subitem.id} htmlFor={`item-category-${subitem.id}`} className="text-custom-border flex flex-row gap-2  items-center cursor-pointer">
-                          <input id={`item-category-${subitem.id}`} name='category' type="checkbox" className="text-[#FD1F4A] bg-[#FD1F4A] rounded-sm focus:ring-0 border-none" value={subitem.id} onClick={(e) => onClick(`subcategory_id`, e.target.value, e.target.checked)}
+                          <input id={`item-category-${subitem.id}`} name='category' type="checkbox" className="text-[#FF560A] bg-[#FF560A] rounded-sm focus:ring-0 border-none" value={subitem.id} onClick={(e) => onClick(`subcategory_id`, e.target.value, e.target.checked)}
                             defaultChecked={isCheckedfilter}
                           />
                           {subitem.name}

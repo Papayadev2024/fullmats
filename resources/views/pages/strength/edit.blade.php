@@ -58,7 +58,7 @@
               <div class="md:col-span-5">
                 <label for="descripcion">Descripcion</label>
                 <div class="relative mb-2  mt-2">
-                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <div class="absolute top-3 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg"
                       version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0"
                       y="0" viewBox="0 0 469.336 469.336" style="enable-background:new 0 0 512 512" xml:space="preserve"
@@ -70,11 +70,13 @@
                       </g>
                     </svg>
                   </div>
-                  <x-form.quill id="descripcion" :value="$strength->descripcion" />
+                  <textarea type="text" id="descripcion" name="descripcion" value=""
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Descripcion">{{ $strength->descripcion }}</textarea>
 
                 </div>
               </div>
-              <div class="md:col-span-5">
+              {{-- <div class="md:col-span-5">
                 <label for="icono">Icono principal</label>
                 <div class="relative mb-2  mt-2">
                   <input id="icono" name="icono" value="{{ $strength->icono }}"
@@ -89,7 +91,7 @@
                     class="p-2.5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     aria-describedby="user_avatar_help" id="user_avatar" type="file">
                 </div>
-              </div>
+              </div> --}}
 
 
 

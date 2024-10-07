@@ -22,10 +22,11 @@
           <table id="tabladatos" class="display text-lg" style="width:100%">
             <thead>
               <tr>
-                <th>Titulo </th>
-                <th>Descripcion</th>
-                <th>Icono</th>
-                <th>Imagen</th>
+                <th>Número </th>  
+                <th>Signo</th>
+                <th>Descripción</th>
+                {{-- <th>Icono</th>
+                <th>Imagen</th> --}}
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>
@@ -35,10 +36,11 @@
               @foreach ($strength as $item)
                 <tr>
                   <td>{{ $item->titulo }}</td>
+                  <td>{{ $item->descripcionshort }}</td>
                   <td>{{ $item->descripcion }}</td>
-                  <td class="px-3 py-2"><img class="w-20" src="{{ asset($item->icono) }}" alt=""></td>
+                  {{-- <td class="px-3 py-2"><img class="w-20" src="{{ asset($item->icono) }}" alt=""></td>
 
-                  <td class="px-3 py-2"><img class="w-20" src="{{ asset($item->imagen) }}" alt=""></td>
+                  <td class="px-3 py-2"><img class="w-20" src="{{ asset($item->imagen) }}" alt=""></td> --}}
 
                   <td>
                     <form method="POST" action="">
@@ -51,7 +53,7 @@
                                           before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow 
                                           before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200"
                         id='{{ 'v_' . $item->id }}' data-field='visible' data-idService='{{ $item->id }}'
-                        data-titleService='{{ $item->title }}' {{ $item->status == 1 ? 'checked' : '' }}>
+                        data-titleService='{{ $item->titulo }}' {{ $item->status == 1 ? 'checked' : '' }}>
                       <label for="{{ 'v_' . $item->id }}"></label>
                     </form>
 
@@ -79,10 +81,11 @@
             </tbody>
             <tfoot>
               <tr>
-                <th>Titulo </th>
-                <th>Descripcion</th>
-                <th>Icono</th>
-                <th>Imagen</th>
+                <th>Número </th>
+                <th>Signo</th>
+                <th>Descripción</th>
+                {{-- <th>Icono</th>
+                <th>Imagen</th> --}}
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>

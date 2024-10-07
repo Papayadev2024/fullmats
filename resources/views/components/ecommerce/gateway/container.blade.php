@@ -2,11 +2,11 @@
   $completed = isset($completed) ? $completed : 1;
 @endphp
 
-<div class="w-full font-Helvetica_Medium">
+<div class="w-full font-aeoniktrial_regular">
   <ol
     class="flex items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base  border-b-2 p-4">
     <li
-      class="flex md:w-full items-center text-[#FD1F4A] sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 ">
+      class="flex md:w-full items-center text-[#ff3d02] sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 ">
       <span
         class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
         <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@
       </span>
     </li>
     <li
-      class="flex md:w-full items-center {{ $completed >= 2 ? 'text-[#FD1F4A] dark:text-[#FD1F4A] sm:' : '' }}after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+      class="flex md:w-full items-center {{ $completed >= 2 ? 'text-[#ff3d02] dark:text-[#ff3d02] sm:' : '' }}after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
       <span
         class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
         @if ($completed >= 2)
@@ -34,7 +34,7 @@
       </span>
     </li>
     <li
-      class="flex md:w-full items-center {{ $completed >= 3 ? 'text-[#FD1F4A] dark:text-[#FD1F4A] sm:' : '' }}after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+      class="flex md:w-full items-center {{ $completed >= 3 ? 'text-[#ff3d02] dark:text-[#ff3d02] sm:' : '' }}after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
       <span
         class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
         @if ($completed >= 3)
@@ -46,7 +46,7 @@
         @else
           <span class="me-2">3</span>
         @endif
-        <span class="hidden sm:inline-flex sm:me-2 w-max font-Helvetica_Medium">Orden</span> completada
+        <span class="hidden sm:inline-flex sm:me-2 w-max font-aeoniktrial_regular">Orden</span> completada
       </span>
     </li>
   </ol>

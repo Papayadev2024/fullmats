@@ -224,7 +224,7 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
   const categoryDetails = categories.find(category => category.id === Number(selected_category));
   const bannersBottom = banners.filter(banner => banner.potition === 'bottom' && banner.url_page === 'catalogo');
   const bannerMid = banners.filter(banner => banner.potition === 'mid' && banner.url_page === 'catalogo');
-  const imgportada = 'images/img/portada_fm.webp';
+  const imgportada = '/images/img/portada_fm.webp';
  
 
   return (<>

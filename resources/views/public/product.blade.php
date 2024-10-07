@@ -97,6 +97,13 @@
   @endphp
   {{-- @component('components.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
   @endcomponent --}}
+
+  <section
+            class='flex relative flex-col justify-center items-center px-[5%] pt-[136px] text-base font-medium min-h-[100px] text-neutral-900'>
+            <img loading="lazy" src={{ asset('images/img/portada_fm.webp') }} alt=""
+                class="object-cover absolute inset-0 size-full" />     
+  </section>
+
   <main class="font-Inter_Regular" id="mainSection">
         @csrf
         <section class="w-full px-[5%] md:px-[8%]">
@@ -112,10 +119,10 @@
                     <x-product-slider :product="$product" />
                 </div>
 
-                <div class="flex flex-col gap-6  mt-2">
+                <div class="flex flex-col gap-4  mt-2">
                     @foreach ($atributos as $item)
                      @foreach ($valorAtributo as $value)
-                            @if ($value->attribute_id == $item->id)
+                            @if ($value->attribute_id == 1)
                               
                                   @isset($valoresdeatributo)
                                       @foreach($valoresdeatributo as $valorat)
@@ -129,7 +136,7 @@
                       @endforeach
                     @endforeach
                     <div class="flex flex-col">
-                        <h3 class="font-Helvetica_Medium text-4xl text-[#111111] font-normal tracking-tight">
+                        <h3 class="font-aeoniktrial_bold text-3xl text-[#111111] font-normal tracking-tight">
                             {{ $product->producto }}</h3>
                         {{-- <p class="font-Inter_Regular text-base gap-2">Disponibilidad:
                             @if ($product->stock == 0)
@@ -149,14 +156,14 @@
                         <div class="flex flex-row gap-3 content-center items-center">
                             @if ($product->descuento == 0)
                                 <div class="content-center flex flex-row gap-2 items-center">
-                                    <span class="font-Helvetica_Bold text-3xl gap-2 text-[#FD1F4A]">S/
+                                    <span class="font-aeoniktrial_bold text-3xl gap-2 text-[#FF3D02]">S/
                                         {{ $product->precio }}</span>
                                 </div>
                             @else
                                 <div class="content-center flex flex-row gap-2 items-center">
-                                    <span class="font-Helvetica_Bold text-3xl gap-2 text-[#FD1F4A]">S/
+                                    <span class="font-aeoniktrial_bold text-3xl gap-2 text-[#FF3D02]">S/
                                         {{ $product->descuento }}</span>
-                                    <span class="text-[#111111] font-Helvetica_Medium line-through text-lg">S/
+                                    <span class="text-[#111111] font-aeoniktrial_bold line-through text-lg">S/
                                         {{ $product->precio }}</span>
                                 </div>
                                 @php
@@ -165,17 +172,17 @@
                                     );
                                 @endphp
                                 <span
-                                    class="ml-2 font-Helvetica_Medium text-center content-center text-sm gap-2 bg-[#FD1F4A] text-white h-9 w-16 rounded-3xl px-2">
+                                    class="ml-2 font-aeoniktrial_bold text-center content-center text-sm gap-2 bg-[#FF3D02] text-white h-9 w-16 rounded-3xl px-2">
                                     -{{ $descuento }}% </span>
                             @endif
                         </div>
                         
-                        <div class="font-medium text-base font-Helvetica_Light w-full mt-4 text-[#444]">
+                        <div class="font-medium text-lg font-aeoniktrial_light w-full mt-4 text-[#444]">
                             {!! $product->description !!}
                         </div>
 
                         @if ($product->sku)
-                            <p class="font-Helvetica_Light text-base gap-2 text-[#444] mt-2">SKU: {{ $product->sku }}
+                            <p class="font-aeoniktrial_light text-base gap-2 text-[#444] mt-2">SKU: {{ $product->sku }}
                             </p>
                         @endif
                     </div>
@@ -222,7 +229,7 @@
                     @endif --}}
 
                     @if (!$especificaciones->isEmpty())
-                        <p class="font-Inter_Medium text-base gap-2 ">Especificaciones: </p>
+                        <p class="font-aeoniktrial_light text-base gap-2 ">Especificaciones: </p>
                         <div class="min-w-full divide-y divide-gray-200">
                             <table class=" divide-y divide-gray-200 ">
                                 <tbody>
@@ -247,23 +254,23 @@
                             <div class="flex">
                                 <div
                                     class="flex justify-center items-center bg-[#F5F5F5] cursor-pointer rounded-l-3xl">
-                                    <button class="py-2.5 px-5 text-lg font-Helvetica_Bold rounded-full bg-black m-1 text-white" id=disminuir
+                                    <button class="py-2.5 px-5 text-lg font-aeoniktrial_bold rounded-full bg-[#FF3D02] m-1 text-white" id=disminuir
                                         type="button">-</button>
                                 </div>
                                 <div id=cantidadSpan
-                                    class="py-2.5 px-5 flex justify-center items-center bg-[#F5F5F5] text-lg font-Helvetica_Bold">
+                                    class="py-2.5 px-5 flex justify-center items-center bg-[#F5F5F5] text-lg font-aeoniktrial_bold">
                                     <span>1</span>
                                 </div>
                                 <div
                                     class="flex justify-center items-center bg-[#F5F5F5] cursor-pointer rounded-r-3xl">
-                                    <button class="py-2.5 px-5 text-lg font-Helvetica_Bold rounded-full bg-black m-1 text-white" id=aumentar
+                                    <button class="py-2.5 px-5 text-lg font-aeoniktrial_bold rounded-full bg-[#FF3D02] m-1 text-white" id=aumentar
                                         type="button">+</button>
                                 </div>
                             </div>
                             <div class="xl:ml-8 flex flex-row gap-5 justify-start items-center w-full">
                                 @if ($product->status == 1 && $product->visible == 1)
                                   <button id="btnAgregarCarritoPr" data-id="{{ $product->id }}"
-                                      class="bg-[#FD1F4A] w-full py-3  text-white text-center rounded-full font-Helvetica_Medium tracking-wide text-lg hover:bg-[#e61e45]">
+                                      class="bg-[#FF3D02] w-full py-3  text-white text-center rounded-lg font-semibold font-aeoniktrial_regular tracking-wide text-lg hover:bg-[#FF3D02]">
                                       Agregar
                                       al Carrito
                                   </button>
@@ -276,13 +283,13 @@
                     <div class="flex flex-col gap-2" data-aos="fade-up">
                          <div class="flex flex-row gap-5 justify-start items-center w-full">
                                 <a
-                                    class="bg-[#25D366] flex justify-center items-center w-full py-3  text-white text-center rounded-full font-Helvetica_Medium tracking-wide text-lg hover:bg-[#1fcf61]">
+                                    class="bg-[#25D366] flex justify-center items-center w-full py-3  text-white text-center rounded-lg font-aeoniktrial_regular tracking-wide text-lg hover:bg-[#1fcf61]">
                                     <span class="text-sm mr-3">Agente Emilio</span>Consulta vía WhatsApp
                                 </a>
                           </div>
                           <div class="flex flex-row gap-5 justify-start items-center w-full">
                                 <a
-                                    class="bg-[#25D366] flex justify-center items-center w-full py-3  text-white text-center rounded-full font-Helvetica_Medium tracking-wide text-lg hover:bg-[#1fcf61]">
+                                    class="bg-[#25D366] flex justify-center items-center w-full py-3  text-white text-center rounded-lg font-aeoniktrial_regular tracking-wide text-lg hover:bg-[#1fcf61]">
                                     <span class="text-sm mr-3">Agente Emilio</span>Consulta vía WhatsApp
                                 </a>
                           </div>
@@ -292,76 +299,13 @@
         </section>
 
 
-        <section class="w-full px-[5%] md:px-[8%] py-12 lg:py-20">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              <div class="flex flex-col gap-4 justify-center">
-                   <h3 class="font-Helvetica_Medium text-4xl text-[#111111] font-normal tracking-tight">
-                            Llamadas, mensajes, música y mucho más ¡Actualiza tu auto!</h3>
-                   <p class="font-medium text-base font-Helvetica_Light w-full text-[#444]">
-                            Apple CarPlay & Android Auto hace que resulte más fácil que nunca navegar, comunicarse y 
-                            reproducir música en la carretera. Solo tienes que conectar tu iPhone para ver todo lo 
-                            que quieras en la amplia pantalla táctil.
-                    </p>  
-                    <img src={{ asset('images/img/logosandroid.png') }} class="w-1/2 h-auto object-contain mt-2"/>      
-              </div>
-
-              <div>
-                    <img src={{ asset('images/img/portadaproducto.png') }} class="w-full h-96 object-contain mt-2"/>      
-              </div>
-            </div>
-        </section>
-
-
-         <section class="w-full px-[5%] md:px-[8%] py-12 lg:py-20 bg-[#F5F5F7] space-y-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-10">
-              <div class="order-2 lg:order-1">
-                    <img src={{ asset('images/img/portadaproducto1.png') }} class="w-full h-80 lg:h-96 object-contain mt-2"/>      
-              </div>
-
-              <div class="flex flex-col gap-4 justify-center order-1 lg:order-2">
-                   <h3 class="font-Helvetica_Medium text-4xl text-[#111111] font-normal tracking-tight">
-                            Disfrute de sus aplicaciones favoritas</h3>
-                   <p class="font-medium text-base font-Helvetica_Light w-full text-[#444]">
-                            ¿Le gusta utilizar Spotify, Apple Music o cualquier otra plataforma en línea? 
-                            ¿Navegas con Waze o Google maps?. Apple CarPlay & Android Auto funciona con las 
-                            aplicaciones de su smartphone, para que pueda disfrutar de un entretenimiento sin 
-                            límites mientras conduce.
-                    </p>   
-              </div>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-10">
-              <div class="flex flex-col gap-4 justify-center">
-                   <h3 class="font-Helvetica_Medium text-4xl text-[#111111] font-normal tracking-tight">
-                            ¿Necesitas instalación?</h3>
-                   <p class="font-medium text-base font-Helvetica_Light w-full text-[#444]">
-                            Contamos con Talleres especializados ubicados en los puntos más céntricos de Lima y 
-                            Provincias para asegurar su correcta instalación y funcionamiento.
-                    </p>  
-                    <div class="mt-3">
-                      <a 
-                        class="bg-[#FD1F4A] px-5 py-3  text-white text-center rounded-full font-Helvetica_Medium tracking-wide text-base hover:bg-[#e61e45]">
-                         Ver Talleres Autorizados            
-                      </a>                          
-                    </div> 
-              </div>
-
-              <div>
-                    <img src={{ asset('images/img/portadaproducto2.png') }} class="w-full h-80 lg:h-96 object-contain mt-2"/>      
-              </div>
-            </div>
-        </section>
-
-
-
 
         <section class="bg-white py-10 lg:py-14">
             <div class="w-full px-[5%] md:px-[8%]">
                 <div class="flex flex-col">
-                    <h3 class="text-lg font-Helvetica_Light tracking-tight text-[#FD1F4A]">Apúrate que se acaban</h3>
-                    <h1 class="text-4xl font-Helvetica_Medium tracking-tight">También te puede interesar</h1>
+                    <h1 class="text-3xl font-aeoniktrial_regular font-bold tracking-tight">Pisos para autos</h1>
                 </div>
-                <div class="grid grid-cols-4 gap-4 mt-14 w-full">
+                <div class="grid grid-cols-4 gap-4 mt-7 w-full">
                     @foreach ($ProdComplementarios->take(4) as $item)
                         {{-- <x-product.container-combinalo width="" height="h-[400px]" bgcolor="bg-[#FFFFFF]"
               textpx="text-[20px]" :item="$item" /> --}}

@@ -90,7 +90,7 @@ class IndexController extends Controller
     $popups = Popup::where('status', '=', 1)->where('visible', '=', 1)->get();
 
     $general = General::all();
-    $benefit = Strength::where('status', '=', 1)->take(4)->get();
+    $benefit = Strength::where('status', '=', 1)->get();
     $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
     $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
@@ -186,8 +186,9 @@ class IndexController extends Controller
   }
   public function nosotros(){
     $nosotros = AboutUs::all();
+    $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
     $benefit = Strength::where('status', '=', 1)->take(3)->get();
-    return view('public.nosotros' , compact('nosotros','benefit'));
+    return view('public.nosotros' , compact('nosotros','benefit','faqs'));
   }
 
 
@@ -237,10 +238,11 @@ class IndexController extends Controller
     $general = General::first();
     $categorias = Category::all();
     $url_env = env('APP_URL');
+    $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
     $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
       ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
 
-    return view('public.contact', compact('general', 'url_env', 'categorias', 'destacados'));
+    return view('public.contact', compact('general', 'url_env', 'categorias', 'destacados','faqs'));
   }
 
   public function carrito()
