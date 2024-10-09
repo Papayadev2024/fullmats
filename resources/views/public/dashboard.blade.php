@@ -56,7 +56,7 @@
 
             <div class="flex flex-col gap-2">
               <label for="email_user" class="font-medium text-[12px] text-[#6C7275]">E-mail</label>
-              <input id="email_user" type="email" placeholder="hola@gmail.com" value="{{ $user->email }}"
+              <input id="email_user" type="email" placeholder="hola@gmail.com" name="email" value="{{ $user->email }}"
                 class="focus:ring-[#FF3D02] focus:border-[#FF3D02] w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
             </div>
 
