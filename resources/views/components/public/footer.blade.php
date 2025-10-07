@@ -26,7 +26,7 @@
 
 
         <div class="flex flex-col text-white text-base gap-1 items-start">
-            <img class="h-20 object-contain" src="{{asset('images/img/logodemofm.jpg')}}" />
+            <img class="h-20 object-contain" src="{{asset('images/img/logowhite_fm.png')}}" />
             {{-- <img class="h-20 object-contain" src="{{asset('images/img/logowhite_fm.png')}}" /> --}}
             <h3 class="font-aeoniktrial_light font-semibold text-lg tracking-wider text-white pb-3 pt-5">Siguenos en nuestras redes</h3>
             <div class="flex flex-row gap-4 text-white pt-1">
