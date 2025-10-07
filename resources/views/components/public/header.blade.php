@@ -282,7 +282,7 @@
             <div class="w-auto">
                 <a href="/">
                     <img  id="logo-boostperu" class="w-[100px] "
-                        src="{{ asset($isIndex ? 'images\img\logodemofm.jpg' : 'images\img\logodemofm.jpg') }}"
+                        src="{{ asset($isIndex ? 'images\svg\logo_fm.svg' : 'images\svg\logo_fm.svg') }}"
                         {{-- src="{{ asset($isIndex ? 'images\svg\logo_fm.svg' : 'images\svg\logo_fm.svg') }}" --}}
                         alt="fullmats" />
                 </a>
